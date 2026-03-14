@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes shimmer {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes slide-down {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    --color-medical-primary: #0f172a;    /* Deep Navy */
+    --color-medical-secondary: #2563eb;  /* Medical Blue */
+    --color-medical-accent: #10b981;     /* Emerald Green */
+    --color-medical-surface: #f8fafc;    /* Light Slate Surface */
+}
+
+.animate-shimmer {
+    animation: shimmer 1.5s infinite;
+}
+
+/* Professional medical blue scrollbar */
+.medical-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb transparent;
+}
+
+.medical-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.medical-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.medical-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #2563eb;
+    border-radius: 10px;
+}
+
+.medical-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #1d4ed8;
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+.animate-marquee-slower {
+    display: flex;
+    width: max-content;
+    animation: marquee 90s linear infinite;
+}
+
+.animate-marquee-slower:hover {
+    animation-play-state: paused;
+}
+
+.animate-slide-down {
+    animation: slide-down 0.5s ease-out forwards;
+}
