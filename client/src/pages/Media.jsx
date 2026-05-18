@@ -1,4 +1,4 @@
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
 import { motion } from "framer-motion";
 
 const mediaSections = [
@@ -39,7 +39,7 @@ const mediaSections = [
 
 export default function Media() {
   return (
-    <AuroraBackground>
+    <>
       {/* Hero */}
       <PageHero
         badge="Media Coverage"
@@ -108,6 +108,6 @@ export default function Media() {
           </FadeUp>
         </div>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }

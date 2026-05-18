@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchPreviousEditionByYear } from "../services/api.js";
 import VideoGallery from "../components/VideoGallery.jsx";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 // Banner slider with auto-scroll and modern UI
 function BannerSlider({ images, year }) {

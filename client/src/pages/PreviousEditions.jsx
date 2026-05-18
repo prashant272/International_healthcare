@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchPreviousEditions } from "../services/api.js";
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
 
 export default function PreviousEditions() {
   const [editions, setEditions] = useState([]);
@@ -23,7 +23,7 @@ export default function PreviousEditions() {
   }, []);
 
   return (
-    <AuroraBackground>
+    <>
       <PageHero
         badge="Archives"
         icon="🏆"
@@ -105,6 +105,6 @@ export default function PreviousEditions() {
           )}
         </div>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }

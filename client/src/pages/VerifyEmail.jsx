@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { FiMail, FiCheckCircle, FiArrowRight, FiRotateCw, FiHome } from "react-icons/fi";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 
 
@@ -74,7 +74,7 @@ export default function VerifyEmail() {
     const goldGrad = "linear-gradient(90deg,#e9d781 0%,#dac24a 29.69%,#fee19a 70%,#bc9830 100%)";
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Authentication"
                 icon="📧"
@@ -185,6 +185,6 @@ export default function VerifyEmail() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

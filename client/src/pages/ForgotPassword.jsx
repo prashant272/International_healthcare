@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiMail, FiArrowRight, FiHome } from "react-icons/fi";
 import { forgotPassword } from "../services/api.js";
-import { AuroraBackground, PageHero } from "../components/Motion.jsx";
+import {  PageHero } from "../components/Motion.jsx";
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function ForgotPassword() {
     const goldGrad = "linear-gradient(90deg,#e9d781 0%,#dac24a 29.69%,#fee19a 70%,#bc9830 100%)";
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Security"
                 icon="🔒"
@@ -119,6 +119,6 @@ export default function ForgotPassword() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

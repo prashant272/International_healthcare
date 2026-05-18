@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import {  NeonCard } from "../components/Motion.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { FiArrowLeft, FiX, FiRefreshCcw } from "react-icons/fi";
 import { Crown } from "lucide-react";
@@ -426,7 +426,7 @@ export default function HealthcareNominationForm() {
     }
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge={isEditMode ? "Review" : "Nominate"}
                 icon="🏆"
@@ -902,6 +902,6 @@ export default function HealthcareNominationForm() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

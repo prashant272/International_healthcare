@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AdminPreviousEditions from "../components/AdminPreviousEditions.jsx";
 import { Lock } from "lucide-react";
 import { getBaseUrl } from "../services/api.js";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 export default function DeveloperAuth() {
     const [password, setPassword] = useState("");
@@ -112,7 +112,7 @@ export default function DeveloperAuth() {
 
     // Otherwise show login
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Restricted Access"
                 icon="🔒"
@@ -170,6 +170,6 @@ export default function DeveloperAuth() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

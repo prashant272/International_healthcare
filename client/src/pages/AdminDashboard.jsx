@@ -8,7 +8,7 @@ import {
 import { useAuth } from "../context/AuthContext.jsx";
 import { ShieldCheck, Edit2, Trash2, FileText, Search, Eye } from "lucide-react";
 import AdminPreviousEditions from "../components/AdminPreviousEditions.jsx";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 /* ------------------ Constants ------------------ */
 const emeraldGrad = "linear-gradient(135deg, #10b981 0%, #06b6d4 100%)";
@@ -684,7 +684,7 @@ export default function AdminDashboard() {
   /* ================== UI ================== */
   return (
 
-    <AuroraBackground>
+    <>
       <PageHero>
         <section className="min-h-screen text-white flex flex-col">
           {/* Fixed Header Wrapper */}
@@ -1181,6 +1181,6 @@ export default function AdminDashboard() {
           </div>
         </section>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }

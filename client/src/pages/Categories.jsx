@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import { StaggerContainer, StaggerItem, PageHero, SectionHeading, FadeUp, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { StaggerContainer, StaggerItem, PageHero, SectionHeading, FadeUp, NeonCard } from "../components/Motion.jsx";
 import { useNavigate } from "react-router-dom";
 
 const categoryGroups = [

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 export default function AuthCallback() {
     const { setExternalAuth } = useAuth();
@@ -32,7 +32,7 @@ export default function AuthCallback() {
     }, [setExternalAuth]);
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Authentication"
                 icon="🔑"
@@ -46,6 +46,6 @@ export default function AuthCallback() {
                     </p>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

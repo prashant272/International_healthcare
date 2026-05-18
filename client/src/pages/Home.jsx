@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import MediaGallery from "../components/MediaGallery.jsx";
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
 import GuestCard from "../components/GuestCard.jsx";
 import { Autoplay, Pagination, EffectCoverflow, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,6 +26,13 @@ export default function Home() {
   const sectionRefs = useRef([]);
 
   // Removed local video playbackRate effect as we've switched to YouTube embed
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    // Delay heavy iframe load to unblock main thread
+    const timer = setTimeout(() => setIsVideoLoaded(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [editions, setEditions] = useState([]);
   const [editionsLoading, setEditionsLoading] = useState(true);
@@ -372,26 +379,29 @@ export default function Home() {
         {/* ===== BACKGROUND VIDEO: Responsive & Premium ===== */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none select-none overflow-hidden ">
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000"
             style={{
               width: "100vw",
               height: "56.25vw",
               minHeight: "100vh",
-              minWidth: "177.77vh"
+              minWidth: "177.77vh",
+              opacity: isVideoLoaded ? 1 : 0
             }}
           >
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/Th0wptIA0f4?autoplay=1&mute=1&loop=1&playlist=Th0wptIA0f4&start=35&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
-              title="International Healthcare Awards Background"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              style={{
-                pointerEvents: "none",
-                transform: "scale(1.3)", // Zoom in slightly to hide black bars/UI
-              }}
-            ></iframe>
+            {isVideoLoaded && (
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/Th0wptIA0f4?autoplay=1&mute=1&loop=1&playlist=Th0wptIA0f4&start=35&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
+                title="International Healthcare Awards Background"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                  pointerEvents: "none",
+                  transform: "scale(1.3)", // Zoom in slightly to hide black bars/UI
+                }}
+              ></iframe>
+            )}
           </div>
           {/* Fallback Image for mobile if video fails */}
           <noscript>
@@ -416,7 +426,7 @@ export default function Home() {
           {/* ===== HERO TEXT ===== */}
           <div className="max-w-[48rem] mx-auto space-y-2 sm:space-y-1 animate-fade-in pt-0.5 relative">
             {/* Backdrop Spotlight */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-emerald-500/10 blur-[120px] -z-10 pointer-events-none rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10 pointer-events-none rounded-full" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
 
             <h1 className="text-lg xs:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-black font-heading tracking-tight leading-tight text-white px-2 [text-shadow:_0_0_30px_rgba(16,185,129,0.4),_0_0_60px_rgba(16,185,129,0.2)]">
               <span className="inline-block whitespace-nowrap text-center">
@@ -536,14 +546,14 @@ export default function Home() {
         </div>
       </section>
       {/*. uniform background using pagehero   */}
-      <AuroraBackground>
-        <PageHero className="my-2 py-2" compact={true}>
+      
+        <div className="relative w-full">
           {/* OVERVIEW + DATES: Main theme background (use SECTION_BG to keep consistent) */}
           <section className={`relative overflow-hidden border-b border-[#10b981]/20 pb-2`}>
             {/* Gradient Glow Background */}
             <div className="absolute inset-0 -z-10 pointer-events-none">
-              <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-br from-[#10b981]/20 via-[#10b981]/10 to-transparent rounded-full mix-blend-screen blur-[120px] animate-blob" />
-              <div className="absolute bottom-[20%] right-[-15%] w-[600px] h-[600px] bg-gradient-to-br from-[#047857]/20 via-[#10b981]/10 to-transparent rounded-full mix-blend-screen blur-[120px] animate-blob animation-delay-2000" />
+              <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full mix-blend-screen animate-blob" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 65%)' }} />
+              <div className="absolute bottom-[20%] right-[-15%] w-[600px] h-[600px] rounded-full mix-blend-screen animate-blob animation-delay-2000" style={{ background: 'radial-gradient(circle, rgba(4, 120, 87, 0.15) 0%, transparent 65%)' }} />
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
             </div>
 
@@ -954,7 +964,7 @@ export default function Home() {
           <section className="relative overflow-hidden py-12">
             {/* Decorative mesh gradients */}
             <div className="absolute inset-0 pointer-events-none -z-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-emerald-500/5 rounded-full blur-[120px] animate-pulse" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-emerald-500/5 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -998,7 +1008,7 @@ export default function Home() {
           {/* Selection Process */}
           <section className="relative overflow-hidden py-12">
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -1043,8 +1053,8 @@ export default function Home() {
           {/* ================= KEY FAQ SNAPSHOT ================= */}
           <section className="relative overflow-hidden py-12">
             <div className="absolute inset-0 pointer-events-none -z-10">
-              <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px]" />
-              <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px]" />
+              <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full " style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
+              <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full " style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -1114,8 +1124,8 @@ export default function Home() {
           {/* PREVIOUS EDITIONS CAROUSEL SECTION */}
           <section className="relative overflow-hidden py-12">
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-              <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] animate-pulse" />
-              <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px] animate-pulse delay-700" />
+              <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-emerald-500/5 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
+              <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full animate-pulse delay-700" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
             </div>
 
             <div className="max-w-[1800px] mx-auto px-6">
@@ -1223,7 +1233,7 @@ export default function Home() {
           <section className="relative overflow-hidden py-8">
             {/* Responsive glowing background blobs */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-              <div className="absolute top-[20%] left-[12%] w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
+              <div className="absolute top-[20%] left-[12%] w-[300px] h-[300px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
               <div className="absolute bottom-[15%] right-[16%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[140px] animate-pulse delay-700" />
             </div>
 
@@ -1328,7 +1338,7 @@ export default function Home() {
           <section className="relative overflow-hidden py-8">
             {/* Animated Gradient Glows */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-              <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
+              <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
               <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] animate-pulse delay-1000" />
             </div>
 
@@ -1376,8 +1386,8 @@ export default function Home() {
               </StaggerContainer>
             </div>
           </section>
-        </PageHero>
-      </AuroraBackground>
+        </div>
+      
     </div>
   );
 }

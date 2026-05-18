@@ -1,4 +1,4 @@
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -89,7 +89,7 @@ const principles = [
 
 export default function Judging() {
   return (
-    <AuroraBackground>
+    <>
       <PageHero
         badge="Evaluation Framework"
         icon="⚖️"
@@ -162,6 +162,6 @@ export default function Judging() {
           </p>
         </FadeUp>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }

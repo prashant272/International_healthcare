@@ -3,7 +3,7 @@ import { fetchMyNominations } from "../services/api.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { Crown, UserCircle, ExternalLink, Award, Search, Calendar, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 import {
     FadeUp,
     StaggerContainer,
@@ -63,7 +63,7 @@ export default function UserDashboard() {
 
     return (
 
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Activity Center"
                 icon="🛡️"
@@ -202,7 +202,7 @@ export default function UserDashboard() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }
 

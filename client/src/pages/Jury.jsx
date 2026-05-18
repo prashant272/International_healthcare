@@ -4,7 +4,7 @@ import { Autoplay, Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
 import GuestCard from "../components/GuestCard.jsx";
 
 const juryMembers = [
@@ -83,7 +83,7 @@ const juryMembers = [
 
 export default function Jury() {
   return (
-    <AuroraBackground>
+    <>
       <PageHero
         title="Our Esteemed Guests & Speakers"
       >
@@ -135,6 +135,6 @@ export default function Jury() {
           </StaggerContainer>
         </div>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }

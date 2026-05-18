@@ -1,6 +1,6 @@
 import { FiCheckCircle, FiPhoneCall, FiMail, FiArrowLeft, FiHome } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
-import { ScaleIn, FadeUp, NeonCard, AuroraBackground, PageHero } from "../components/Motion.jsx";
+import { ScaleIn, FadeUp, NeonCard, PageHero } from "../components/Motion.jsx";
 
 export default function SuccessPage() {
     const location = useLocation();
@@ -8,7 +8,7 @@ export default function SuccessPage() {
     const email = location.state?.email;
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Confirmation"
                 icon="✅"
@@ -94,6 +94,6 @@ export default function SuccessPage() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

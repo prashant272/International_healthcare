@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { getBaseUrl } from "../services/api.js";
 import { FiUser, FiMail, FiLock, FiArrowRight, FiHome } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
-import { AuroraBackground, FadeUp, ScaleIn, PageHero } from "../components/Motion.jsx";
+import {  FadeUp, ScaleIn, PageHero } from "../components/Motion.jsx";
 import { motion } from "framer-motion";
 
 
@@ -34,7 +34,7 @@ export default function Register() {
 
   return (
 
-    <AuroraBackground>
+    <>
       <PageHero
         badge="Join the Honors"
         icon="✨"
@@ -145,6 +145,6 @@ export default function Register() {
           </div>
         </div>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }

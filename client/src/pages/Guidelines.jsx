@@ -1,4 +1,4 @@
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, SlideIn, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, SlideIn, NeonCard } from "../components/Motion.jsx";
 import { motion } from "framer-motion";
 
 const GUIDELINES = [

@@ -1,4 +1,4 @@
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem } from "../components/Motion.jsx";
 import { motion } from "framer-motion";
 const terms = [
   {

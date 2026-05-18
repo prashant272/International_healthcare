@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { FiShield, FiUser, FiMail, FiLock, FiKey, FiArrowRight, FiHome } from "react-icons/fi";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 export default function AdminRegister() {
     const { register } = useAuth();
@@ -33,7 +33,7 @@ export default function AdminRegister() {
     const adminGrad = "linear-gradient(135deg, #059669, #3b82f6, #d4af37)";
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Admin Setup"
                 icon="🛡️"
@@ -158,6 +158,6 @@ export default function AdminRegister() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

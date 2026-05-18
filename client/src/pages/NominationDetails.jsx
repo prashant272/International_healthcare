@@ -4,7 +4,7 @@ import { fetchNominationById } from "../services/api.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { FiArrowLeft, FiEdit2, FiClock, FiMapPin, FiUser, FiBriefcase, FiMail, FiPhone, FiInfo } from "react-icons/fi";
 import { Crown } from "lucide-react";
-import { PageHero, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 const STATUS_LABELS = {
     nominated: "Nominated",
@@ -69,7 +69,7 @@ export default function NominationDetails() {
     const isEditable = nomination.status === "nominated";
 
     return (
-        <AuroraBackground>
+        <>
             <PageHero
                 badge="Detail View"
                 icon="📄"
@@ -236,6 +236,6 @@ export default function NominationDetails() {
                     </div>
                 </div>
             </PageHero>
-        </AuroraBackground>
+        </>
     );
 }

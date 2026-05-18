@@ -1,5 +1,5 @@
 import { Mail, Phone, Globe, MapPin, Facebook, Instagram, Youtube, Linkedin, MessageCircle, Clock, ArrowRight } from "lucide-react";
-import { PageHero, FadeUp, StaggerContainer, StaggerItem, SlideIn, AuroraBackground } from "../components/Motion.jsx";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, SlideIn } from "../components/Motion.jsx";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -41,7 +41,7 @@ function ContactItem({ href, icon: Icon, label, value, target }) {
 
 export default function Contact() {
   return (
-    <AuroraBackground>
+    <>
       <PageHero
         badge="Get in Touch"
         icon="✉️"
@@ -173,6 +173,6 @@ export default function Contact() {
 
       {/* Bottom gradient line */}
       <div className="h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
-    </AuroraBackground>
+    </>
   );
 }

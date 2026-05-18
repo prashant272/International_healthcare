@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { FiShield, FiMail, FiLock, FiChevronRight, FiHome } from "react-icons/fi";
-import { AuroraBackground, PageHero } from "../components/Motion.jsx";
+import {  PageHero } from "../components/Motion.jsx";
 
 export default function AdminLogin() {
   const { loginAsAdmin, user, isAuthenticated } = useAuth();
@@ -37,7 +37,7 @@ export default function AdminLogin() {
   const goldGrad = "linear-gradient(90deg,#e9d781 0%,#dac24a 29.69%,#fee19a 70%,#bc9830 100%)";
 
   return (
-    <AuroraBackground>
+    <>
       <PageHero
         badge="Admin Secure Access"
         icon="🛡️"
@@ -124,7 +124,7 @@ export default function AdminLogin() {
           </div>
         </section>
       </PageHero>
-    </AuroraBackground>
+    </>
   );
 }
 

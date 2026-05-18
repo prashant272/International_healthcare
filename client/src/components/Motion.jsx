@@ -119,7 +119,7 @@ export const StaggerItem = memo(function StaggerItem({ children, className = "te
  */
 export const AuroraBackground = memo(function AuroraBackground({ children, orbs = true }) {
   const particles = useMemo(() => {
-    return [...Array(20)].map((_, i) => ({
+    return [...Array(10)].map((_, i) => ({
       width: Math.random() * 4 + 2,
       height: Math.random() * 4 + 2,
       background: ["#34d399", "#06b6d4", "#a855f7", "#ffd700", "#ec4899", "#6366f1"][i % 6],
@@ -209,8 +209,8 @@ export const AmbientBackground = memo(function AmbientBackground({ children, cla
   return (
     <div className={`min-h-screen ${className || "bg-[var(--base-bg)]"} text-white overflow-x-hidden relative`}>
       <div className="fixed inset-0 pointer-events-none -z-10">
-        <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-teal-500/5 rounded-full blur-[100px]" />
+        <div className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(5, 150, 105, 0.1) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(20, 184, 166, 0.05) 0%, transparent 70%)' }} />
         <div className="bg-grid-pattern absolute inset-0 opacity-20" />
       </div>
       {children}
@@ -307,54 +307,44 @@ export const PageHero = memo(function PageHero({ title, subtitle, icon, badge, c
   return (
     <div className={`page-hero bg-cross-pattern ${compact ? '!pt-15' : ''} ${children ? '!pb-0' : ''} ${className}`}>
       {/* Ultra-Premium Liquid & Sweep Effects */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {!compact && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Deep Shifting Mesh */}
         <div
-          className="absolute -top-[30%] -left-[20%] w-[140%] h-[160%] opacity-40 blur-[120px] animate-mesh-drift"
+          className="absolute -top-[30%] -left-[20%] w-[140%] h-[160%] opacity-40 animate-mesh-drift"
           style={{
             background: `radial-gradient(circle at 30% 40%, ${sc.glow1} 0%, transparent 60%), 
                          radial-gradient(circle at 70% 60%, ${sc.glow2} 0%, transparent 60%)`,
           }}
         />
 
-        {/* Dynamic Light Streaks (Sweeping Glows) */}
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={`streak-${i}`}
-            className="absolute w-[200%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent blur-[2px] animate-light-streak"
-            style={{
-              top: `${20 + i * 30}%`,
-              left: '-50%',
-              transform: 'rotate(-15deg)',
-              '--dur': `${8 + i * 2}s`,
-              '--delay': `${i * 3}s`,
-            }}
-          />
-        ))}
+
 
         {/* Floating Refractive Glows */}
         <div
-          className="absolute top-1/4 right-[-10%] w-[500px] h-[500px] opacity-20 blur-[100px] animate-refractive-glow"
-          style={{ background: sc.glow3 }}
+          className="absolute top-1/4 right-[-10%] w-[500px] h-[500px] opacity-20 animate-refractive-glow"
+          style={{ background: `radial-gradient(circle, ${sc.glow3} 0%, transparent 70%)` }}
         />
 
         {/* Animated Bottom Border Glow */}
         <div
           className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent animate-border-glow-opacity"
         />
-      </div>
+        </div>
+      )}
 
       {/* Ultra-Premium Layered Particle System */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      {!compact && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Layer 1: Ambient Blurred Orbs (Deep Background) */}
         {orbs.map((orb, i) => (
           <div
             key={`hero-orb-${i}`}
-            className="absolute rounded-full blur-[40px] opacity-20 animate-orb-float"
+            className="absolute rounded-full opacity-20 animate-orb-float"
             style={{
               width: orb.width,
               height: orb.height,
-              background: orb.background,
+              background: `radial-gradient(circle, ${orb.background} 0%, transparent 70%)`,
               left: orb.left,
               top: orb.top,
               '--dur': `${orb.duration}s`,
@@ -367,7 +357,7 @@ export const PageHero = memo(function PageHero({ title, subtitle, icon, badge, c
           return (
             <div
               key={`hero-jewel-${i}`}
-              className={`absolute backdrop-blur-[2px] ${j.type === 1 ? 'rotate-45' : 'rounded-full'} animate-jewel-float`}
+              className={`absolute ${j.type === 1 ? 'rotate-45' : 'rounded-full'} animate-jewel-float`}
               style={{
                 width: j.width,
                 height: j.height,
@@ -401,6 +391,7 @@ export const PageHero = memo(function PageHero({ title, subtitle, icon, badge, c
           />
         ))}
       </div>
+      )}
 
       {/* Content */}
       <motion.div
