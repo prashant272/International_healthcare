@@ -1,179 +1,178 @@
-import { Mail, Phone, Globe, MapPin, Facebook, Instagram, Youtube, Linkedin, MessageCircle } from "lucide-react";
+import { Mail, Phone, Globe, MapPin, Facebook, Instagram, Youtube, Linkedin, MessageCircle, Clock, ArrowRight } from "lucide-react";
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, SlideIn, AuroraBackground } from "../components/Motion.jsx";
+import { motion } from "framer-motion";
 
 const socialLinks = [
-  { icon: Facebook, href: "https://www.facebook.com/primetimeresearch", color: "from-blue-600 to-blue-500", bgColor: "bg-blue-600" },
-  { icon: Instagram, href: "https://www.instagram.com/primetimeresearchmedia/", color: "from-pink-600 to-purple-600", bgColor: "bg-gradient-to-br from-pink-600 to-purple-600" },
-  { icon: Youtube, href: "https://www.youtube.com/@primetimermedia", color: "from-red-600 to-red-500", bgColor: "bg-red-600" },
-  { icon: Linkedin, href: "https://www.linkedin.com/company/primetimeresearch-media/", color: "from-blue-700 to-blue-600", bgColor: "bg-blue-700" },
-  { icon: MessageCircle, href: "https://wa.me/919810882769", color: "from-green-600 to-green-500", bgColor: "bg-green-600" },
+  { icon: Facebook, href: "https://www.facebook.com/primetimeresearch", label: "Facebook", color: "from-blue-600 to-blue-500" },
+  { icon: Instagram, href: "https://www.instagram.com/primetimeresearchmedia/", label: "Instagram", color: "from-pink-600 to-purple-600" },
+  { icon: Youtube, href: "https://www.youtube.com/@primetimermedia", label: "YouTube", color: "from-red-600 to-red-500" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/primetimeresearch-media/", label: "LinkedIn", color: "from-blue-700 to-blue-600" },
+  { icon: MessageCircle, href: "https://wa.me/919810882769", label: "WhatsApp", color: "from-green-600 to-green-500" },
 ];
 
-export default function Contact() {
-  const phones = [
-    {
-      tel: "+911169268754",
-      label: "Board Lines",
-      display: "+91 11 69268754"
-    },
-    {
-      tel: "+911135773024",
-      label: "Board Lines",
-      display: "+91-11-35773024"
-    },
-    {
-      tel: "+919810910686",
-      label: "Helpline",
-      display: "+91 9810 91 0686"
-    },
-    {
-      tel: "+919971002984",
-      label: "For Sponsorship",
-      display: "+91 9971 00 2984"
-    },
-    {
-      tel: "+919810882769",
-      label: "For Nominations",
-      display: "+91 9810 88 2769"
-    }
-  ];
+const phones = [
+  { tel: "+911169268754", label: "Board Line 1", display: "+91 11 69268754", icon: "📞" },
+  { tel: "+911135773024", label: "Board Line 2", display: "+91-11-35773024", icon: "📞" },
+  { tel: "+919810910686", label: "Helpline", display: "+91 9810 91 0686", icon: "🆘" },
+  { tel: "+919971002984", label: "Sponsorship", display: "+91 9971 00 2984", icon: "🤝" },
+  { tel: "+919810882769", label: "Nominations", display: "+91 9810 88 2769", icon: "🏆" },
+];
 
+function ContactItem({ href, icon: Icon, label, value, target }) {
   return (
-    <section className="relative min-h-screen overflow-hidden py-12 md:py-20 bg-slate-950 text-white selection:bg-blue-500/30">
-      {/* Decorative mesh gradients */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute -top-32 -left-1/4 w-[200px] h-[200px] xs:w-[300px] xs:h-[300px] sm:w-[420px] sm:h-[420px] rounded-full bg-gradient-to-br from-blue-600/20 via-blue-400/10 to-transparent blur-[60px] sm:blur-[100px]" />
-        <div className="absolute bottom-0 right-[-30%] xs:right-[-10%] w-[220px] h-[220px] xs:w-[350px] xs:h-[350px] sm:w-[450px] sm:h-[450px] rounded-full bg-gradient-to-br from-blue-100/20 via-slate-900/10 to-transparent blur-[60px] sm:blur-[100px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:28px_28px] sm:bg-[size:56px_56px]" />
+    <motion.a
+      href={href}
+      target={target}
+      rel={target ? "noopener noreferrer" : undefined}
+      className="flex items-center gap-4 p-4 glass-card border border-emerald-500/15 hover:border-emerald-400/40 transition-all duration-300 group"
+      whileHover={{ x: 4 }}
+    >
+      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md">
+        <Icon size={18} className="text-white" />
       </div>
+      <div>
+        <div className="text-[11px] text-emerald-300/60 font-semibold uppercase tracking-widest mb-0.5">{label}</div>
+        <div className="text-sm md:text-base font-bold text-white group-hover:text-emerald-100 transition-colors">{value}</div>
+      </div>
+      <ArrowRight size={14} className="ml-auto text-emerald-400/40 group-hover:text-emerald-400 transition-colors" />
+    </motion.a>
+  );
+}
 
-      <div className="relative z-10 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-5xl mx-auto px-2 xs:px-3 sm:px-6 md:px-8 py-6 sm:py-10 md:py-12">
-        {/* Responsive card container */}
-        <div className="mx-auto w-full max-w-full sm:max-w-3xl md:max-w-4xl p-4 xs:p-6 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl border border-blue-500/30 shadow-xl backdrop-blur-md flex flex-col gap-6 sm:gap-8 md:gap-10 relative overflow-hidden"
-          style={{ background: "rgba(15, 23, 42, 0.15)" }}>
-          {/* Title and subtitle */}
-          <div className="flex flex-col items-center text-center gap-2">
-            <div className="flex items-center justify-center gap-2 sm:gap-3">
-              <span className="h-6 w-1 rounded-xl bg-gradient-to-b from-blue-300 via-blue-500 to-medical-secondary sm:h-7" />
-              <h1 className="text-2xl xs:text-3xl md:text-5xl font-black bg-gradient-to-r from-white via-blue-200 to-medical-secondary bg-clip-text text-transparent drop-shadow">
-                Contact Us
-              </h1>
-              <span className="h-6 w-1 rounded-xl bg-gradient-to-b from-blue-300 via-blue-500 to-medical-secondary sm:h-7" />
-            </div>
-            <p className="max-w-full xs:max-w-lg md:max-w-xl text-blue-100/80 text-sm xs:text-base sm:text-lg mt-2 sm:mt-3 leading-relaxed font-medium">
-              We’d love to connect with you! Reach out for inquiries about nominations, partnerships, media, or anything else.
-            </p>
-          </div>
+export default function Contact() {
+  return (
+    <AuroraBackground>
+      <PageHero
+        badge="Get in Touch"
+        icon="✉️"
+        title="Contact Us"
+        subtitle="We'd love to connect. Reach out for inquiries about nominations, partnerships, media coverage, or sponsorships."
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-          {/* Gold gradient line below header title */}
-          <div className="h-1 mt-4 sm:mt-6 mb-0 bg-gradient-to-r from-blue-400 via-blue-600 to-medical-secondary" />
+            {/* Left – Contact Details */}
+            <SlideIn from="left">
+              <div className="space-y-5">
+                <h2 className="text-xl font-black text-gradient-emerald font-serif mb-6">Contact Information</h2>
 
-          {/* Contact Info Grid */}
-          <div className="w-full grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 md:grid-cols-2">
-            <div className="space-y-4 xs:space-y-5">
-              <a
-                href="mailto:info@globalhealthcareawards.com"
-                className="flex flex-col xs:flex-row items-start xs:items-center gap-3 xs:gap-4 p-4 sm:p-5 rounded-lg sm:rounded-xl border border-blue-500/15 bg-slate-900/20 hover:shadow-lg hover:bg-slate-800 transition-all duration-300 group"
-              >
-                <div className="rounded-lg bg-gradient-to-br from-blue-300 via-blue-500 to-medical-secondary p-2 shadow group-hover:scale-110 transition">
-                  <Mail className="w-6 h-6 text-slate-900" />
+                {/* Email */}
+                <ContactItem
+                  href="mailto:info@globalhealthcareawards.com"
+                  icon={Mail}
+                  label="Email"
+                  value="info@globalhealthcareawards.com"
+                />
+
+                {/* Website */}
+                <ContactItem
+                  href="https://globalhealthcareawards.com"
+                  icon={Globe}
+                  label="Website"
+                  value="www.globalhealthcareawards.com"
+                  target="_blank"
+                />
+
+                {/* Location */}
+                <ContactItem
+                  href="https://maps.app.goo.gl/A9eWn25eF8uXr3pF9"
+                  icon={MapPin}
+                  label="Location"
+                  value="Delhi, India"
+                  target="_blank"
+                />
+
+                {/* Phones */}
+                <div className="space-y-2 pt-2">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-300/60 mb-3">Phone Numbers</h3>
+                  {phones.map((phone, i) => (
+                    <ContactItem
+                      key={i}
+                      href={`tel:${phone.tel}`}
+                      icon={Phone}
+                      label={phone.label}
+                      value={phone.display}
+                    />
+                  ))}
                 </div>
-                <div>
-                  <div className="text-xs text-blue-200/70 font-semibold">Email</div>
-                  <div className="font-bold text-blue-100 tracking-wide text-[1.02rem] xs:text-[1.08rem]">info@globalhealthcareawards.com</div>
-                </div>
-              </a>
+              </div>
+            </SlideIn>
 
-              {/* Phone Numbers */}
-              <div className="flex flex-col gap-2 xs:gap-3">
-                {/* All numbers rendered responsively */}
-                {phones.map((phone, idx) => (
+            {/* Right – Social + Office info */}
+            <SlideIn from="right" delay={0.1}>
+              <div className="space-y-6">
+                {/* Social Media */}
+                <div className="glass-card border border-emerald-500/15 p-6">
+                  <h3 className="text-lg font-black text-gradient-emerald font-serif mb-2">Follow Us</h3>
+                  <p className="text-emerald-100/60 text-sm mb-5">Stay updated with the latest news, announcements, and highlights.</p>
+                  <div className="flex flex-wrap gap-3">
+                    {socialLinks.map((s, i) => {
+                      const Icon = s.icon;
+                      return (
+                        <motion.a
+                          key={i}
+                          href={s.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={s.label}
+                          className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center shadow-lg`}
+                          whileHover={{ scale: 1.15, y: -3 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          <Icon size={20} className="text-white" />
+                        </motion.a>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Office hours */}
+                <div className="glass-card border border-emerald-500/15 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-md">
+                      <Clock size={16} className="text-white" />
+                    </div>
+                    <h3 className="font-black text-white">Office Hours</h3>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-emerald-200/70">Working Days</span>
+                      <span className="text-white font-semibold">Mon – Sat</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-emerald-200/70">Timing</span>
+                      <span className="text-white font-semibold">10:00 AM – 6:00 PM</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-emerald-200/70">Response Time</span>
+                      <span className="text-emerald-300 font-semibold">Within 1 business day</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick enquiry nudge */}
+                <div className="glass-card border border-emerald-400/20 p-6 bg-emerald-900/10 animate-border-glow">
+                  <p className="text-emerald-100/80 text-sm leading-relaxed mb-4">
+                    For <strong className="text-white">nominations</strong>, <strong className="text-white">sponsorships</strong>, or <strong className="text-white">media partnerships</strong> — reach out directly via the contact details above or WhatsApp.
+                  </p>
                   <a
-                    key={idx}
-                    href={`tel:${phone.tel}`}
-                    className="flex flex-col xs:flex-row items-start xs:items-center gap-2 xs:gap-4 p-4 sm:p-5 rounded-lg sm:rounded-xl border border-blue-500/15 bg-slate-900/80 hover:shadow-lg hover:bg-slate-800 transition-all duration-300 group"
+                    href="https://wa.me/919810882769"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary text-sm w-full justify-center"
                   >
-                    <div className="rounded-lg bg-gradient-to-br from-blue-300 via-blue-500 to-medical-secondary p-2 shadow group-hover:scale-110 transition">
-                      <Phone className="w-6 h-6 text-slate-900" />
-                    </div>
-                    <div>
-                      {/* If 2 board lines in a row, only show label for first for small screens, but show with sr-only for a11y */}
-                      <div className={`text-xs text-blue-200/70 font-semibold${(phone.label === "Board Lines" && idx === 1) ? " sr-only" : ""}`}>{phone.label}</div>
-                      <div className="font-bold text-blue-100 tracking-wide text-[1.02rem] xs:text-[1.08rem]">
-                        {phone.display}
-                      </div>
-                    </div>
+                    💬 Chat on WhatsApp
                   </a>
-                ))}
-              </div>
-
-              <a
-                href="https://maps.app.goo.gl/A9eWn25eF8uXr3pF9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col xs:flex-row items-start xs:items-center gap-2 xs:gap-4 p-4 sm:p-5 rounded-lg sm:rounded-xl border border-blue-500/15 bg-slate-900/80 hover:shadow-lg hover:bg-slate-800 transition-all duration-300 group"
-              >
-                <div className="rounded-lg bg-gradient-to-br from-blue-300 to-medical-secondary p-2 shadow group-hover:scale-110 transition">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-xs text-blue-200/70 font-semibold">Location</div>
-                  <div className="font-bold text-blue-100 tracking-wide text-[1.02rem] xs:text-[1.08rem]">Delhi, India</div>
-                </div>
-              </a>
-              <a
-                href="https://globalhealthcareawards.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col xs:flex-row items-start xs:items-center gap-2 xs:gap-4 p-4 sm:p-5 rounded-lg sm:rounded-xl border border-blue-500/15 bg-slate-900/80 hover:shadow-lg hover:bg-slate-800 transition-all duration-300 group"
-              >
-                <div className="rounded-lg bg-gradient-to-br from-blue-600 to-emerald-400 p-2 shadow group-hover:scale-110 transition">
-                  <Globe className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-xs text-blue-200/70 font-semibold">Website</div>
-                  <div className="font-bold text-blue-100 tracking-wide text-[1.02rem] xs:text-[1.08rem]">www.globalhealthcareawards.com</div>
-                </div>
-              </a>
-            </div>
-            {/* Social & Info */}
-            <div className="flex flex-col h-full items-center justify-center gap-6 sm:gap-7 mt-6 md:mt-0">
-              <div className="rounded-xl sm:rounded-2xl bg-slate-900/20 border border-blue-500/15 shadow-lg p-4 sm:p-6 w-full text-center group transition">
-                <h3 className="text-base sm:text-lg font-extrabold bg-gradient-to-r from-white via-blue-200 to-medical-secondary bg-clip-text text-transparent mb-1">Follow Us</h3>
-                <p className="text-blue-100/80 text-xs sm:text-sm mb-2 sm:mb-3 font-medium">
-                  Stay updated with the latest news, photos and announcements.
-                </p>
-                <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mt-2">
-                  {socialLinks.map((social, i) => {
-                    const Icon = social.icon;
-                    return (
-                      <a
-                        key={i}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300 group ${social.bgColor}`}
-                        aria-label="Social media link"
-                      >
-                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                      </a>
-                    );
-                  })}
                 </div>
               </div>
-              <div className="hidden sm:block mt-2 sm:mt-4">
-                <div className="w-40 sm:w-48 h-1 rounded-full bg-gradient-to-r from-blue-400/40 via-blue-500/40 to-blue-400/40 mx-auto" />
-              </div>
-              <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-blue-200/60 text-center">
-                <span className="font-bold text-white">Office Hours:</span> 10:00 AM – 6:00 PM (Mon - Fri) <br />
-                <span className="font-bold text-blue-300">Response time:</span> Within 1 business day
-              </div>
-            </div>
+            </SlideIn>
           </div>
         </div>
-      </div>
+      </PageHero>
 
       {/* Bottom gradient line */}
-      <div className="relative z-10 h-1 bg-gradient-to-r from-blue-600 via-blue-400 to-medical-secondary" />
-    </section>
+      <div className="h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+    </AuroraBackground>
   );
 }

@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const config = {
-    PORT: process.env.PORT || 5000,
+    PORT: process.env.PORT || 5001,
     MONGO_URI: process.env.MONGO_URI || "mongodb://127.0.0.1/primetime_awards",
     MONGO_DB_NAME: process.env.MONGO_DB_NAME,
     JWT_SECRET: process.env.JWT_SECRET || "dev_primetime_secret_change_me",

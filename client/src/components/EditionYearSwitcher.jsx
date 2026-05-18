@@ -27,16 +27,21 @@ export default function EditionYearSwitcher({ currentYear }) {
       <div className="flex flex-wrap gap-2 text-xs">
         {editions.map((edition) => {
           const formattedTitle = edition.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "global-healthcare-awards";
+          const isActive = edition.year === currentYear && (
+             // Ideally we'd also check the slug here, but year is usually enough for the 'active' highlight
+             true 
+          );
           return (
             <Link
-              key={edition.year}
+              key={edition._id}
               to={`/${edition.year}/${formattedTitle}`}
-              className={`px-3 py-1 rounded-full border transition ${edition.year === currentYear
+              className={`px-3 py-1.5 rounded-full border transition flex flex-col items-center min-w-[60px] ${edition.year === currentYear
                 ? "border-[#d4af37] bg-[#d4af37]/15 text-[#ffe9b3] font-semibold"
                 : "border-white/20 text-gray-200 hover:bg-white hover:text-black"
                 }`}
             >
-              {edition.year}
+              <span className="font-black text-[10px]">{edition.editionLabel || edition.year}</span>
+              <span className="text-[8px] opacity-60 font-bold">{edition.year}</span>
             </Link>
           );
         })}

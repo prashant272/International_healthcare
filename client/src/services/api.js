@@ -130,8 +130,11 @@ export function fetchPreviousEditions() {
   return request("/api/previous-editions", { method: "GET" });
 }
 
-export function fetchPreviousEditionByYear(year) {
-  return request(`/api/previous-editions/${year}`, { method: "GET" });
+export function fetchPreviousEditionByYear(year, slug) {
+  const url = slug 
+    ? `/api/previous-editions/${year}?slug=${slug}` 
+    : `/api/previous-editions/${year}`;
+  return request(url, { method: "GET" });
 }
 
 export function createPreviousEdition(payload, token) {

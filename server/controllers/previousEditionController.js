@@ -59,13 +59,27 @@ export const getEditions = async (req, res) => {
 export const getEditionByYear = async (req, res) => {
     try {
         const { year } = req.params;
+        const { slug } = req.query; // New: support slug as query param
         const parsedYear = Number(year);
         let edition;
 
         if (!isNaN(parsedYear)) {
-            edition = await PreviousEdition.findOne({ year: parsedYear });
+            if (slug) {
+                // Find all editions for this year
+                const editions = await PreviousEdition.find({ year: parsedYear });
+                // Match the specific one by slugified title
+                edition = editions.find(e => {
+                    const formattedTitle = e.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                    return formattedTitle === slug.toLowerCase();
+                });
+            }
+            
+            // Fallback: if no slug or slug didn't match, just get the first one for that year
+            if (!edition) {
+                edition = await PreviousEdition.findOne({ year: parsedYear });
+            }
         } else {
-            // It's a slug, we need to find the one whose title matches this slug
+            // It's a slug passed as the main parameter (old behavior)
             const editions = await PreviousEdition.find();
             edition = editions.find(e => {
                 const formattedTitle = e.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");

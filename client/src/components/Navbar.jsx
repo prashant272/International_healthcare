@@ -17,6 +17,7 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext.jsx";
+import { motion, AnimatePresence } from "framer-motion";
 import { fetchPreviousEditions } from "../services/api.js";
 
 export default function Navbar() {
@@ -29,31 +30,25 @@ export default function Navbar() {
   const isAdminRoute = location.pathname.startsWith("/admin");
   const isNominateRoute = location.pathname.startsWith("/nominate");
   const isHomePage = location.pathname === "/";
-  const isOtherPage = !isHomePage && !isAdminRoute && !isNominateRoute;
   const isUser = user?.role === "user";
   const isAdminUser = user?.role === "admin";
-  // Ref for scrolling trick on tab change
+
   const headerRef = useRef();
 
   useEffect(() => {
     fetchPreviousEditions().then(res => setEditions(res.data || [])).catch(console.error);
   }, []);
 
-  // Fix: Scroll to top ONLY relative to header on route (tab) change, but only scroll if not already near top
   useEffect(() => {
     if (!isAdminRoute && !isNominateRoute) {
-      // Only scroll up if header is visible
       if (window.innerWidth < 768 && headerRef.current) {
-        // Check if page is near the bottom, then scroll to just below header
         const y = window.scrollY;
         if (y > 80) {
-          // Determine how much to scroll down so header doesn't overlap
           window.scrollTo({ top: headerRef.current.offsetHeight + 2, behavior: "smooth" });
         }
       }
     }
-    // eslint-disable-next-line
-  }, [location.pathname]);
+  }, [location.pathname, isAdminRoute, isNominateRoute]);
 
   useEffect(() => {
     if (isAdminRoute) return;
@@ -78,7 +73,7 @@ export default function Navbar() {
         navigate("/admin/login");
       }
     } else {
-      if (isUser) {
+      if (isAuthenticated) {
         logout();
       } else {
         navigate("/login");
@@ -86,8 +81,6 @@ export default function Navbar() {
     }
   };
 
-
-  // ===== Header for admin routes
   if (isAdminRoute) {
     return (
       <header className="fixed top-0 w-full z-50 bg-[#020617] text-white border-b border-white/10">
@@ -101,7 +94,7 @@ export default function Navbar() {
               />
             </a>
             <div className="flex flex-col leading-tight">
-              <span className="font-semibold">Admin Dashboard</span>
+              <span className="font-semibold text-white">Admin Dashboard</span>
               <span className="text-[11px] text-gray-300">
                 International Global Healthcare Awards – Internal Panel
               </span>
@@ -127,89 +120,97 @@ export default function Navbar() {
     );
   }
 
-  /* ========================= MOBILE VIEW (PHONE) & DESKTOP ================================ */
   return (
     <>
-      {/* Large screen header (hidden on phone) */}
       <div className="hidden md:block">
-        {!showPill && (
-          <header className="fixed top-0 w-full z-50 text-white" ref={headerRef}>
-            <div className="bg-transparent h-14">
-              <div className="max-w-7xl mx-auto px-3 h-full flex items-center text-sm">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-43 h-18 flex items-center justify-center bg-white">
-                    <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer">
-                      <img
-                        src="/images/logo.png"
-                        alt="time cyber media logo"
-                        className="absolute top-[-10px] left-[-3px] h-[100px] w-auto max-w-none object-contain z-50 drop-shadow-md cursor-pointer"
-                      />
-                    </a>
-                  </div>
-                  <div className="flex gap-2 font-semibold whitespace-nowrap">
-                    <span>TIME Cyber Media Pvt Ltd </span>
-                    <span className="opacity-70">International Global Healthcare Awards</span>
-                  </div>
+        <header
+          className={`fixed top-0 w-full z-50 text-white transition-all duration-500 ${showPill ? "opacity-0 pointer-events-none -translate-y-10" : "opacity-100 translate-y-0"
+            }`}
+          ref={headerRef}
+        >
+          <div className="bg-transparent h-14">
+            <div className="max-w-7xl mx-auto px-3 h-full flex items-center text-sm">
+              <div className="flex items-center gap-3">
+                <div className="relative w-43 h-18 flex items-center justify-center bg-white">
+                  <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src="/images/logo.png"
+                      alt="time cyber media logo"
+                      className="absolute top-[-10px] left-[-3px] h-[100px] w-auto max-w-none object-contain z-50 drop-shadow-md cursor-pointer"
+                    />
+                  </a>
                 </div>
-                {/* RIGHT : LOGIN */}
-                <div className="ml-auto flex items-center gap-3">
-                  {isUser && user ? (
-                    <>
-                      <span className="hidden md:inline text-xs text-gray-100">
-                        Welcome, <span className="font-semibold">{user.name}</span>
-                      </span>
-                      {user.role === "user" && (
-                        <button
-                          onClick={() => navigate("/dashboard")}
-                          className="border border-blue-400 px-4 py-1 rounded-full text-xs text-blue-400 hover:bg-blue-500 hover:text-white transition"
-                        >
-                          My Nominations
-                        </button>
-                      )}
-                    </>
-                  ) : null}
-                  <button
-                    onClick={handleLoginClick}
-                    className="border border-white px-4 py-1 rounded-full text-xs hover:bg-white hover:text-black transition"
-                  >
-                    {isUser ? "Logout" : "Login"}
-                  </button>
+                <div className="flex gap-2 font-semibold whitespace-nowrap ml-4">
+                  <span>TIME Cyber Media </span>
+                  <span>Pvt Ltd.</span>
                 </div>
               </div>
-            </div>
-            <nav className="bg-transparent h-12">
-              <div className="max-w-7xl mx-auto px-6 h-full flex justify-center items-center gap-6 text-sm">
-                {menuLinks("white", undefined, headerRef, isUser, false, editions)}
-              </div>
-            </nav>
-          </header>
-        )}
-
-        {/* ================= SCROLL PILL FOR DESKTOP ================= */}
-        {showPill && (
-          <div className="fixed top-4 w-full z-50 flex justify-center animate-slide-down">
-            <div className="bg-[#0f172a]/80 backdrop-blur-md text-white rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/10 px-8 py-2.5 flex items-center gap-10 text-sm">
-              <div className="flex items-center gap-4">
-                <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-300">
-                  <img
-                    src="/images/logo.png"
-                    alt="Logo"
-                    className="h-8 w-auto object-contain cursor-pointer brightness-110"
-                  />
-                </a>
-                <div className="h-6 w-px bg-white/10 mx-1"></div>
-              </div>
-              <div className="flex gap-6 items-center">
-                {menuLinks("white", undefined, headerRef, isUser, false, editions)}
+              <div className="ml-auto flex items-center gap-3">
+                {isUser && user ? (
+                  <>
+                    <span className="hidden md:inline text-xs text-gray-100">
+                      Welcome, <span className="font-semibold">{user.name}</span>
+                    </span>
+                    {user.role === "user" && (
+                      <button
+                        onClick={() => navigate("/dashboard")}
+                        className="border border-emerald-400 px-4 py-1 rounded-full text-xs text-emerald-400 hover:bg-emerald-500 hover:text-white transition"
+                      >
+                        My Nominations
+                      </button>
+                    )}
+                  </>
+                ) : null}
+                <button
+                  onClick={handleLoginClick}
+                  className="border border-white px-4 py-1 rounded-full text-xs hover:bg-white hover:text-black transition"
+                >
+                  {isAuthenticated ? "Logout" : "Login"}
+                </button>
               </div>
             </div>
           </div>
-        )}
+          <nav className="bg-transparent h-12">
+            <div className="max-w-7xl mx-auto px-6 h-full flex justify-center items-center gap-6 text-sm">
+              {menuLinks("white", undefined, headerRef, isUser, false, editions)}
+            </div>
+          </nav>
+        </header>
+
+        <div
+          className={`fixed top-4 left-0 w-full z-[150] flex justify-center px-4 transition-all duration-500 ${showPill ? "opacity-100 translate-y-0 scale-100" : "opacity-0 pointer-events-none -translate-y-4 scale-95"
+            }`}
+        >
+          <div className="
+               relative
+               bg-slate-950/80 backdrop-blur-2xl text-white 
+               rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(16,185,129,0.2)] 
+               border border-emerald-500/30 
+               px-8 py-2.5 flex items-center gap-10 text-sm
+               group
+             ">
+            {/* Liquid Refractive Element */}
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 opacity-50" />
+            <div className="absolute -top-full -left-full w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,transparent_70%)] animate-pulse" />
+
+            <div className="flex items-center gap-4">
+              <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-300">
+                <img
+                  src="/images/logo.png"
+                  alt="Logo"
+                  className="h-8 w-auto object-contain cursor-pointer brightness-110"
+                />
+              </a>
+              <div className="h-6 w-px bg-white/10 mx-1"></div>
+            </div>
+            <div className="relative flex gap-6 items-center z-10">
+              {menuLinks("white", undefined, headerRef, isUser, false, editions)}
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* ===================== MOBILE HEADER ====================== */}
       <div className="block md:hidden">
-        {/* Phone header with logo, title, my nominations (if user), hamburger, login/logout */}
         <header
           className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex items-center h-16 sm:h-20 px-4 justify-between ${showPill
             ? "bg-slate-900/80 backdrop-blur-lg border-b border-white/10 shadow-xl"
@@ -217,7 +218,6 @@ export default function Navbar() {
             }`}
           ref={headerRef}
         >
-          {/* LOGO + app title (left side) */}
           <div className="flex items-center gap-2">
             <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer">
               <img
@@ -229,17 +229,15 @@ export default function Navbar() {
             </a>
             <span className="text-[13px] font-semibold whitespace-nowrap text-white">TIME Cyber Media Pvt Ltd.</span>
           </div>
-          {/* Welcome & logout/login */}
           <div className="flex items-center gap-1">
-            {isUser && (
+            {isAuthenticated ? (
               <button
                 onClick={handleLoginClick}
                 className="border border-white text-white px-3 py-1 rounded-full text-xs hover:bg-white hover:text-black transition"
               >
                 Logout
               </button>
-            )}
-            {!isUser && (
+            ) : (
               <button
                 onClick={handleLoginClick}
                 className="border border-white text-white px-3 py-1 rounded-full text-xs hover:bg-white hover:text-black transition"
@@ -257,12 +255,11 @@ export default function Navbar() {
           </div>
         </header>
 
-        {/* Slide-in Drawer */}
         <MobileMenuDrawer
           open={mobileMenuOpen}
           onClose={() => setMobileMenuOpen(false)}
           user={user}
-          isAuthenticated={isUser}
+          isAuthenticated={isAuthenticated}
           handleLoginClick={handleLoginClick}
           headerRef={headerRef}
           isUser={isUser}
@@ -273,16 +270,10 @@ export default function Navbar() {
   );
 }
 
-/* ================= MENU ================= */
-
-// onClick will be used to close drawer, headerRef for scroll fix on tab switch.
-// Added showDashboard param to control visibility of "My Nominations" link
 const menuLinks = (color, onClick, headerRef, isUser, showDashboard = true, editions = []) => {
-  // Will scroll page to just under header if in mobile and not at top
   const createNavHandler = (routeHandler) => (e) => {
     if (onClick) onClick();
     setTimeout(() => {
-      // Gives enough time for route to change before trying to scroll
       if (window.innerWidth < 768 && headerRef && headerRef.current) {
         window.scrollTo({ top: headerRef.current.offsetHeight + 2, behavior: "smooth" });
       }
@@ -336,7 +327,6 @@ function NavItem({ to, icon, label, color, onClick }) {
   );
 }
 
-/* ========== Mobile Menu Drawer =========== */
 function MobileMenuDrawer({
   open,
   onClose,
@@ -347,7 +337,6 @@ function MobileMenuDrawer({
   isUser,
   editions
 }) {
-  // Esc key or overlay for closing drawer
   useEffect(() => {
     if (!open) return;
     const onKey = (e) => {
@@ -357,76 +346,102 @@ function MobileMenuDrawer({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  // Scroll to top logic for mobile menu tab change
-  const handleNavClick = (navHandler) => (e) => {
-    if (navHandler) navHandler(e);
-    setTimeout(() => {
-      if (window.innerWidth < 768 && headerRef && headerRef.current) {
-        window.scrollTo({ top: headerRef.current.offsetHeight + 2, behavior: "smooth" });
-      }
-    }, 0);
-  };
-
   return (
-    <>
-      {/* Overlay */}
-      <div
-        className={`fixed inset-0 z-50 bg-black/40 transition-all duration-200 ${open ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
-        aria-hidden={!open}
-        onClick={onClose}
-      ></div>
-      {/* Drawer */}
-      <aside
-        className={`fixed top-0 right-0 z-[60] w-4/5 max-w-xs h-full bg-[#17171c] text-white shadow-lg transform transition-transform duration-250 ${open ? "translate-x-0" : "translate-x-full"
-          } flex flex-col`}
-        style={{ transitionProperty: "transform, opacity" }}
-      >
-        {/* Drawer header with logo */}
-        <div className="flex items-center justify-between px-4 h-14 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <a href="https://www.primetimemedia.in/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="/images/primetimelogo.gif"
-                alt="PrimeTime Logo"
-                className="h-8 w-auto object-contain cursor-pointer"
-              />
-            </a>
-            <span className="font-semibold text-sm text-white">TIME Cyber Media Pvt Ltd.</span>
-          </div>
-          <button
-            aria-label="Close Menu"
-            className="text-2xl text-white"
+    <AnimatePresence>
+      {open && (
+        <>
+          {/* Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[110] bg-slate-950/60 backdrop-blur-sm"
             onClick={onClose}
+          />
+
+          {/* Drawer */}
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 z-[120] w-[85%] max-w-xs h-full bg-[#0b1120] text-white shadow-2xl flex flex-col overflow-hidden rounded-4xl justify-between"
           >
-            <FaTimes />
-          </button>
-        </div>
-        <div className="flex-1 flex flex-col justify-between overflow-y-auto medical-scrollbar">
-            <nav className="flex flex-col gap-3 mt-6 px-4">
-            {/* Give headerRef & isUser to menuLinks for scroll fix and user-related links */}
-            {/* Pass true for showDashboard to show My Nominations in mobile drawer */}
-            {menuLinks("white", onClose, headerRef, isUser, true, editions)}
-          </nav>
-          <div className="mt-6 border-t border-white/10 px-4 py-4 flex flex-col gap-2">
-            {user && (
-              <span className="text-xs text-gray-300">
-                Welcome, <span className="font-semibold">{user.name}</span>
-              </span>
-            )}
-            <button
-              onClick={() => {
-                handleLoginClick();
-                onClose();
-              }}
-              className="border border-white px-4 py-1 rounded-full text-xs w-full hover:bg-white hover:text-black transition"
-            >
-              {isAuthenticated ? "Logout" : "Login"}
-            </button>
-          </div>
-        </div>
-      </aside>
-    </>
+            {/* Liquid Background Accents */}
+            <div className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-20">
+              <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl animate-pulse" />
+              <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+            </div>
+
+            {/* Header */}
+            <div className="relative z-10 flex items-center justify-between px-6 h-20 border-b border-white/5 bg-slate-900/40 backdrop-blur-xl">
+              <div className="flex items-center gap-3">
+                <img
+                  src="/images/logo.png"
+                  alt="Logo"
+                  className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]"
+                />
+                <div className="flex flex-col leading-none">
+                  <span className="font-black text-[10px] uppercase tracking-tighter">TIME Cyber Media <br /> Pvt Ltd.</span>
+                </div>
+              </div>
+              <button
+                aria-label="Close Menu"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all"
+                onClick={onClose}
+              >
+                <FaTimes />
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 flex-1 flex flex-col justify-between overflow-y-auto medical-scrollbar px-4 py-8">
+              <nav className="flex flex-col gap-2">
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05
+                      }
+                    }
+                  }}
+                  className="flex flex-col gap-3"
+                >
+                  {menuLinks("white", onClose, headerRef, isUser, true, editions)}
+                </motion.div>
+              </nav>
+
+              {/* Bottom Section */}
+              <div className="mt-12 space-y-6">
+                {user && (
+                  <div className="px-2 py-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-center">
+                    <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-1">Authenticated Session</p>
+                    <p className="text-sm font-black text-white">{user.name}</p>
+                  </div>
+                )}
+
+                <button
+                  onClick={() => {
+                    handleLoginClick();
+                    onClose();
+                  }}
+                  className="w-full relative overflow-hidden group/btn rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black py-4 text-xs uppercase tracking-[0.2em] shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                  <span className="relative z-10">{isAuthenticated ? "Sign Out" : "Secure Login"}</span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+                </button>
+
+                <p className="text-[10px] text-center text-slate-500 font-medium">
+                  &copy; 2026 TIME Cyber Media Pvt Ltd. <br /> All Rights Reserved.
+                </p>
+              </div>
+            </div>
+          </motion.aside>
+        </>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -445,7 +460,6 @@ function NavDropdown({ icon, label, color, options, onClick }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Check if any of the options form an active path
   const isActiveGroup = options.some(opt => {
     const formattedTitle = opt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
     return location.pathname === `/${opt.year}/${formattedTitle}`;
@@ -466,8 +480,8 @@ function NavDropdown({ icon, label, color, options, onClick }) {
           if (onClick) onClick();
         }}
         className={`flex items-center gap-1 transition-colors ${color === "white"
-          ? (isActiveGroup ? "text-blue-400 font-semibold" : "opacity-80 hover:opacity-100 text-white")
-          : (isActiveGroup ? "text-blue-600 font-semibold" : "text-gray-700 hover:text-black")
+          ? (isActiveGroup ? "text-emerald-400 font-semibold" : "opacity-80 hover:opacity-100 text-white")
+          : (isActiveGroup ? "text-emerald-600 font-semibold" : "text-gray-700 hover:text-black")
           }`}
       >
         <span className="text-[11px]">{icon}</span>
@@ -478,24 +492,22 @@ function NavDropdown({ icon, label, color, options, onClick }) {
         className={`md:absolute top-[100%] left-0 pt-2 z-50 transition-all duration-200 ${open ? "md:opacity-100 md:visible md:translate-y-0 flex" : "md:opacity-0 md:invisible hidden"
           } ${window.innerWidth < 768 && !open ? 'hidden' : ''}`}
       >
-        <div className="min-w-[240px] max-h-[70vh] overflow-y-auto medical-scrollbar bg-slate-900 border border-medical-secondary/30 rounded-xl shadow-2xl py-3 flex flex-col">
+        <div className="min-w-[240px] max-h-[70vh] overflow-y-auto medical-scrollbar bg-slate-900 border border-emerald-400/30 rounded-xl shadow-2xl py-3 flex flex-col">
           {options.map((opt) => {
             const formattedTitle = opt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-            const isAct = location.pathname === `/${formattedTitle}`;
-              return (
-                <NavLink
-                  key={opt.year}
-                  to={`/${opt.year}/${formattedTitle}`}
-                  onClick={() => { setOpen(false); if (onClick) onClick(); }}
-                  className={`px-5 py-2.5 text-sm transition-colors ${isAct ? 'bg-blue-600/20 font-bold border-l-4 border-blue-400 text-white' : 'text-blue-100 hover:bg-white/10 hover:text-white border-l-4 border-transparent'}`}
-                >
-                  {opt.title} ({opt.year})
-                </NavLink>
-              );
-            })}
-            <hr className="border-white/10 my-2" />
-
-          </div>
+            const isAct = location.pathname === `/${opt.year}/${formattedTitle}`;
+            return (
+              <NavLink
+                key={`${opt.year}-${opt.title}`}
+                to={`/${opt.year}/${formattedTitle}`}
+                onClick={() => { setOpen(false); if (onClick) onClick(); }}
+                className={`px-5 py-2.5 text-sm transition-colors ${isAct ? 'bg-emerald-600/20 font-bold border-l-4 border-emerald-400 text-white' : 'text-emerald-100 hover:bg-white/10 hover:text-white border-l-4 border-transparent'}`}
+              >
+                {opt.title} ({opt.year})
+              </NavLink>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

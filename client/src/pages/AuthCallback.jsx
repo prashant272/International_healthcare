@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import { PageHero, AuroraBackground } from "../components/Motion.jsx";
 
 export default function AuthCallback() {
     const { setExternalAuth } = useAuth();
@@ -31,11 +32,20 @@ export default function AuthCallback() {
     }, [setExternalAuth]);
 
     return (
-        <div className="min-h-screen bg-[#3a1418] flex flex-col items-center justify-center text-white">
-            <div className="w-12 h-12 border-4 border-[#d4af37]/20 border-t-[#d4af37] rounded-full animate-spin mb-4" />
-            <p className="text-lg font-bold tracking-widest uppercase animate-pulse">
-                Completing Login...
-            </p>
-        </div>
+        <AuroraBackground>
+            <PageHero
+                badge="Authentication"
+                icon="🔑"
+                title="Secure Login"
+                subtitle="Please wait while we finalize your authentication..."
+            >
+                <div className="min-h-[40vh] flex flex-col items-center justify-center text-white">
+                    <div className="w-12 h-12 border-4 border-[#d4af37]/20 border-t-[#d4af37] rounded-full animate-spin mb-4" />
+                    <p className="text-lg font-bold tracking-widest uppercase animate-pulse">
+                        Completing Login...
+                    </p>
+                </div>
+            </PageHero>
+        </AuroraBackground>
     );
 }

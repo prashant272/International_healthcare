@@ -4,6 +4,7 @@ import { FiArrowLeft, FiX, FiRefreshCcw } from "react-icons/fi";
 import { Crown } from "lucide-react";
 import { createNomination, fetchNominationById, updateUserNomination } from "../services/api.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import { PageHero } from "../components/Motion.jsx";
 
 const categoryMap = {
   "Hospital": {
@@ -522,15 +523,12 @@ export default function NominationForm() {
   }
 
   return (
-    <div className="min-h-screen pt-24 sm:pt-32 pb-32 relative overflow-hidden bg-[#3a1418]">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#d4af37] opacity-[0.03] rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#d4af37] opacity-[0.03] rounded-full blur-[120px]"></div>
-      </div>
-
-      <div className="max-w-5xl mx-auto px-4 relative z-10">
-        <div className="mb-8 flex justify-between items-center">
+    <PageHero
+      colorScheme="gold"
+      className="!pt-10"
+    >
+      <div className="max-w-5xl mx-auto px-4 pb-32 relative z-10">
+        <div className="mt-15 flex justify-between items-center ">
           <button
             onClick={() => isEditMode ? navigate(-1) : navigate("/")}
             className="flex items-center gap-2 text-[#d4af37] hover:text-[#f2d06b] transition-colors font-bold uppercase tracking-widest text-xs"
@@ -545,19 +543,31 @@ export default function NominationForm() {
         </div>
 
         <div className="mb-8 md:mb-10 text-center relative">
-          <div className="flex flex-col items-center justify-center mb-4">
-            <h1 className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 tracking-tighter uppercase font-black px-4 text-center">
-              <span className="text-2xl sm:text-3xl md:text-5xl text-[#ffb400] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Global
+          <div className="flex flex-col items-center justify-center mb-6">
+            {/* Elegant upper label / badge */}
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-[0.2em] bg-[#d4af37]/10 border border-[#d4af37]/35 text-[#ffd700] mb-4 shadow-[0_0_15px_rgba(212,175,55,0.15)] animate-pulse">
+              🏆 Official Nomination Registry 2026
+            </span>
+
+            <h1 className="font-heading tracking-tight text-center px-4 max-w-3xl mx-auto flex flex-col gap-1.5">
+              {/* Line 1: International Healthcare */}
+              <span className="block text-2xl sm:text-3xl md:text-[40px] font-black uppercase leading-none tracking-tighter">
+                <span className="text-gradient-gold drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)]">
+                  International
+                </span>{" "}
+                <span className="text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">
+                  Healthcare
+                </span>
               </span>
-              <span className="text-2xl sm:text-3xl md:text-5xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Healthcare
-              </span>
-              <span className="text-2xl sm:text-3xl md:text-5xl text-[#ffb400] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                Excellence Awards
-              </span>
-              <span className="text-2xl sm:text-3xl md:text-5xl text-[#ffb400] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                & summit 2026
+
+              {/* Line 2: Excellence Awards & Summit 2026 */}
+              <span className="block text-lg sm:text-xl md:text-[24px] font-extrabold uppercase leading-tight tracking-tight mt-0.5">
+                <span className="text-gradient-gold drop-shadow-[0_2px_8px_rgba(212,175,55,0.3)]">
+                  Excellence Awards
+                </span>{" "}
+                <span className="text-white/90 drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)] font-light">
+                  & Summit 2026
+                </span>
               </span>
             </h1>
           </div>
@@ -588,7 +598,7 @@ export default function NominationForm() {
               <label className="text-sm font-bold text-[#d4af37] uppercase tracking-widest pl-1">
                 APPLY AS
               </label>
-            
+
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 pt-4">
                 {[
                   { id: "nominated as award", prefix: "Apply for", highlight: "Awarded", primary: true },
@@ -894,7 +904,7 @@ export default function NominationForm() {
               </div>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                { ["Dubai", "USA", "London", "New Delhi"].map((loc) => (
+                {["Dubai", "USA", "London", "New Delhi"].map((loc) => (
                   <label
                     key={loc}
                     className={`flex items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 cursor-pointer text-center
@@ -1017,6 +1027,6 @@ export default function NominationForm() {
           </form>
         </div>
       </div>
-    </div>
+    </PageHero>
   );
 }

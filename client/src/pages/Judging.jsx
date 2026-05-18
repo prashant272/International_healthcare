@@ -1,235 +1,167 @@
+import { PageHero, FadeUp, StaggerContainer, StaggerItem, AuroraBackground, NeonCard } from "../components/Motion.jsx";
+import { motion } from "framer-motion";
+
+const steps = [
+  {
+    icon: "📥",
+    title: "Nomination Submission & Eligibility Check",
+    color: "from-emerald-400 to-teal-400",
+    accent: "border-emerald-400/40",
+    points: [
+      "Submitted through the official online portal",
+      "Screened for eligibility criteria and category relevance",
+      "Completeness of information verified",
+      "Supporting documents and evidence reviewed",
+      "Incomplete or ineligible nominations are not carried forward",
+    ],
+  },
+  {
+    icon: "🔍",
+    title: "Research & Data Validation",
+    color: "from-blue-400 to-indigo-400",
+    accent: "border-blue-400/40",
+    points: [
+      "In-house research team performs qualitative & quantitative analysis",
+      "Background research and performance indicators assessed",
+      "Innovation impact and market relevance evaluated",
+      "Industry standards compliance verified",
+      "Ensures factual accuracy and consistency across all entries",
+    ],
+  },
+  {
+    icon: "👨‍⚖️",
+    title: "Independent Jury Evaluation",
+    color: "from-amber-400 to-orange-400",
+    accent: "border-amber-400/40",
+    points: [
+      "Shortlisted nominations evaluated by eminent jury",
+      "Panel comprises industry experts and healthcare professionals",
+      "Senior academicians and policy specialists included",
+      "Each jury member evaluates independently",
+      "Zero bias, full transparency, ethical practices guaranteed",
+    ],
+  },
+  {
+    icon: "📊",
+    title: "Scoring & Benchmarking",
+    color: "from-purple-400 to-violet-400",
+    accent: "border-purple-400/40",
+    points: [
+      "Standardized scoring framework applied",
+      "Excellence & leadership assessed",
+      "Innovation & impact evaluated",
+      "Sustainability & scalability measured",
+      "Benchmarked against global best practices",
+    ],
+  },
+  {
+    icon: "⚖️",
+    title: "Score Normalisation & Final Validation",
+    color: "from-rose-400 to-pink-400",
+    accent: "border-rose-400/40",
+    points: [
+      "Scores from multiple evaluators are normalised",
+      "Cross-checks performed for consistency",
+      "Internal validation ensures fairness and balance",
+      "Equal opportunity for all nominees guaranteed",
+    ],
+  },
+  {
+    icon: "🏅",
+    title: "Final Review & Approval",
+    color: "from-yellow-400 to-amber-500",
+    accent: "border-yellow-400/40",
+    points: [
+      "Comprehensive internal audit conducted",
+      "Final approval by the awards committee",
+      "Confidential verification process completed",
+      "Winners officially announced and invited",
+    ],
+  },
+];
+
+const principles = [
+  { icon: "🔎", title: "Transparency", desc: "Clear and documented evaluation criteria" },
+  { icon: "🕊️", title: "Independence", desc: "Jury decisions are unbiased and confidential" },
+  { icon: "🛡️", title: "Integrity", desc: "Ethical and professional standards at every stage" },
+  { icon: "🔒", title: "Confidentiality", desc: "All nomination data is securely protected" },
+];
+
 export default function Judging() {
-  // Card step data
-  const steps = [
-    {
-      icon: "📥",
-      title: "Step 1: Nomination Submission & Eligibility Check",
-      description: (
-        <>
-          All nominations are submitted through an official online process.<br />
-          Each entry is screened for:
-          <ul className="list-inside list-disc ml-4 mt-2 space-y-1">
-            <li>Eligibility criteria</li>
-            <li>Category relevance</li>
-            <li>Completeness of information</li>
-            <li>Supporting documents and evidence</li>
-          </ul>
-      <span className="block mt-3 text-blue-400 font-semibold">👉 Incomplete or ineligible nominations are not carried forward.</span>
-        </>
-      ),
-      gradient: "from-slate-900/80 via-blue-900/40 to-slate-950/90",
-      border: "border-blue-500/30",
-    },
-    {
-      icon: "🔍",
-      title: "Step 2: Research & Data Validation",
-      description: (
-        <>
-          Our in-house research team performs qualitative and quantitative analysis, including:
-          <ul className="list-inside list-disc ml-4 mt-2 space-y-1">
-            <li>Background research</li>
-            <li>Performance indicators</li>
-            <li>Innovation impact</li>
-            <li>Market relevance</li>
-            <li>Industry standards compliance</li>
-          </ul>
-          <span className="block mt-3 text-blue-300 font-semibold">
-            👉 This ensures factual accuracy and consistency across all entries.
-          </span>
-        </>
-      ),
-      gradient: "from-slate-950/80 via-blue-900/50 to-slate-900/70",
-      border: "border-blue-400/25",
-    },
-    {
-      icon: "👨‍⚖️",
-      title: "Step 3: Independent Jury Evaluation",
-      description: (
-        <>
-          Shortlisted nominations are evaluated by an eminent and independent jury panel comprising:
-          <ul className="list-inside list-disc ml-4 mt-2 space-y-1">
-            <li>Industry experts</li>
-            <li>Senior academicians</li>
-            <li>Healthcare professionals</li>
-            <li>Policy and domain specialists</li>
-          </ul>
-          <span className="block mt-3 text-blue-300 font-semibold">
-            Each jury member evaluates independently, ensuring:
-            <br />
-            <span className="ml-3">Zero bias</span>
-            <br />
-            <span className="ml-3">Transparency</span>
-            <br />
-            <span className="ml-3">Ethical practices</span>
-          </span>
-        </>
-      ),
-      gradient: "from-slate-900/80 via-blue-800/40 to-slate-950/60",
-      border: "border-blue-500/30",
-    },
-    {
-      icon: "📊",
-      title: "Step 4: Scoring & Benchmarking",
-      description: (
-        <>
-          Each nomination is scored with a standardized framework, based on:
-          <ul className="list-inside list-disc ml-4 mt-2 space-y-1">
-            <li>Excellence & leadership</li>
-            <li>Innovation & impact</li>
-            <li>Sustainability & scalability</li>
-            <li>Industry contribution</li>
-          </ul>
-          <span className="block mt-3 text-emerald-400 font-semibold">
-            Scores are benchmarked against global best practices and sector standards.
-          </span>
-        </>
-      ),
-      gradient: "from-slate-950/90 via-blue-900/40 to-emerald-900/10",
-      border: "border-emerald-500/30",
-    },
-    {
-      icon: "⚖️",
-      title: "Step 5: Score Normalisation & Final Validation",
-      description: (
-        <>
-          To eliminate subjectivity:
-          <ul className="list-inside list-disc ml-4 mt-2 space-y-1">
-            <li>Scores from multiple evaluators are normalised</li>
-            <li>Cross-checks are performed</li>
-            <li>Internal validation ensures fairness and balance</li>
-          </ul>
-          <span className="block mt-3 text-blue-200 font-semibold">
-            👉 Guarantees equal opportunity for all nominees across categories.
-          </span>
-        </>
-      ),
-      gradient: "from-slate-900/90 via-blue-900/30 to-slate-950/90",
-      border: "border-blue-400/30",
-    },
-    {
-      icon: "🏅",
-      title: "Step 6: Final Review & Approval",
-      description: (
-        <>
-          The final list of awardees undergoes:
-          <ul className="list-inside list-disc ml-4 mt-2 space-y-1">
-            <li>Internal audit</li>
-            <li>Final approval by the awards committee</li>
-            <li>Confidential verification process</li>
-          </ul>
-          Once approved, winners are officially announced and invited for the Award Ceremony.
-        </>
-      ),
-      gradient: "from-blue-900/70 via-slate-950/80 to-blue-600/10",
-      border: "border-blue-400/20",
-    },
-  ];
-
-  const principles = [
-    {
-      icon: "🔎", title: "Transparency",
-      desc: "Clear and documented evaluation criteria"
-    },
-    {
-      icon: "🕊️", title: "Independence",
-      desc: "Jury decisions are unbiased and confidential"
-    },
-    {
-      icon: "🛡️", title: "Integrity",
-      desc: "Ethical and professional standards at every stage"
-    },
-    {
-      icon: "🔒", title: "Confidentiality",
-      desc: "All nomination data is securely protected"
-    }
-  ];
-
   return (
-    <section className="relative min-h-screen bg-slate-950 selection:bg-blue-500/30 py-24 overflow-hidden flex flex-col">
-      {/* Decorative mesh gradients */}
-      <div className="absolute -top-20 -left-32 w-[500px] h-[420px] rounded-full bg-gradient-to-br from-blue-600/20 via-slate-900/10 to-transparent blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-120px] right-[-70px] w-[420px] h-[420px] rounded-full bg-gradient-to-tl from-emerald-500/20 via-slate-950/10 to-transparent blur-[120px] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:70px_70px] pointer-events-none z-0" />
+    <AuroraBackground>
+      <PageHero
+        badge="Evaluation Framework"
+        icon="⚖️"
+        title="Judging Process"
+        subtitle="A multi-stage, transparent, and fair evaluation framework — recognising only the most deserving organisations and individuals across global healthcare."
+      >
+        {/* Timeline Steps */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" staggerDelay={0.1}>
+            {steps.map((step, i) => (
+              <StaggerItem key={i}>
+                <NeonCard color="emerald" className="h-full !p-0">
+                  <div className="p-6 h-full flex flex-col text-left">
+                    {/* Step number */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className={`w-8 h-8 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-xs font-black text-white shadow-md`}>
+                        {i + 1}
+                      </span>
+                      <span className="text-xl">{step.icon}</span>
+                    </div>
 
-      {/* Hero Title */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-8 md:pt-12 pb-5 md:pb-8">
-        <h1 className="text-2xl md:text-4xl font-heading font-extrabold bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent mb-4 drop-shadow-lg tracking-wide">
-          Global Healthcare Excellence Awards 2026: Selection Process
-        </h1>
-        <div className="mx-auto w-24 h-1 rounded-full bg-gradient-to-r from-blue-500/0 via-blue-300/80 to-blue-500/0 mb-4 opacity-80" />
-        <p className="text-blue-100 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-          The Awards follow a multi-stage, transparent, and fair evaluation framework using both research and eminent jury mechanisms, recognising only the most deserving organizations and individuals.
-        </p>
-      </div>
+                    {/* Accent bar */}
+                    <div className={`h-[2px] w-full rounded-full bg-gradient-to-r ${step.color} mb-4 opacity-70`} />
 
-      {/* STEPS GRID */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-0 grid gap-7 md:gap-10 grid-cols-1 sm:grid-cols-2">
-        {steps.map((step, idx) => (
-          <div
-            key={idx}
-            className={`
-              relative group transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl
-              flex flex-col
-              px-5 py-7 sm:px-6 sm:py-7 md:px-8 md:py-8
-              min-h-[380px] max-h-full
-              rounded-2xl border border-blue-400/30 backdrop-blur-md
-              ${idx % 2 === 1 ? "sm:mt-8" : ""}
-              shadow-md
-            `}
-            style={{
-              background: "rgba(15, 23, 42, 0.15)",
-              minHeight: "380px", // ensures all cards are the same min height
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              height: "100%",
-            }}
-          >
-            {/* Gradient mesh accent */}
-            <div className={`absolute right-[-30px] top-[-30px] w-28 h-20 opacity-60 pointer-events-none z-0 ${idx % 2 === 0 ? "bg-gradient-to-bl from-blue-400/30 to-transparent" : "bg-gradient-to-br from-blue-600/30 to-transparent"}`} />
-            {/* Step icon + title */}
-            <div className="relative z-10 flex items-center gap-2 mb-4">
-              <span className="text-2xl md:text-3xl">{step.icon}</span>
-              <span className="text-base md:text-lg font-bold text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text">{step.title}</span>
-            </div>
-            <div className="relative z-10 text-[#f1f5f9]/90 text-sm md:text-base leading-relaxed font-medium flex-1">
-              {step.description}
-            </div>
-          </div>
-        ))}
-      </div>
+                    <h3 className={`text-base font-black bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-4 leading-snug`}>
+                      Step {i + 1}: {step.title}
+                    </h3>
 
-      {/* Divider */}
-      <div className="w-36 md:w-44 h-1 rounded-full bg-gradient-to-r from-blue-500 via-blue-200 to-blue-500 mx-auto opacity-70 mt-14 mb-6" />
-
-      {/* Core Principles */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center mb-10 md:mb-16">
-        <div className="flex flex-wrap justify-center gap-4 md:gap-7 mb-9">
-          {principles.map((p, i) => (
-            <div
-              key={i}
-              className="backdrop-blur-sm rounded-xl px-4 py-4 min-w-[130px] border border-blue-400/20 flex flex-col items-center shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              style={{
-                background: "rgba(15, 23, 42, 0.1)",
-                minWidth: 160,
-                maxWidth: 220,
-                minHeight: 120,
-                height: "100%",
-              }}
-            >
-              <span className="text-lg mb-1">{p.icon}</span>
-              <div className="font-semibold bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text text-transparent text-base md:text-lg">{p.title}</div>
-              <div className="text-blue-100/70 text-xs md:text-sm">{p.desc}</div>
-            </div>
-          ))}
+                    <ul className="space-y-2 flex-1">
+                      {step.points.map((pt, j) => (
+                        <li key={j} className="flex items-start gap-2">
+                          <span className="text-emerald-400 mt-0.5 flex-shrink-0 text-xs">▸</span>
+                          <span className="text-emerald-100/70 text-sm leading-relaxed group-hover:text-emerald-100/90 transition-colors">{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </NeonCard>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
-        <h2 className="text-xl md:text-2xl font-bold mb-3 bg-gradient-to-r from-white via-blue-200 to-blue-300 bg-clip-text text-transparent drop-shadow-lg">
-          Why This Process Matters
-        </h2>
-        <p className="text-blue-100/80 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-          Our rigorous and transparent selection process ensures awards are merit-based, truly credible, and that every winner enjoys global trust and respect in the healthcare industry.
-        </p>
-      </div>
-    </section>
+
+        {/* Core Principles */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-24">
+          <FadeUp className="text-center mb-10">
+            <div className="w-20 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent mx-auto mb-6" />
+            <h2 className="text-headline text-gradient-emerald mb-2">Our Core Principles</h2>
+          </FadeUp>
+
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4" staggerDelay={0.1}>
+            {principles.map((p, i) => (
+              <StaggerItem key={i}>
+                <NeonCard color="emerald" className="!p-0">
+                  <div className="p-5 text-center group h-full flex flex-col items-center">
+                    <span className="text-2xl mb-3 block group-hover:scale-110 transition-transform duration-300">{p.icon}</span>
+                    <h3 className="font-black text-white text-sm mb-1">{p.title}</h3>
+                    <p className="text-emerald-200/60 text-xs leading-relaxed">{p.desc}</p>
+                  </div>
+                </NeonCard>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+
+        <FadeUp delay={0.3} className="mt-10 glass-card border border-emerald-500/15 p-6 md:p-8 text-center">
+          <h3 className="text-xl font-black text-gradient-emerald font-serif mb-3">Why This Process Matters</h3>
+          <p className="text-emerald-100/70 leading-relaxed max-w-2xl mx-auto">
+            Our rigorous and transparent selection process ensures awards are merit-based, truly credible, and that every winner enjoys global trust and respect in the healthcare industry.
+          </p>
+        </FadeUp>
+      </PageHero>
+    </AuroraBackground>
   );
 }

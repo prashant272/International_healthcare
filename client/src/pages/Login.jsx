@@ -4,9 +4,11 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { getBaseUrl } from "../services/api.js";
 import { FiMail, FiLock, FiArrowRight, FiHome } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
+import { AuroraBackground, FadeUp, ScaleIn, PageHero } from "../components/Motion.jsx";
+import { motion } from "framer-motion";
 
 export default function Login() {
-  const { login, setExternalAuth, isAuthenticated, initialised } = useAuth();
+  const { login, isAuthenticated, initialised } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,7 +17,6 @@ export default function Login() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  // 1. Auto-redirect if already logged in
   useEffect(() => {
     if (initialised && isAuthenticated) {
       const from = location.state?.from?.pathname || "/nominate";
@@ -33,7 +34,6 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (err) {
       if (err.message.includes("verify your email") || err.message.includes("verified")) {
-        // Redirection logic for unverified users
         navigate("/verify-email", { state: { email } });
       } else {
         setError(err.message || "Unable to login");
@@ -48,127 +48,101 @@ export default function Login() {
     window.location.href = `${apiUrl}/api/auth/google`;
   };
 
-  const goldGrad = "linear-gradient(90deg,#e9d781 0%,#dac24a 29.69%,#fee19a 70%,#bc9830 100%)";
-
   return (
-    <section className="min-h-[100dvh] w-full bg-[#080808] relative flex items-center justify-center p-4 sm:p-6 overflow-hidden">
-      {/* Background Orbs */}
-      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#d4af37]/10 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#d4af37]/5 rounded-full blur-[150px]" />
+    <PageHero
+      badge="Secure Access"
+      icon="🔐"
+      title="Portal Login"
+      subtitle="Healthcare Excellence Awards — Access your dashboard and manage nominations."
+    >
+      <div className="flex items-center justify-center p-2 sm:p-4 pb-10">
+        <div className="relative w-full max-w-[480px]">
+          <ScaleIn delay={0.2}>
+            <div className="glass-card p-8 md:p-10 border-white/10 shadow-2xl relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-purple-500/5 pointer-events-none" />
 
-      <Link
-        to="/"
-        className="absolute top-6 left-6 flex items-center gap-2 text-white/40 hover:text-[#d4af37] transition-all text-sm font-bold uppercase tracking-widest group"
-      >
-        <FiHome className="text-lg group-hover:-translate-y-0.5 transition-transform" />
-        <span>Back to Home</span>
-      </Link>
-
-      <div className="relative w-full max-w-[440px] md:max-w-[520px] lg:max-w-[560px] flex flex-col items-center">
-        {/* Decorative Top Accent */}
-        <div
-          className="w-24 h-1 mb-8 rounded-full opacity-50"
-          style={{ background: goldGrad }}
-        />
-
-        <div className="w-full bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-6 sm:p-8 md:px-12 md:py-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]">
-          <div className="text-center mb-6">
-            <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-white to-[#d4af37] bg-clip-text text-transparent tracking-tighter mb-3">
-              Portal Login
-            </h1>
-            <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.3em] ml-1">
-              Secure Access Required
-            </p>
-          </div>
-
-          {error && (
-            <div className="mb-8 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold text-center animate-shake">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-3 group">
-              <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#d4af37]/70 group-focus-within:text-[#d4af37] transition-colors ml-1">
-                <FiMail /> Email
-              </label>
-              <input
-                type="email"
-                className="w-full bg-white/[0.03] border border-[#d4af37]/20 rounded-2xl px-6 py-4 text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#d4af37] focus:bg-white/[0.06] focus:shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-all"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div className="space-y-3 group">
-              <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#d4af37]/70 group-focus-within:text-[#d4af37] transition-colors ml-1">
-                <FiLock /> Password
-              </label>
-              <input
-                type="password"
-                className="w-full bg-white/[0.03] border border-[#d4af37]/20 rounded-2xl px-6 py-4 text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#d4af37] focus:bg-white/[0.06] focus:shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-all"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder="••••••••"
-                autoComplete="current-password"
-              />
-              <div className="flex justify-end pr-2">
-                <Link
-                  to="/forgot-password"
-                  className="text-[#d4af37]/60 hover:text-[#d4af37] text-[10px] font-black uppercase tracking-widest transition-colors"
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-8 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold text-center"
                 >
-                  Forgot Password?
-                </Link>
+                  {error}
+                </motion.div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-emerald-400/70 ml-1">
+                    <FiMail /> Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="name@healthcare.com"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center px-1">
+                    <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-emerald-400/70">
+                      <FiLock /> Password
+                    </label>
+                    <Link to="/forgot-password" size="xs" className="text-[9px] font-black uppercase tracking-widest text-emerald-100/30 hover:text-emerald-400 transition-colors">
+                      Forgot?
+                    </Link>
+                  </div>
+                  <input
+                    type="password"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="••••••••"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="btn-primary w-full h-14 text-xs uppercase tracking-widest font-black"
+                >
+                  {submitting ? (
+                    <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>Sign In <FiArrowRight className="ml-2 text-lg" /></>
+                  )}
+                </button>
+              </form>
+
+              <div className="mt-8 relative z-10">
+                <div className="relative flex items-center justify-center mb-6">
+                  <div className="flex-grow border-t border-white/5"></div>
+                  <span className="flex-shrink mx-4 text-slate-500 text-[9px] font-black uppercase tracking-[0.2em]">Social Connect</span>
+                  <div className="flex-grow border-t border-white/5"></div>
+                </div>
+
+                <button
+                  onClick={handleGoogleLogin}
+                  className="w-full flex items-center justify-center gap-3 h-12 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-bold hover:bg-white/10 transition-all active:scale-[0.98]"
+                >
+                  <FcGoogle className="text-xl" />
+                  <span className="uppercase tracking-widest">Login with Google</span>
+                </button>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 text-center relative z-10">
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                  Don't have an account? <Link to="/register" className="text-emerald-400 hover:text-emerald-300 transition-colors ml-1 underline decoration-emerald-400/30">Create One</Link>
+                </p>
               </div>
             </div>
-
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full group relative flex items-center justify-center h-16 rounded-2xl overflow-hidden transition-all active:scale-95 disabled:opacity-50"
-            >
-              <div
-                className="absolute inset-0 transition-transform group-hover:scale-110"
-                style={{ background: goldGrad }}
-              />
-              <span className="relative flex items-center gap-3 text-black font-black uppercase tracking-widest text-lg">
-                {submitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
-                    Authentication...
-                  </>
-                ) : (
-                  <>
-                    Sign In <FiArrowRight className="text-xl group-hover:translate-x-1 transition-transform" />
-                  </>
-                )}
-              </span>
-            </button>
-          </form>
-
-          <div className="mt-6">
-            <div className="relative flex items-center justify-center mb-6">
-              <div className="flex-grow border-t border-white/5"></div>
-              <span className="flex-shrink mx-4 text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">
-                Or Continue With
-              </span>
-              <div className="flex-grow border-t border-white/5"></div>
-            </div>
-
-            <button
-              onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center gap-3 h-14 rounded-2xl bg-white/[0.03] border border-white/10 text-white font-bold hover:bg-white/[0.06] transition-all active:scale-[0.98]"
-            >
-              <FcGoogle className="text-2xl" />
-              <span className="uppercase tracking-widest text-xs">Google Account</span>
-            </button>
-          </div>
-
+          </ScaleIn>
         </div>
       </div>
-    </section>
+    </PageHero>
   );
 }

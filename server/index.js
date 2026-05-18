@@ -83,15 +83,37 @@ const authLimiter = rateLimit({
   message: { message: "Too many requests from this IP, please try again after 15 minutes" },
 });
 
+// Configure highly resilient MongoDB connection options for production
+const mongooseOptions = {
+  dbName: config.MONGO_DB_NAME || undefined,
+  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of hanging indefinitely if DB is unreachable
+  socketTimeoutMS: 45000,         // Close sockets after 45s of inactivity to prevent resource leaks
+  maxPoolSize: 50,                // Up to 50 parallel database socket connections
+  minPoolSize: 5,                 // Keep at least 5 sockets open for fast response times
+};
+
+// Monitor MongoDB Connection Events to handle failures gracefully
+mongoose.connection.on("connected", () => {
+  console.log("🟢 MongoDB connection established successfully.");
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error("🔴 MongoDB connection error:", err);
+});
+
+mongoose.connection.on("disconnected", () => {
+  console.warn("⚠️ MongoDB connection disconnected. Attempting to reconnect...");
+});
+
+mongoose.connection.on("reconnected", () => {
+  console.log("🟢 MongoDB connection re-established successfully.");
+});
+
+// Initiate connection with robust options
 mongoose
-  .connect(config.MONGO_URI, {
-    dbName: config.MONGO_DB_NAME || undefined,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
+  .connect(config.MONGO_URI, mongooseOptions)
   .catch((err) => {
-    console.error("MongoDB connection error:", err);
+    console.error("🔴 Failed to initialize MongoDB connection:", err);
   });
 
 app.get("/", (_req, res) => {

@@ -24,14 +24,14 @@
     content="Global Healthcare Awards and Healthcare Awards celebrating excellence, leadership, and innovation in the healthcare industry worldwide." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://globalhealthcareawards.com" />
-  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image" content="/logo.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Healthcare Awards | Global Healthcare Awards" />
   <meta name="twitter:description"
     content="Recognizing hospitals, doctors, and healthcare leaders through Global Healthcare Awards." />
-  <meta name="twitter:image" content="/og-image.jpg" />
+  <meta name="twitter:image" content="/logo.png" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/logo.png" />
@@ -41,19 +41,24 @@
 
   <!-- ✅ Meta Pixel Code (Correct Placement in HEAD) -->
   <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '703397972608637');
-    fbq('track', 'PageView');
+    // Only initialize Facebook Pixel if NOT on localhost to prevent 422 errors during development
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+          n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '703397972608637');
+      fbq('track', 'PageView');
+    } else {
+      console.log("🛠️ Meta Pixel disabled on localhost to prevent 422 errors.");
+    }
   </script>
   <!-- ✅ End Meta Pixel Code -->
 </head>
