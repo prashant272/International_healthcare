@@ -38,7 +38,7 @@ export default function SuccessPage() {
 
                                 {autoCreated && (
                                     <FadeUp delay={0.3}>
-                                        <div className="bg-emerald-500/10 rounded-3xl p-6 mb-10 border border-emerald-500/20 text-left backdrop-blur-xl">
+                                        <div className="bg-emerald-500/10 rounded-3xl p-6 mb-10 border border-emerald-500/20 text-left ">
                                             <div className="flex items-center gap-3 mb-3">
                                                 <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
                                                     <FiMail className="w-5 h-5" />
@@ -53,7 +53,7 @@ export default function SuccessPage() {
                                     </FadeUp>
                                 )}
 
-                                <div className="bg-white/5 rounded-3xl p-8 mb-10 border border-white/5 backdrop-blur-xl">
+                                <div className="bg-white/5 rounded-3xl p-8 mb-10 border border-white/5 ">
                                     <h2 className="text-white font-black uppercase tracking-widest text-xs mb-6 flex items-center justify-center gap-2">
                                         <FiPhoneCall className="text-emerald-400" /> Need Immediate Assistance?
                                     </h2>

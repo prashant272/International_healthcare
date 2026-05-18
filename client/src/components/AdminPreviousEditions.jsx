@@ -138,7 +138,7 @@ export default function AdminPreviousEditions({ customToken }) {
 
     return (
         <div className="space-y-12">
-            <div className="flex justify-between items-center bg-white/[0.06] p-10 rounded-[3rem] border border-white/15 backdrop-blur-xl shadow-[0_0_50px_rgba(16,185,129,0.1)]">
+            <div className="flex justify-between items-center bg-white/[0.06] p-10 rounded-[3rem] border border-white/15  shadow-[0_0_50px_rgba(16,185,129,0.1)]">
                 <div>
                     <h3 className="text-3xl font-black text-white tracking-tighter uppercase">Historical <span className="text-gradient-emerald">Archives</span></h3>
                     <p className="text-[10px] text-white/40 font-black uppercase tracking-widest mt-2">Global Edition Records Management</p>
@@ -177,11 +177,11 @@ export default function AdminPreviousEditions({ customToken }) {
                                 <span className="bg-emerald-500 text-[#020817] text-[10px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-xl shadow-xl shadow-emerald-500/20">{edition.year}</span>
                             </div>
                             <div className="absolute top-8 right-8 flex gap-2">
-                                <div className="bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-2">
+                                <div className="bg-black/40  border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-2">
                                     <ImageIcon size={12} className="text-emerald-400" />
                                     <span className="text-[10px] font-black text-white">{edition.images?.length || 0}</span>
                                 </div>
-                                <div className="bg-black/40 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-2">
+                                <div className="bg-black/40  border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-2">
                                     <span className="text-cyan-400 text-[10px]">▶</span>
                                     <span className="text-[10px] font-black text-white">{edition.videoLinks?.length || 0}</span>
                                 </div>
@@ -235,7 +235,7 @@ export default function AdminPreviousEditions({ customToken }) {
 
             {/* Edit/Create Modal */}
             {showModal && (
-                <div className="fixed inset-0 bg-[#020817]/90 backdrop-blur-xl flex items-start justify-center z-[9999] p-4 overflow-y-auto pt-10 lg:pt-24">
+                <div className="fixed inset-0 bg-[#020817]/90  flex items-start justify-center z-[9999] p-4 overflow-y-auto pt-10 lg:pt-24">
                     <div className="bg-[#020817] border border-white/10 shadow-[0_0_100px_rgba(16,185,129,0.1)] p-8 lg:p-12 rounded-[3rem] lg:rounded-[4rem] max-w-4xl w-full relative mb-20">
                         <div className="absolute top-0 right-0 p-10">
                             <button onClick={() => setShowModal(false)} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:bg-red-500 hover:text-white transition-all">✕</button>
@@ -347,7 +347,7 @@ export default function AdminPreviousEditions({ customToken }) {
 
             {/* Delete Confirm Modal */}
             {deletingId && (
-                <div className="fixed inset-0 bg-[#020817]/95 backdrop-blur-2xl flex items-center justify-center z-[9999] p-4">
+                <div className="fixed inset-0 bg-[#020817]/95  flex items-center justify-center z-[9999] p-4">
                     <div className="bg-[#020817] border border-red-500/20 p-12 rounded-[4rem] max-w-md w-full text-center relative overflow-hidden shadow-[0_0_100px_rgba(239,68,68,0.1)]">
                         <div className="absolute top-0 inset-x-0 h-1 bg-red-500" />
                         <div className="w-24 h-24 bg-red-500/10 rounded-3xl flex items-center justify-center text-red-500 mx-auto mb-8 border border-red-500/20">

@@ -31,7 +31,7 @@ export default function GuestCard({ member, index, isFeatured = false }) {
           hover:border-emerald-500/40 hover:shadow-emerald-500/10 hover:shadow-2xl
           transition-all duration-500
           relative
-          backdrop-blur-md
+          
           glass-card-hover-active
         "
         style={{

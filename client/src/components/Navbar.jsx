@@ -183,7 +183,7 @@ export default function Navbar() {
         >
           <div className="
                relative
-               bg-slate-950/80 backdrop-blur-2xl text-white 
+               bg-slate-950/80  text-white 
                rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(16,185,129,0.2)] 
                border border-emerald-500/30 
                px-8 py-2.5 flex items-center gap-10 text-sm
@@ -213,7 +213,7 @@ export default function Navbar() {
       <div className="block md:hidden">
         <header
           className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex items-center h-16 sm:h-20 px-4 justify-between ${showPill
-            ? "bg-slate-900/80 backdrop-blur-lg border-b border-white/10 shadow-xl"
+            ? "bg-slate-900/80  border-b border-white/10 shadow-xl"
             : "bg-transparent"
             }`}
           ref={headerRef}
@@ -355,7 +355,7 @@ function MobileMenuDrawer({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[110] bg-slate-950/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[110] bg-slate-950/60 "
             onClick={onClose}
           />
 
@@ -374,7 +374,7 @@ function MobileMenuDrawer({
             </div>
 
             {/* Header */}
-            <div className="relative z-10 flex items-center justify-between px-6 h-20 border-b border-white/5 bg-slate-900/40 backdrop-blur-xl">
+            <div className="relative z-10 flex items-center justify-between px-6 h-20 border-b border-white/5 bg-slate-900/40 ">
               <div className="flex items-center gap-3">
                 <img
                   src="/images/logo.png"

@@ -28,7 +28,7 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
 
   return (
     <div
-      className="group relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-[9/16] bg-slate-900/40 backdrop-blur-xl cursor-pointer"
+      className="group relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-[9/16] bg-slate-900/40  cursor-pointer"
       onClick={() => !isPlaying && onPlay()}
     >
       {isPlaying && videoId ? (
@@ -266,7 +266,7 @@ export default function MediaGallery() {
                 const videoId = getYouTubeVideoId(video.url);
                 const isPlaying = playingVideoId === idx;
                 return (
-                  <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/10 hover:border-red-500/50 transition-all duration-300 bg-slate-900/40 backdrop-blur-xl">
+                  <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/10 hover:border-red-500/50 transition-all duration-300 bg-slate-900/40 ">
                     <div className="relative w-full aspect-video flex justify-center items-center bg-emerald-950 cursor-pointer" onClick={() => videoId && !isPlaying && setPlayingVideoId(idx)}>
                       {isPlaying && videoId ? (
                         <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} title={video.title} className="absolute top-0 left-0 w-full h-full" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -280,7 +280,7 @@ export default function MediaGallery() {
                         </>
                       )}
                     </div>
-                    <div className="p-4 bg-slate-900/60 backdrop-blur-md border-t border-white/5 group-hover:bg-slate-800 transition-colors">
+                    <div className="p-4 bg-slate-900/60  border-t border-white/5 group-hover:bg-slate-800 transition-colors">
                       <h3 className="text-white font-semibold text-sm sm:text-base line-clamp-1">{video.title}</h3>
                     </div>
                   </div>

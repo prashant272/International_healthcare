@@ -267,132 +267,8 @@ export const PageHero = memo(function PageHero({ title, subtitle, icon, badge, c
 
   const sc = schemes[colorScheme] || schemes.emerald;
 
-  const orbs = useMemo(() => {
-    return [...Array(6)].map((_, i) => ({
-      width: 150 + Math.random() * 100,
-      height: 150 + Math.random() * 100,
-      background: ["#10b981", "#06b6d4", "#8b5cf6"][i % 3],
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      duration: 15 + i * 2,
-    }));
-  }, []);
-
-  const jewels = useMemo(() => {
-    return [...Array(25)].map((_, i) => ({
-      type: i % 3,
-      width: Math.random() * 6 + 3,
-      height: Math.random() * 6 + 3,
-      background: `linear-gradient(135deg, ${["#34d399", "#06b6d4", "#a855f7"][i % 3]}, transparent)`,
-      border: `1px solid ${["#34d39966", "#06b6d466", "#a855f766"][i % 3]}`,
-      boxShadow: `0 0 15px ${["#34d399", "#06b6d4", "#a855f7"][i % 3]}44`,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      y: [0, -60, 0],
-      x: [0, Math.random() * 40 - 20, 0],
-      duration: 8 + Math.random() * 7,
-      delay: Math.random() * 5,
-    }));
-  }, []);
-
-  const sparkles = useMemo(() => {
-    return [...Array(15)].map((_, i) => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      duration: 2 + Math.random() * 2,
-      delay: Math.random() * 10,
-    }));
-  }, []);
-
   return (
     <div className={`page-hero bg-cross-pattern ${compact ? '!pt-15' : ''} ${children ? '!pb-0' : ''} ${className}`}>
-      {/* Ultra-Premium Liquid & Sweep Effects */}
-      {!compact && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Deep Shifting Mesh */}
-        <div
-          className="absolute -top-[30%] -left-[20%] w-[140%] h-[160%] opacity-40 animate-mesh-drift"
-          style={{
-            background: `radial-gradient(circle at 30% 40%, ${sc.glow1} 0%, transparent 60%), 
-                         radial-gradient(circle at 70% 60%, ${sc.glow2} 0%, transparent 60%)`,
-          }}
-        />
-
-
-
-        {/* Floating Refractive Glows */}
-        <div
-          className="absolute top-1/4 right-[-10%] w-[500px] h-[500px] opacity-20 animate-refractive-glow"
-          style={{ background: `radial-gradient(circle, ${sc.glow3} 0%, transparent 70%)` }}
-        />
-
-        {/* Animated Bottom Border Glow */}
-        <div
-          className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent animate-border-glow-opacity"
-        />
-        </div>
-      )}
-
-      {/* Ultra-Premium Layered Particle System */}
-      {!compact && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Layer 1: Ambient Blurred Orbs (Deep Background) */}
-        {orbs.map((orb, i) => (
-          <div
-            key={`hero-orb-${i}`}
-            className="absolute rounded-full opacity-20 animate-orb-float"
-            style={{
-              width: orb.width,
-              height: orb.height,
-              background: `radial-gradient(circle, ${orb.background} 0%, transparent 70%)`,
-              left: orb.left,
-              top: orb.top,
-              '--dur': `${orb.duration}s`,
-            }}
-          />
-        ))}
-
-        {/* Layer 2: Geometric Jewels (Middle Ground) */}
-        {jewels.map((j, i) => {
-          return (
-            <div
-              key={`hero-jewel-${i}`}
-              className={`absolute ${j.type === 1 ? 'rotate-45' : 'rounded-full'} animate-jewel-float`}
-              style={{
-                width: j.width,
-                height: j.height,
-                background: j.background,
-                border: j.border,
-                boxShadow: j.boxShadow,
-                left: j.left,
-                top: j.top,
-                '--tx': `${j.x[1]}px`,
-                '--ty': `${j.y[1]}px`,
-                '--rot-start': j.type === 1 ? '45deg' : '0deg',
-                '--rot-mid': j.type === 1 ? '225deg' : '0deg',
-                '--dur': `${j.duration}s`,
-                '--delay': `${j.delay}s`,
-              }}
-            />
-          );
-        })}
-
-        {/* Layer 3: High-Speed Sparkles (Foreground) */}
-        {sparkles.map((s, i) => (
-          <div
-            key={`hero-sparkle-${i}`}
-            className="absolute w-1 h-1 bg-white rounded-full shadow-[0_0_8px_#fff] animate-sparkle-float-accel"
-            style={{
-              left: s.left,
-              top: s.top,
-              '--dur': `${s.duration}s`,
-              '--delay': `${s.delay}s`,
-            }}
-          />
-        ))}
-      </div>
-      )}
-
       {/* Content */}
       <motion.div
         className={`relative z-10 max-w-4xl mx-auto px-4 ${compact ? 'scale-90' : ''}`}
@@ -454,7 +330,7 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
         {/* Intense Multi-layered Background Glow */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit]">
           <div className={`absolute -inset-[100%] opacity-0 group-hover:opacity-30 bg-[radial-gradient(circle_at_50%_50%,${colors[color]}_0%,transparent_70%)] transition-opacity duration-500`} />
-          <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-transparent via-${color === 'gold' ? '[#d4af37]' : color}-500/20 to-transparent blur-3xl`} />
+          <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-transparent via-${color === 'gold' ? '[#d4af37]' : color}-500/20 to-transparent`} />
         </div>
 
         {/* Content Layer */}
@@ -468,7 +344,7 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
         </div>
 
         {/* Outer Glow Aura */}
-        <div className={`absolute -inset-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl -z-10 bg-${color === 'gold' ? '[#d4af37]' : color}-500/20 rounded-[inherit]`} />
+        <div className={`absolute -inset-2 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10 bg-${color === 'gold' ? '[#d4af37]' : color}-500/20 rounded-[inherit]`} />
       </div>
     </div>
   );

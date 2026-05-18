@@ -38,7 +38,7 @@ export default function CallModal({ onClose }) {
 
     return (
         <div
-            className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
+            className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/60  animate-fadeIn"
             onClick={onClose}
         >
             <div

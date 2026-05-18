@@ -102,7 +102,7 @@ export default function NominationDetails() {
                     </div>
 
                     {/* Details Card */}
-                    <div className="bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent rounded-[2.5rem] border border-white/10 p-8 sm:p-12 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent rounded-[2.5rem] border border-white/10 p-8 sm:p-12  shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-8 opacity-10">
                             <Crown className="w-32 h-32 text-[#d4af37]" />
                         </div>

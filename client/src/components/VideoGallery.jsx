@@ -42,7 +42,7 @@ function VideoCard({ video }) {
 
                     {/* Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#d4af37]/90 backdrop-blur-md flex items-center justify-center transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#d4af37]/90  flex items-center justify-center transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
                             <Play className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-2" fill="currentColor" />
                         </div>
                     </div>

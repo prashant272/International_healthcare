@@ -57,7 +57,7 @@ function StatusBadge({ status }) {
   }[normalized] || "bg-white/5 text-white/40 border-white/10";
 
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest backdrop-blur-md transition-all ${colorClasses}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest  transition-all ${colorClasses}`}>
       <span className={`w-1.5 h-1.5 rounded-full ${normalized === 'selected' ? 'bg-white' : 'bg-current'} ${normalized !== 'rejected' ? 'animate-pulse' : ''}`} />
       {label}
     </span>
@@ -272,7 +272,7 @@ export default function AdminDashboard() {
   /* ================== HELPERS ================== */
   const renderNominationsTable = () => (
     <div className="relative group/table">
-      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-white/[0.02] backdrop-blur-3xl shadow-2xl overflow-y-auto">
+      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-white/[0.02]  shadow-2xl overflow-y-auto">
         <table className="min-w-[1600px] w-full text-left border-separate border-spacing-0">
           <thead>
             <tr className="sticky top-0 z-40">
@@ -293,11 +293,11 @@ export default function AdminDashboard() {
                 { label: "Source Identity", width: "220px" },
                 { label: "Timestamp", width: "180px" }
               ].map((th, i) => (
-                <th key={i} className="px-6 py-5 bg-[#020817]/95 backdrop-blur-xl border-b border-white/5 first:rounded-tl-[2rem]" style={{ width: th.width }}>
+                <th key={i} className="px-6 py-5 bg-[#020817]/95  border-b border-white/5 first:rounded-tl-[2rem]" style={{ width: th.width }}>
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{th.label}</span>
                 </th>
               ))}
-              <th className="px-6 py-5 sticky right-0 z-50 bg-[#020817]/95 backdrop-blur-xl border-b border-white/5 rounded-tr-[2rem] text-right">
+              <th className="px-6 py-5 sticky right-0 z-50 bg-[#020817]/95  border-b border-white/5 rounded-tr-[2rem] text-right">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400">Control Node</span>
               </th>
             </tr>
@@ -427,7 +427,7 @@ export default function AdminDashboard() {
                     {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </div>
                 </td>
-                <td className="px-6 py-5 sticky right-0 z-30 bg-[#020817]/95 backdrop-blur-xl border-l border-white/5 rounded-br-[2rem] text-right">
+                <td className="px-6 py-5 sticky right-0 z-30 bg-[#020817]/95  border-l border-white/5 rounded-br-[2rem] text-right">
                   <div className="flex items-center justify-end gap-2">
                     {n.pdfUrl && (
                       <a
@@ -473,7 +473,7 @@ export default function AdminDashboard() {
   );
 
   const renderStatusTab = () => (
-    <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-white/[0.02] backdrop-blur-3xl shadow-2xl overflow-y-auto">
+    <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-white/[0.02]  shadow-2xl overflow-y-auto">
       <table className="min-w-[1100px] w-full text-left border-separate border-spacing-0">
         <thead>
           <tr className="sticky top-0 z-40">
@@ -486,7 +486,7 @@ export default function AdminDashboard() {
               { label: "Valuation", width: "150px" },
               { label: "Internal Notes", width: "250px" }
             ].map((th, i) => (
-              <th key={i} className="px-8 py-6 bg-[#020817]/95 backdrop-blur-xl border-b border-white/5 first:rounded-tl-[2rem] last:rounded-tr-[2rem]" style={{ width: th.width }}>
+              <th key={i} className="px-8 py-6 bg-[#020817]/95  border-b border-white/5 first:rounded-tl-[2rem] last:rounded-tr-[2rem]" style={{ width: th.width }}>
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{th.label}</span>
               </th>
             ))}
@@ -552,7 +552,7 @@ export default function AdminDashboard() {
     const rows = Array.from(byUser.values());
 
     return (
-      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/10 bg-white/[0.04] backdrop-blur-3xl shadow-2xl overflow-y-auto">
+      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/10 bg-white/[0.04]  shadow-2xl overflow-y-auto">
         <table className="min-w-[800px] w-full text-left border-separate border-spacing-0">
           <thead>
             <tr className="sticky top-0 z-40">
@@ -562,7 +562,7 @@ export default function AdminDashboard() {
                 { label: "Operational Status", width: "20%" },
                 { label: "Last Sync", width: "20%" }
               ].map((th, i) => (
-                <th key={i} className="px-10 py-6 bg-[#020817] backdrop-blur-xl border-b border-white/10 first:rounded-tl-[2rem] last:rounded-tr-[2rem]">
+                <th key={i} className="px-10 py-6 bg-[#020817]  border-b border-white/10 first:rounded-tl-[2rem] last:rounded-tr-[2rem]">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">{th.label}</span>
                 </th>
               ))}
@@ -596,7 +596,7 @@ export default function AdminDashboard() {
   };
 
   const renderAdminsTab = () => (
-    <div className="border border-emerald-500/20 rounded-[3rem] bg-white/[0.03] p-12 text-md text-white/80 shadow-2xl backdrop-blur-3xl relative overflow-hidden">
+    <div className="border border-emerald-500/20 rounded-[3rem] bg-white/[0.03] p-12 text-md text-white/80 shadow-2xl  relative overflow-hidden">
       <div className="absolute top-0 right-0 p-12 opacity-5">🛡️</div>
       <h2 className="text-3xl font-black mb-6 text-white uppercase tracking-tighter flex items-center gap-3">
         <ShieldCheck className="text-emerald-400" size={32} /> System <span className="text-gradient-emerald">Configuration</span>
@@ -628,7 +628,7 @@ export default function AdminDashboard() {
         ].map((stat, i) => (
           <div key={i} className="group relative">
             <div className={`absolute inset-0 bg-${stat.color}-500/10 blur-[80px] rounded-[2.5rem] transition-all group-hover:bg-${stat.color}-500/20`} />
-            <div className="relative bg-white/[0.04] border border-white/10 rounded-[2.5rem] p-10 flex flex-col items-center text-center transition-all group-hover:-translate-y-2 group-hover:border-white/20 shadow-2xl backdrop-blur-xl">
+            <div className="relative bg-white/[0.04] border border-white/10 rounded-[2.5rem] p-10 flex flex-col items-center text-center transition-all group-hover:-translate-y-2 group-hover:border-white/20 shadow-2xl ">
               <div className="text-4xl mb-6 group-hover:scale-110 transition-transform">{stat.icon}</div>
               <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-2">{stat.label}</div>
               <div className={`text-5xl font-black text-${stat.color}-400 tabular-nums tracking-tighter`}>{stat.val}</div>
@@ -639,7 +639,7 @@ export default function AdminDashboard() {
 
       <div className="relative">
         <div className="absolute -inset-4 bg-emerald-500/5 blur-[100px] rounded-full opacity-50" />
-        <div className="relative overflow-x-auto border border-white/5 rounded-[3rem] bg-white/[0.01] backdrop-blur-3xl shadow-2xl">
+        <div className="relative overflow-x-auto border border-white/5 rounded-[3rem] bg-white/[0.01]  shadow-2xl">
           <table className="w-full text-left border-separate border-spacing-0">
             <thead>
               <tr>
@@ -688,7 +688,7 @@ export default function AdminDashboard() {
       <PageHero>
         <section className="min-h-screen text-white flex flex-col">
           {/* Fixed Header Wrapper */}
-          <div className="fixed top-8 left-0 right-0 z-[100] bg-[#020817]/80 backdrop-blur-3xl border-b border-white/5">
+          <div className="fixed top-8 left-0 right-0 z-[100] bg-[#020817]/80  border-b border-white/5">
             {/* Top Emerald Accent Bar */}
             <div className="h-1 w-full bg-gradient-to-r from-emerald-500 via-cyan-400 to-emerald-500" />
 
@@ -708,7 +708,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                <nav className="flex items-center bg-white/[0.06] p-2 rounded-[2rem] border border-white/10 overflow-x-auto no-scrollbar backdrop-blur-xl max-w-full">
+                <nav className="flex items-center bg-white/[0.06] p-2 rounded-[2rem] border border-white/10 overflow-x-auto no-scrollbar  max-w-full">
                   {[
                     { id: "nominations", label: "Nominations", icon: "🏆" },
                     { id: "status", label: "Payment", icon: "💸" },
@@ -733,7 +733,7 @@ export default function AdminDashboard() {
                   ))}
                 </nav>
 
-                <div className="hidden xl:flex items-center gap-6 px-10 py-4 rounded-[2rem] bg-white/[0.06] border border-white/10 backdrop-blur-md">
+                <div className="hidden xl:flex items-center gap-6 px-10 py-4 rounded-[2rem] bg-white/[0.06] border border-white/10 ">
                   <div className="text-right">
                     <p className="text-[9px] text-white/40 uppercase font-black tracking-widest mb-0.5">Total Database</p>
                     <p className="text-lg font-black text-emerald-400 tabular-nums tracking-tighter">{paymentSummary.total} Entries</p>
@@ -765,7 +765,7 @@ export default function AdminDashboard() {
             </header>
 
             {activeTab !== "analytics" && activeTab !== "admins" && activeTab !== "previous-editions" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-14 bg-white/[0.04] p-10 rounded-[3.5rem] border border-white/10 backdrop-blur-3xl shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-14 bg-white/[0.04] p-10 rounded-[3.5rem] border border-white/10  shadow-[0_0_100px_rgba(0,0,0,0.5)]">
                 <div className="flex flex-col gap-3">
                   <label className="text-[10px] text-emerald-400 font-black uppercase tracking-widest ml-1">Filter Status</label>
                   <select
@@ -870,7 +870,7 @@ export default function AdminDashboard() {
 
             {/* ================== EDIT MODAL ================== */}
             {editingNomination && (
-              <div className="fixed inset-0 bg-[#020817]/80 backdrop-blur-xl flex items-center justify-center z-[9999] p-4">
+              <div className="fixed inset-0 bg-[#020817]/80  flex items-center justify-center z-[9999] p-4">
                 <div className="bg-[#020817] border border-white/10 shadow-[0_0_100px_rgba(16,185,129,0.1)] p-10 rounded-[3rem] max-w-5xl w-full max-h-[90vh] overflow-y-auto medical-scrollbar relative">
                   <div className="absolute top-0 right-0 p-8">
                     <button onClick={() => setEditingNomination(null)} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:bg-red-500 hover:text-white transition-all">✕</button>
@@ -1003,7 +1003,7 @@ export default function AdminDashboard() {
 
             {/* ================== DELETE MODAL ================== */}
             {deleteConfirmId && (
-              <div className="fixed inset-0 bg-[#020817]/90 backdrop-blur-xl flex items-center justify-center z-[9999] p-4">
+              <div className="fixed inset-0 bg-[#020817]/90  flex items-center justify-center z-[9999] p-4">
                 <div className="bg-[#020817] border border-red-500/20 shadow-[0_0_100px_rgba(239,68,68,0.1)] p-12 rounded-[3rem] max-w-md w-full text-center relative overflow-hidden">
                   <div className="absolute top-0 inset-x-0 h-1 bg-red-500" />
                   <div className="w-24 h-24 bg-red-500/10 rounded-3xl flex items-center justify-center text-red-500 mx-auto mb-8 border border-red-500/20 group hover:scale-110 transition-transform">
@@ -1021,7 +1021,7 @@ export default function AdminDashboard() {
 
             {/* ================== VIEW MODAL ================== */}
             {viewingNomination && (
-              <div className="fixed inset-0 bg-[#020817]/90 backdrop-blur-2xl flex items-center justify-center z-[9999] p-4">
+              <div className="fixed inset-0 bg-[#020817]/90  flex items-center justify-center z-[9999] p-4">
                 <div className="bg-[#020817] border border-white/10 shadow-2xl p-10 rounded-[3rem] max-w-6xl w-full max-h-[90vh] overflow-y-auto medical-scrollbar relative">
                   <div className="absolute top-0 right-0 p-8">
                     <button onClick={() => setViewingNomination(null)} className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:bg-white/10 hover:text-white transition-all">✕</button>

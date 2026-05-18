@@ -51,28 +51,7 @@ export default function Home() {
     loadEditions();
   }, []);
 
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0", "!z-10");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      sectionRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
 
   const handleNominateClick = () => {
     navigate("/nominate");
@@ -452,9 +431,7 @@ export default function Home() {
           <div className="w-full max-w-[1600px] mx-auto relative z-30">
             <div className="w-full relative z-10 px-3">
               {(() => {
-                const displayEvents = events.length > 0 && events.length < 6
-                  ? [...events, ...events, ...events]
-                  : events;
+                const displayEvents = events;
                 return (
                   <Swiper
                     modules={[Autoplay, Pagination]}
@@ -473,7 +450,7 @@ export default function Home() {
                   >
                     {displayEvents.map((event, index) => (
                       <SwiperSlide key={index} className="h-auto flex justify-center py-2 px-2">
-                        <div className="group relative w-full max-w-[95%] sm:max-w-[520px] mx-auto h-full min-h-[450px] flex flex-col rounded-[1.5rem] overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] p-4 xs:p-5 sm:p-6 md:p-8 bg-slate-900/40 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/60">
+                        <div className="group relative w-full max-w-[95%] sm:max-w-[520px] mx-auto h-full min-h-[450px] flex flex-col rounded-[1.5rem] overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] p-4 xs:p-5 sm:p-6 md:p-8 bg-slate-900/40  border border-white/20 shadow-2xl shadow-black/60">
 
                           {/* 4 Corner Brackets */}
                           <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-emerald-500/40 rounded-tl-lg" />
@@ -483,7 +460,7 @@ export default function Home() {
 
                           {/* Decorative Header (Absolute Top) */}
                           <div className="relative flex items-center gap-2.5 mb-2">
-                            <div className="w-9 h-9 bg-emerald-500/20 backdrop-blur-xl rounded-xl border border-emerald-500/30 flex items-center justify-center shadow-xl">
+                            <div className="w-9 h-9 bg-emerald-500/20  rounded-xl border border-emerald-500/30 flex items-center justify-center shadow-xl">
                               <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                                 <path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" />
                               </svg>
@@ -504,14 +481,14 @@ export default function Home() {
 
                             {/* Side-by-Side Data Boxes */}
                             <div className="grid grid-cols-2 gap-2.5 mt-10">
-                              <div className="bg-white/5 backdrop-blur-md p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
+                              <div className="bg-white/5  p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
                                 <div className="flex items-center gap-1.5 mb-0.5 w-full justify-center">
                                   <svg className="w-3 h-3 text-emerald-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /></svg>
                                   <span className="text-[7px] font-black text-emerald-400 uppercase tracking-widest">DATE</span>
                                 </div>
                                 <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{event.date}</span>
                               </div>
-                              <div className="bg-white/5 backdrop-blur-md p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
+                              <div className="bg-white/5  p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
                                 <div className="flex items-center gap-1.5 mb-0.5 w-full justify-center">
                                   <svg className="w-3 h-3 text-cyan-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                                   <span className="text-[7px] font-black text-cyan-400 uppercase tracking-widest">VENUE</span>
@@ -528,7 +505,7 @@ export default function Home() {
                               NOMINATE <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                             </button>
                             <button onClick={() => navigate(`/edition/${event._id || event.id}`)}
-                              className="bg-white/10 backdrop-blur-xl border border-white/20 py-2.5 rounded-lg font-black text-emerald-400 shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
+                              className="bg-white/10  border border-white/20 py-2.5 rounded-lg font-black text-emerald-400 shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
                               MORE INFO <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             </button>
                           </div>
@@ -562,7 +539,7 @@ export default function Home() {
                 {/* ==== LEFT: OVERVIEW ==== */}
                 <div className="flex flex-col justify-center h-full lg:pr-6 xl:pr-12 text-left">
                   {/* Section Badge */}
-                  <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-500/10 backdrop-blur-2xl border border-emerald-500/20 shadow-2xl hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-500 group/badge mb-4 self-start">
+                  <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-500/10  border border-emerald-500/20 shadow-2xl hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all duration-500 group/badge mb-4 self-start">
                     <div className="relative">
                       <svg className="w-5 h-5 text-emerald-400 group-hover/badge:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" /></svg>
                       <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full animate-pulse"></div>
@@ -581,7 +558,7 @@ export default function Home() {
                     {/* Intense Outer Glow */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/30 via-emerald-400/20 to-emerald-500/30 opacity-0 group-hover:opacity-100 blur-3xl transition-all duration-1000 rounded-[2rem]" />
 
-                    <div className="relative backdrop-blur-3xl rounded-[2rem] border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-700 p-8 lg:p-10 group-hover:border-emerald-400/50 group-hover:bg-white/[0.03]"
+                    <div className="relative  rounded-[2rem] border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-700 p-8 lg:p-10 group-hover:border-emerald-400/50 group-hover:bg-white/[0.03]"
                       style={{
                         background: "linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%)",
                         boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.37)"
@@ -683,7 +660,7 @@ export default function Home() {
                       <div key={idx} className="relative group"
                         style={{ animation: `fade-up 0.8s ease-out ${(idx + 1) * 120}ms both` }}>
                         <div className={`absolute -inset-1 bg-gradient-to-r ${item.border} opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl`} />
-                        <div className="relative border border-emerald-500/30 shadow-xl overflow-hidden hover:bg-slate-900/20 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/10 transform hover:-translate-x-1 hover:scale-[1.02] transition-all duration-500 rounded-2xl bg-slate-900/40 backdrop-blur-xl">
+                        <div className="relative border border-emerald-500/30 shadow-xl overflow-hidden hover:bg-slate-900/20 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/10 transform hover:-translate-x-1 hover:scale-[1.02] transition-all duration-500 rounded-2xl bg-slate-900/40 ">
                           <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${item.border}`} />
                           <div className="p-6 flex items-center gap-5 text-left">
                             {/* Icon */}
@@ -710,7 +687,7 @@ export default function Home() {
                   {/* CTA Card */}
                   <div className="relative group mt-8">
                     <div className="absolute -inset-1 bg-gradient-to-r from-emerald-50 via-emerald-500 to-emerald-500 opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 rounded-2xl" />
-                    <div className="relative bg-emerald-950/70 backdrop-blur-xl rounded-2xl border border-emerald-500/30 shadow-2xl overflow-hidden hover:bg-emerald-900/40 hover:border-emerald-500/50 transition-all duration-500 p-8 text-left">
+                    <div className="relative bg-emerald-950/70  rounded-2xl border border-emerald-500/30 shadow-2xl overflow-hidden hover:bg-emerald-900/40 hover:border-emerald-500/50 transition-all duration-500 p-8 text-left">
                       {/* Emerald Bar */}
                       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-emerald-100 to-emerald-500" />
                       <div className="flex items-center gap-4 mb-4 text-left">
@@ -988,7 +965,7 @@ export default function Home() {
                     <div key={idx} className="flex-shrink-0 group">
                       <div className="
                       relative h-32 w-32 sm:h-40 sm:w-40 rounded-[2rem]
-                      bg-slate-900/40 backdrop-blur-xl
+                      bg-slate-900/40 
                       border border-emerald-500/20 hover:border-emerald-400/60
                       transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(16,185,129,0.3)]
                       flex items-center justify-center p-6
@@ -1176,7 +1153,7 @@ export default function Home() {
                                 const formattedTitle = edition.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
                                 navigate(`/${edition.year}/${formattedTitle}`);
                               }}
-                              className="group relative bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-[3rem] overflow-hidden transition-all duration-700 hover:border-emerald-500/50 shadow-2xl cursor-pointer"
+                              className="group relative bg-slate-900/40  border border-white/10 rounded-[3rem] overflow-hidden transition-all duration-700 hover:border-emerald-500/50 shadow-2xl cursor-pointer"
                             >
                               <div className="h-[300px] sm:h-[400px] relative overflow-hidden">
                                 {edition.images && edition.images.length > 0 ? (
@@ -1292,7 +1269,7 @@ export default function Home() {
                               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
 
                               <div className="absolute bottom-4 left-4 z-20">
-                                <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 backdrop-blur-md text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-400/30">
+                                <span className="px-4 py-1.5 rounded-full bg-emerald-500/20  text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-400/30">
                                   {award.location}
                                 </span>
                               </div>
