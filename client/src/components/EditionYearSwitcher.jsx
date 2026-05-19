@@ -21,7 +21,7 @@ export default function EditionYearSwitcher({ currentYear }) {
           Previous Editions
         </p>
         <h2 className="text-xl md:text-2xl font-extrabold text-[#ffe9b3]">
-          International Global Healthcare Awards – {currentYear}
+          International Healthcare Awards – {currentYear}
         </h2>
       </div>
       <div className="flex flex-wrap gap-2 text-xs">

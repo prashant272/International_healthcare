@@ -3,8 +3,8 @@ import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../co
 
 const faqs = [
   {
-    q: "What is International Global Healthcare Awards 2026?",
-    a: "International Global Healthcare Awards 2026 is an international recognition platform that honours hospitals, doctors, clinics, healthcare organisations, and healthtech companies for excellence, innovation, and quality patient care.",
+    q: "What is International Healthcare Awards 2026?",
+    a: "International Healthcare Awards 2026 is an international recognition platform that honours hospitals, doctors, clinics, healthcare organisations, and healthtech companies for excellence, innovation, and quality patient care.",
   },
   {
     q: "Who can apply for nomination?",
@@ -24,11 +24,11 @@ const faqs = [
   },
   {
     q: "Where and when will the awards be held?",
-    a: "International Global Healthcare Awards 2026 will be organised in international editions, including a Dubai Edition (26 April 2026, Dubai, UAE) and a London Edition (9 June 2026, House of Commons, London, UK). Detailed venue and schedule updates are shared on the official website and through formal communication.",
+    a: "International Healthcare Awards 2026 will be organised in international editions, including a Dubai Edition (26 April 2026, Dubai, UAE) and a London Edition (9 June 2026, House of Commons, London, UK). Detailed venue and schedule updates are shared on the official website and through formal communication.",
   },
   {
     q: "What are the benefits of participating?",
-    a: "Participants gain global recognition and industry credibility, brand visibility and media exposure, enhanced trust among patients and partners, networking opportunities with healthcare leaders, and marketing assets such as certificates and winner logos.",
+    a: "Participants gain international recognition and industry credibility, brand visibility and media exposure, enhanced trust among patients and partners, networking opportunities with healthcare leaders, and marketing assets such as certificates and winner logos.",
   },
   {
     q: "What documents are required for nomination?",
@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "Can international organisations apply?",
-    a: "Yes, organisations and professionals from all countries are welcome to apply for International Global Healthcare Awards 2026.",
+    a: "Yes, organisations and professionals from all countries are welcome to apply for International Healthcare Awards 2026.",
   },
   {
     q: "Can I apply for more than one category?",
@@ -75,8 +75,8 @@ const faqs = [
     a: "For sponsorship or partnership opportunities, you can connect with the team via the official Contact Us page or the contact details provided on the website.",
   },
   {
-    q: "Are International Global Healthcare Awards government-affiliated?",
-    a: "No, International Global Healthcare Awards is an independent recognition platform by TIME Cyber Media and is not directly affiliated with any government body.",
+    q: "Are International Healthcare Awards government-affiliated?",
+    a: "No, International Healthcare Awards is an independent recognition platform by TIME Cyber Media and is not directly affiliated with any government body.",
   },
   {
     q: "Where can we see previous editions or media coverage?",
@@ -97,7 +97,7 @@ export default function FAQ() {
             <span className="inline-flex animate-pulse text-3xl sm:text-4xl ml-2">✨</span>
           </div>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold font-heading mb-2 tracking-tight bg-gradient-to-r from-white via-emerald-300 via-50% to-emerald-800 bg-clip-text text-transparent drop-shadow-lg shadow-emerald-500/20 leading-tight">
-            International Global Healthcare Awards 2026
+            International Healthcare Awards 2026
             <span className="block text-lg sm:text-2xl font-[350] text-emerald-100 tracking-widest opacity-90 mt-1 uppercase">Frequently Asked Questions</span>
           </h1>
           <div className="mt-4 w-28 sm:w-40 h-[5px] mx-auto rounded-full bg-gradient-to-r from-transparent via-emerald-500 via-60% to-transparent shadow-[0_0_20px_3px_rgba(16,185,129,0.3)]" />

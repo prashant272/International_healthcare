@@ -3,8 +3,8 @@ import { FaPhoneAlt, FaTimes } from "react-icons/fa";
 import { FaWhatsapp, FaVideo } from "react-icons/fa";
 
 export default function CallModal({ onClose }) {
-    const phoneNumber = "+919810882769";
-    const displayNumber = "+91 9810 882 769";
+    const phoneNumber = "+919821020995";
+    const displayNumber = "+91 98210 20995";
     const whatsappNumber = phoneNumber.replace(/\D/g, "");
 
     // Close modal on ESC key

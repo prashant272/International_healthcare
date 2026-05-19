@@ -231,7 +231,7 @@ export default function NominationDetails() {
                     {/* Branding Footer */}
                     <div className="mt-12 text-center">
                         <p className="text-xs font-bold text-gray-600 uppercase tracking-[0.3em]">
-                            International Global Healthcare Awards &bull; TIME Cyber Media Pvt Ltd
+                            International Healthcare Awards &bull; TIME Cyber Media Pvt Ltd
                         </p>
                     </div>
                 </div>

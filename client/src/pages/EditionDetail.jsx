@@ -207,7 +207,7 @@ export default function EditionDetail() {
                             </p>
                         </div>
                         <p className="text-slate-400 text-base sm:text-lg max-w-2xl italic leading-relaxed">
-                            "The safety of our healthcare heroes was our top priority during the global pandemic. We returned stronger and more resolute in the following years."
+                            "The safety of our healthcare heroes was our top priority during the pandemic. We returned stronger and more resolute in the following years."
                         </p>
                     </div>
                 ) : (
@@ -229,12 +229,12 @@ export default function EditionDetail() {
                             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#d4af37]"></div>
                         </div>
                         <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.15] tracking-tight">
-                            <span className="text-white drop-shadow-lg">INTERNATIONAL GLOBAL</span>
+                            <span className="text-white drop-shadow-lg">INTERNATIONAL</span>
                             <br className="hidden sm:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-100 to-emerald-400 drop-shadow-[0_2px_15px_rgba(16,185,129,0.3)]"> Healthcare Awards {displayYear}</span>
                         </h1>
                         <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto whitespace-pre-line font-medium">
-                            {edition?.hero || `The ${displayYear} Global Healthcare Excellence Awards celebrated the visionaries, institutions, and clinical leaders who redefined medical standards globally.`}
+                            {edition?.hero || `The ${displayYear} Healthcare Excellence Awards celebrated the visionaries, institutions, and clinical leaders who redefined medical standards internationally.`}
                         </p>
                     </header>
 

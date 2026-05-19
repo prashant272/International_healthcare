@@ -25,12 +25,12 @@ transporter.verify((err, success) => {
  */
 export const sendOTPEmail = async (email, otp) => {
     const mailOptions = {
-        from: `"Global Healthcare Awards" <${config.EMAIL.FROM}>`,
+        from: `"International Healthcare Awards" <${config.EMAIL.FROM}>`,
         to: email,
-        subject: "Verify Your Email - Global Healthcare Awards",
+        subject: "Verify Your Email - International Healthcare Awards",
         html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #d4af37; border-radius: 10px;">
-        <h2 style="color: #d4af37; text-align: center;">Welcome to Global Healthcare Awards</h2>
+        <h2 style="color: #d4af37; text-align: center;">Welcome to International Healthcare Awards</h2>
         <p>Dear User,</p>
         <p>Please use the following OTP to verify your email. This OTP is valid for 10 minutes.</p>
         <div style="background-color: #f7f7f7; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; border-radius: 5px; color: #333; letter-spacing: 5px;">
@@ -38,7 +38,7 @@ export const sendOTPEmail = async (email, otp) => {
         </div>
         <p>If you did not request this, please ignore this email.</p>
         <hr>
-        <p style="font-size: 12px; text-align: center;">© Global Healthcare Awards 2026</p>
+        <p style="font-size: 12px; text-align: center;">© International Healthcare Awards 2026</p>
       </div>
     `,
     };
@@ -74,9 +74,9 @@ export const sendNominationSuccessEmail = async (email, nomineeName, credentials
     }
 
     const mailOptions = {
-        from: `"Global Healthcare Awards" <${config.EMAIL.FROM}>`,
+        from: `"International Healthcare Awards" <${config.EMAIL.FROM}>`,
         to: email,
-        subject: credentials ? "Nomination Received & Account Created - Global Healthcare Awards 2026" : "Nomination Received - Global Healthcare Awards 2026",
+        subject: credentials ? "Nomination Received & Account Created - International Healthcare Awards 2026" : "Nomination Received - International Healthcare Awards 2026",
         html: `
       <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: auto; padding: 30px; border: 1px solid #d4af37; border-radius: 15px; background-color: #ffffff;">
         <div style="text-align: center; margin-bottom: 25px;">
@@ -97,20 +97,14 @@ export const sendNominationSuccessEmail = async (email, nomineeName, credentials
             <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                     <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
-                        <span style="font-weight: bold; color: #333;">General Queries:</span><br>
-                        <a href="tel:+919810882769" style="color: #d4af37; text-decoration: none; font-size: 16px;">📞 +91 9810 88 2769</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
-                        <span style="font-weight: bold; color: #333;">Nominations:</span><br>
-                        <a href="tel:+919971002984" style="color: #d4af37; text-decoration: none; font-size: 16px;">📞 +91 9971 00 2984</a>
+                        <span style="font-weight: bold; color: #333;">Helpline 1:</span><br>
+                        <a href="tel:+919821020995" style="color: #d4af37; text-decoration: none; font-size: 16px;">📞 +91 98210 20995</a>
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 0;">
-                        <span style="font-weight: bold; color: #333;">Sponsorship:</span><br>
-                        <a href="tel:+919810910686" style="color: #d4af37; text-decoration: none; font-size: 16px;">📞 +91 9810 91 0686</a>
+                        <span style="font-weight: bold; color: #333;">Helpline 2 / Nominations:</span><br>
+                        <a href="tel:+919873004416" style="color: #d4af37; text-decoration: none; font-size: 16px;">📞 +91 98730 04416</a>
                     </td>
                 </tr>
             </table>
@@ -119,7 +113,7 @@ export const sendNominationSuccessEmail = async (email, nomineeName, credentials
         <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
         
         <p style="font-size: 12px; color: #888; text-align: center; margin-bottom: 0;">
-            Sent by <strong>Global Healthcare Awards & Summit 2026</strong><br>
+            Sent by <strong>International Healthcare Awards & Summit 2026</strong><br>
             Organised by Prime Time Research Media Pvt. Ltd.
         </p>
       </div>
@@ -139,9 +133,9 @@ export const sendNominationSuccessEmail = async (email, nomineeName, credentials
  */
 export const sendPasswordResetEmail = async (email, otp) => {
     const mailOptions = {
-        from: `"Global Healthcare Awards" <${config.EMAIL.FROM}>`,
+        from: `"International Healthcare Awards" <${config.EMAIL.FROM}>`,
         to: email,
-        subject: "Password Reset Code - Global Healthcare Awards",
+        subject: "Password Reset Code - International Healthcare Awards",
         html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #d4af37; border-radius: 10px;">
         <h2 style="color: #d4af37; text-align: center;">Account Recovery</h2>
@@ -152,7 +146,7 @@ export const sendPasswordResetEmail = async (email, otp) => {
         </div>
         <p>If you did not request this, please ignore this email. Your password will remain unchanged.</p>
         <hr>
-        <p style="font-size: 12px; text-align: center;">© Global Healthcare Awards 2026</p>
+        <p style="font-size: 12px; text-align: center;">© International Healthcare Awards 2026</p>
       </div>
     `,
     };
@@ -171,13 +165,13 @@ export const sendPasswordResetEmail = async (email, otp) => {
  */
 export const sendNominationCredentialsEmail = async (email, name, password) => {
     const mailOptions = {
-        from: `"Global Healthcare Awards" <${config.EMAIL.FROM}>`,
+        from: `"International Healthcare Awards" <${config.EMAIL.FROM}>`,
         to: email,
-        subject: "Your Account Credentials - Global Healthcare Awards 2026",
+        subject: "Your Account Credentials - International Healthcare Awards 2026",
         html: `
       <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: auto; padding: 30px; border: 1px solid #d4af37; border-radius: 15px; background-color: #ffffff;">
         <div style="text-align: center; margin-bottom: 25px;">
-            <h1 style="color: #d4af37; margin: 0; font-size: 28px;">Welcome to Global Healthcare Awards!</h1>
+            <h1 style="color: #d4af37; margin: 0; font-size: 28px;">Welcome to International Healthcare Awards!</h1>
         </div>
         
         <p style="color: #333; font-size: 16px; line-height: 1.6;">Dear <strong>${name}</strong>,</p>
@@ -203,7 +197,7 @@ export const sendNominationCredentialsEmail = async (email, name, password) => {
         <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
         
         <p style="font-size: 12px; color: #888; text-align: center; margin-bottom: 0;">
-            © Global Healthcare Awards 2026<br>
+            © International Healthcare Awards 2026<br>
             Organised by Prime Time Research Media Pvt. Ltd.
         </p>
       </div>

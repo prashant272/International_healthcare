@@ -61,30 +61,30 @@ export default function Home() {
 
   const events = [
     {
-      title: "International Healthcare Awards 2026 – Dubai Edition ",
-      desc: "Honoring groundbreaking achievements and revolutionary leaders who are shaping the future of global medicine and healthcare excellence across the UAE.",
-      date: "26 April 2026",
-      place: "Dubai, UAE",
+      title: "International Healthcare Awards 2026 – Delhi Edition ",
+      desc: "Honoring groundbreaking achievements and revolutionary leaders who are shaping the future of international medicine and healthcare excellence across the UAE.",
+      date: "18 july 2026",
+      place: "Delhi",
       highlight: "International Excellence",
     },
     {
-      title: "International Healthcare Awards 2026 – London Edition",
-      desc: "Celebrating high-impact pioneers and visionaries in medical research and healthcare management in the heart of Europe’s most prestigious clinical landscape.",
-      date: "9 June 2026",
-      place: "House Of Common , London",
-      highlight: "Global Recognition",
+      title: "International Healthcare Awards 2026 – Washington Dc  Edition",
+      desc: "Celebrating high-impact pioneers and visionaries in medical research and healthcare management in   most prestigious clinical landscape.",
+      date: "31 oct 2026",
+      place: "Washington Dc , USA",
+      highlight: "International Recognition",
     },
   ];
 
   const juryMembers = [
     {
-      name: "Rohit Sharma",
+      name: "Mr Rohit Sharma",
       designation: "Indian Cricketer",
       img: "jury1.jpeg"
     },
 
     {
-      name: "Sunil Manohar Gavaskar",
+      name: "Mr. Sunil Gavaskar",
       designation: "Indian Cricket Commentator & Former Cricketer",
       img: "jury2.jpeg"
     },
@@ -96,13 +96,13 @@ export default function Home() {
     },
 
     {
-      name: "Brett Lee",
+      name: "Mr. Brett Lee",
       designation: "Australian Cricketer",
       img: "jury4.jpeg"
     },
 
     {
-      name: "Virender Sehwag",
+      name: "Mr. Virender Sehwag",
       designation: "Indian Cricket Commentator & Former Cricketer",
       img: "jury5.jpeg"
     },
@@ -114,7 +114,7 @@ export default function Home() {
     },
 
     {
-      name: "Shri Sandeep Patil",
+      name: "Mr. Sandeep Patil",
       designation: "Former Indian Cricketer & Chief of the BCCI Selection Committee",
       img: "jury7.jpeg"
     },
@@ -126,7 +126,7 @@ export default function Home() {
     },
 
     {
-      name: "Chetan Sharma",
+      name: "Mr. Chetan Sharma",
       designation: "Former Indian Cricketer",
       img: "jury9.jpeg"
     },
@@ -144,9 +144,19 @@ export default function Home() {
     },
 
     {
-      name: "Mukesh Agnihotri",
-      designation: "Deputy Chief Minister of Himachal Pradesh",
+      name: "Mr. Chetan Chouhan",
+      designation: "Former Indian Cricketer & Politician",
       img: "jury12.jpeg"
+    },
+    {
+      name: "Mr. Jonty Rhodes",
+      designation: "Former South African Cricketer",
+      img: "jury13.png"
+    },
+    {
+      name: "Mr. Sajid Khan",
+      designation: "Film Director & Producer",
+      img: "jury14.png"
     },
   ];
   // Previous Media Partners
@@ -157,21 +167,24 @@ export default function Home() {
       tagline: "India’s Leading News & Media Network",
       logo: "../india-today.png",
     },
-    // {
-    //   name: "Aaj Tak",
-    //   tagline: "India’s No.1 Hindi News Channel",
-    //   logo: "../aaj-tak.png",
-    // },
     {
-      name: "CNN ",
-      tagline: "Global & National News Network",
-      logo: "../cnn.jpg",
+      name: "SME Times",
+      tagline: " ",
+      logo: "/smeTimes.jpg",
+    },
+
+    {
+      name: "IBN 7",
+      tagline: "Hindi News & Current Affairs Channel",
+      logo: "../Ibn7logo.jpg",
     },
     {
-      name: "News18 India",
-      tagline: "Trusted Hindi News Network",
-      logo: "../news.png",
+      name: "First India News",
+      tagline: "Leading Hindi satellite television news channel ",
+      logo: "../first.jpg",
+
     },
+
 
     // ===== Strong National Hindi News =====
     {
@@ -203,14 +216,8 @@ export default function Home() {
     },
 
     // ===== Event & Partner Media =====
-    {
-      name: "TIME Cyber Media Pvt Ltd",
-      tagline: "National News & Media Network",
-      logo: "../prime.png",
-    },
-    {
-      logo: "../The-SME-Times.png",
-    },
+
+
 
     // ===== Production & Foundation =====
     {
@@ -248,68 +255,46 @@ export default function Home() {
       color: "from-indigo-50 to-indigo-600"
     }
   ];
+  // upcoming awards  
 
   const upcomingAwards = [
     {
-      title: "14th International Global Healthcare Awards & Summit 2026",
-      desc: "Honouring excellence, innovation, and leadership in the global healthcare industry.",
-      date: "26 April 2026",
-      location: "Dubai",
-      banner: "/healthcaredubai.png",
-      link: "https://www.globalhealthcareawards.com",
-      color: "from-[#ffecd2] to-[#fcb69f]"
+      title: "India Brand Icon Award 2026",
+      desc: "A prestigious award to recognize and honor leading entrepreneurs, innovators, and achievers across various industries.",
+      date: "",
+      location: "",
+      banner: "",
+      link: "https://indiabrandicon.in/",
+      color: "from-[#11998e] to-[#38ef7d]"
+
     },
     {
-      title: "14th Global Education Excellence Awards 2026",
-      desc: "Celebrating outstanding contributions and leadership in the education sector.",
-      date: "14 March 2026",
-      location: "New Delhi, India",
-      banner: "/educationdelhi.png",
-      link: "https://globaleducationawards.in",
-      color: "from-[#e0c3fc] to-[#8ec5fc]"
+      title: "International Education Award 2026",
+      desc: "A premier accolade awarded by TIME Cyber Media that recognizes innovation and confers honors for excellence in the field of education",
+      date: "",
+      location: "",
+      banner: "",
+      link: "",
+      color: "from-[#11998e] to-[#38ef7d]"
     },
     {
-      title: "India Excellence Awards & Conference 2026",
-      desc: "Recognising excellence, innovation, and leadership across Indian industries.",
-      date: "14 March 2026",
-      location: "New Delhi, India",
-      banner: "/excellencedelhi.png",
-      link: "https://www.primetimemedia.in/india-excellence-awards",
-      color: "from-[#fddb92] to-[#d1fdff]"
-    },
-    {
-      title: "Global Achievers Awards 2026",
-      desc: "Honouring global leaders and achievers across multiple industries.",
-      date: "9 June 2026",
-      location: "House of Commons, London",
-      banner: "/archiverlondon.png",
-      link: "https://www.primetimemedia.in/global-achievers-awards",
-      color: "from-[#cfd9df] to-[#e2ebf0]"
-    },
-    {
-      title: "International Global Healthcare Awards 2026 – Washington DC Edition",
-      desc: "Celebrating healthcare visionaries and policy leaders at the heart of the United States' medical capital.",
-      date: "30 June 2026",
-      location: "Washington, DC, USA",
-      banner: "/USA.png",
-      link: "https://www.globalhealthcareawards.com",
-      color: "from-[#fdfbfb] to-[#ebedee]"
-    },
-    {
-      title: "USA Business Leadership Summit 2026",
-      desc: "A premier summit recognising visionary business leaders and entrepreneurs.",
-      date: "30 June 2026",
-      location: "Washington, DC, USA",
-      banner: "/USA.png",
-      link: "https://www.primetimemedia.in/usa-business-summit",
-      color: "from-[#fdfbfb] to-[#ebedee]"
+      title: "Icon Of The Year Award 2026",
+      desc: "Award to honor outstanding performance in a wide range of categories and industries to ensure that achievements in across all fields are acknowledged",
+      date: "",
+      location: "",
+      banner: "",
+      link: "",
+      color: "from-[#11998e] to-[#38ef7d]"
+
     }
+
+
   ];
 
   const homeFaqs = [
     {
-      q: "What is International Global Healthcare Awards 2026?",
-      a: "International Global Healthcare Awards 2026 is an international recognition platform that honours hospitals, doctors, clinics, healthcare organisations, and healthtech companies for excellence, innovation, and quality patient care.",
+      q: "What is International Healthcare Awards 2026?",
+      a: "International Healthcare Awards 2026 is an international recognition platform that honours hospitals, doctors, clinics, healthcare organisations, and healthtech companies for excellence, innovation, and quality patient care.",
     },
     {
       q: "Who can apply for nomination?",
@@ -325,7 +310,7 @@ export default function Home() {
     },
     {
       q: "What are the benefits of participating?",
-      a: "Participants receive global recognition and credibility, enhanced brand visibility and media exposure, greater trust among patients and partners, networking with healthcare leaders, and marketing assets such as certificates and winner logos.",
+      a: "Participants receive international recognition and credibility, enhanced brand visibility and media exposure, greater trust among patients and partners, networking with healthcare leaders, and marketing assets such as certificates and winner logos.",
     },
     {
       q: "Is self-nomination allowed?",
@@ -351,7 +336,7 @@ export default function Home() {
     <div className={`w-full text-[#f5f3f0]  `}>
       {/* SEO H1 - Hidden */}
       <h1 className="sr-only mt-24 ">
-        Healthcare Awards – International Global Healthcare Awards by TIME Cyber Media Pvt Ltd
+        Healthcare Awards – International Healthcare Awards by TIME Cyber Media Pvt Ltd
       </h1>
       {/* ================= HERO ================= */}
       <section className="relative min-h-screen w-full overflow-hidden">
@@ -423,7 +408,7 @@ export default function Home() {
               <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-black drop-shadow-[0_0_10px_rgba(16,185,129,0.6)]">
                 TIME Cyber Media Pvt Ltd.
               </span>{" "}
-              – Global Award Events
+              – International Award Events
             </p>
           </div>
 
@@ -569,7 +554,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50 pointer-events-none" />
                     {/* SEO Paragraph - Hidden */}
                     <p className="sr-only text-left">
-                      Healthcare Awards by TIME Cyber Media Pvt Ltd, also known as International Global Healthcare
+                      Healthcare Awards by TIME Cyber Media Pvt Ltd, also known as International Healthcare
                       Awards, recognize excellence, innovation, hospitals, doctors, and healthcare
                       leaders worldwide.
                     </p>
@@ -590,7 +575,7 @@ export default function Home() {
                         </div>
                         <div>
                           <h3 className="text-2xl lg:text-3xl font-black text-emerald-50 leading-tight">
-                            International Global Healthcare Excellence Awards, 2026
+                            International Healthcare Excellence Awards, 2026
                           </h3>
                           <p className="text-emerald-400 font-semibold mt-1 text-sm tracking-wide">
                             Achieving Excellence in Healthcare
@@ -598,9 +583,9 @@ export default function Home() {
                         </div>
                       </div>
                       <p className="text-emerald-100/60 leading-relaxed text-lg font-medium text-left">
-                        The <span className="font-bold text-emerald-400">International Global Healthcare Awards, 2026</span> recognize significant contributions in the healthcare sector.<br /><br />
+                        The <span className="font-bold text-emerald-400">International Healthcare Awards, 2026</span> recognize significant contributions in the healthcare sector.<br /><br />
                         The Awards showcase the highest academic goals and outstanding achievements through <span className="font-semibold text-emerald-300">innovation, leadership, dedication,</span> and commitment towards learning.<br /><br />
-                        <span className="font-semibold text-emerald-300">International Global Healthcare Excellence Awards, 2026</span> will be a converging point of the industry's elite – a celebration and recognition of excellence, reputation, and exemplary service.
+                        <span className="font-semibold text-emerald-300">International Healthcare Excellence Awards, 2026</span> will be a converging point of the industry's elite – a celebration and recognition of excellence, reputation, and exemplary service.
                       </p>
                       {/* Feature Pills */}
                       <div className="flex flex-wrap gap-3 pt-4">
@@ -629,28 +614,18 @@ export default function Home() {
                 <div className="space-y-6">
                   {[
                     {
-                      title: 'Dubai Edition',
-                      date: '26 April 2026',
+                      title: 'Delhi Edition',
+                      date: '18 July 2026',
                       icon: (
                         <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-300 flex items-center justify-center shadow-lg">
-                          <span className="text-xl">🇦🇪</span>
+                          <span className="text-xl">🇮🇳</span>
                         </span>
                       ),
                       border: 'from-emerald-500 to-emerald-300',
                     },
                     {
-                      title: 'London Edition',
-                      date: '9 June 2026',
-                      icon: (
-                        <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-400 flex items-center justify-center shadow-lg">
-                          <span className="text-xl">🇬🇧</span>
-                        </span>
-                      ),
-                      border: 'from-teal-500 to-cyan-400',
-                    },
-                    {
                       title: 'Washington DC Edition',
-                      date: '30 June 2026',
+                      date: '31 October 2026',
                       icon: (
                         <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg">
                           <span className="text-xl">🇺🇸</span>
@@ -720,7 +695,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* ================= WHY ENTER ================= */}
+        {/* ================= WHY HealthCare Awards 2026 ================= */}
         <section className={`relative overflow-hidden py-8`}>
           {/* Animated Background */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
@@ -732,19 +707,19 @@ export default function Home() {
             {/* Heading and grid as before */}
             {/* ... code unchanged ... */}
             <FadeUp className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Why Enter Healthcare Awards 2026
+              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-2 pb-3 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                Why Healthcare Awards 2026
               </h2>
               <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
               <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                Gain global recognition, validate your achievements through independent jury assessment, and position your brand at the forefront of healthcare innovation.
+                Gain international recognition, validate your achievements through independent jury assessment, and position your brand at the forefront of healthcare innovation.
               </p>
             </FadeUp>
             {/* ...grid ... */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
               {[
                 {
-                  title: "National & Global Recognition",
+                  title: "National & International Recognition",
                   desc: "Gain prestigious recognition across the healthcare industry and position your organisation among the most trusted and respected leaders.",
                   icon: "🌟",
                 },
@@ -765,7 +740,7 @@ export default function Home() {
                 },
                 {
                   title: "Benchmark Against Industry Leaders",
-                  desc: "Measure your performance against industry best practices, global standards, and emerging healthcare trends.",
+                  desc: "Measure your performance against industry best practices, international standards, and emerging healthcare trends.",
                   icon: "📊",
                 },
                 {
@@ -842,7 +817,7 @@ export default function Home() {
                 },
                 {
                   title: "Benchmarking & Industry Standards",
-                  desc: "Each nomination is benchmarked against industry best practices, regulatory standards, and emerging global trends to measure relevance and excellence.",
+                  desc: "Each nomination is benchmarked against industry best practices, regulatory standards, and emerging international trends to measure relevance and excellence.",
                   number: "04",
                 },
                 {
@@ -887,6 +862,103 @@ export default function Home() {
                 </StaggerContainer>
               );
             })()}
+          </div>
+        </section>
+        {/* Selection Process */}
+        <section className="relative overflow-hidden py-12">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6">
+            <FadeUp className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                Selection <span className="text-emerald-400">Process</span>
+              </h2>
+              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
+              <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                A structured and transparent evaluation framework that maintains complete impartiality and ethical standards throughout.
+              </p>
+            </FadeUp>
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              {[
+                { title: "Judging Criteria", desc: "A structured evaluation framework ensures credibility, consistency, and fairness across all nominations.", icon: "📋" },
+                { title: "Persistent Fairness", desc: "Each entry is reviewed independently by an eminent jury panel, maintaining complete impartiality.", icon: "⚖️" },
+                { title: "Confidentiality", desc: "All nomination data and outcomes are treated with the highest level of security and confidentiality.", icon: "🔒" },
+              ].map((item, index) => (
+                <StaggerItem key={index} className="h-full">
+                  <NeonCard color="emerald" className="h-full">
+                    <div className="relative flex flex-col items-start text-left h-full p-10">
+                      <div className="text-5xl mb-8 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-2xl font-black bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent group-hover:text-emerald-400 transition-colors duration-300 mb-4">
+                        {item.title}
+                      </h3>
+                      <p className="text-emerald-100/60 text-base leading-relaxed font-medium group-hover:text-emerald-100 transition-colors duration-300">
+                        {item.desc}
+                      </p>
+                      <div className="mt-auto pt-8">
+                        <div className="h-1.5 w-12 bg-gradient-to-r from-emerald-500/50 to-transparent rounded-full group-hover:w-20 transition-all duration-500" />
+                      </div>
+                    </div>
+                  </NeonCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+        {/* WHO SHOULD NOMINATE section */}
+        <section className="relative overflow-hidden py-8">
+          {/* Animated Gradient Glows */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+            <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
+            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] animate-pulse delay-1000" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12">
+            <FadeUp className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                Who Should <span className="text-emerald-400">Nominate?</span>
+              </h2>
+              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
+              <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                We invite visionaries, researchers, and leading institutions to join our elite circle of international healthcare pioneers.
+              </p>
+            </FadeUp>
+
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {nomineeCategories.map((item, index) => (
+                <StaggerItem key={index} className="h-full">
+                  <NeonCard color="emerald" className="h-full">
+                    <div className="relative flex flex-col items-start h-full p-8 text-left">
+                      {/* Icon with Glowing Ring */}
+                      <div className="relative mb-8 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/40 transition-colors duration-500" />
+                        <span className="relative text-5xl drop-shadow-2xl filter brightness-110">
+                          {item.icon}
+                        </span>
+                      </div>
+
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-black bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent group-hover:text-emerald-400 transition-colors duration-300">
+                          {item.title}
+                        </h3>
+                        <p className="text-emerald-100/60 text-sm sm:text-base leading-relaxed font-medium group-hover:text-emerald-100 transition-colors duration-300">
+                          {item.desc}
+                        </p>
+                      </div>
+
+                      <div className="mt-auto pt-8 flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <div className="h-px w-8 bg-gradient-to-r from-emerald-500/50 to-transparent" />
+                      </div>
+                    </div>
+                  </NeonCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </section>
 
@@ -939,96 +1011,36 @@ export default function Home() {
         {/* ================= MEDIA GALLERY ================= */}
         <MediaGallery />
 
-        {/* ================= PREVIOUS MEDIA PARTNERS ================= */}
-        <section className="relative overflow-hidden py-12">
-          {/* Decorative mesh gradients */}
+        {/* CTA section */}
+        <section className="relative overflow-hidden py-5">
           <div className="absolute inset-0 pointer-events-none -z-10">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-emerald-500/5 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-emerald-500/10 rounded-full blur-[160px] animate-pulse" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6">
-            <FadeUp className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Our Previous Media Partners
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <FadeUp>
+              <h2 className="text-4xl xs:text-5xl md:text-6xl font-heading font-black mb-8 bg-gradient-to-r from-white via-emerald-100 to-emerald-400 bg-clip-text text-transparent leading-tight">
+                Get the recognition for you and your team
               </h2>
-              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
-              <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                A strong network of global media partners has helped amplify our vision across the international healthcare landscape.
+              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full mb-10" />
+              <p className="text-emerald-100/70 text-xl md:text-2xl mb-12 font-medium leading-relaxed">
+                Nomination Extended Deadline – <span className="text-emerald-400 font-black">closing soon</span>
               </p>
+              <button
+                type="button"
+                onClick={handleNominateClick}
+                className="relative overflow-hidden group/btn rounded-full bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600 text-white font-black px-12 py-6 text-xl transition-all duration-500 hover:scale-110 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.5)] focus:outline-none tracking-[0.1em] uppercase"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-4">
+                  Nominate Now
+                  <svg className="w-7 h-7 group-hover:translate-x-3 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-transparent -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-1000" />
+              </button>
             </FadeUp>
-
-            {/* Automatic Infinite Slider */}
-            <div className="overflow-hidden py-10 w-full relative">
-              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--base-bg)] to-transparent z-10" />
-              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--base-bg)] to-transparent z-10" />
-
-              <div className="animate-marquee flex gap-12 items-center">
-                {[...mediaPartners, ...mediaPartners].map((partner, idx) => (
-                  <div key={idx} className="flex-shrink-0 group">
-                    <div className="
-                      relative h-32 w-32 sm:h-40 sm:w-40 rounded-[2rem]
-                      bg-slate-900/40 
-                      border border-emerald-500/20 hover:border-emerald-400/60
-                      transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(16,185,129,0.3)]
-                      flex items-center justify-center p-6
-                    ">
-                      {partner.logo ? (
-                        <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-                      ) : (
-                        <span className="text-emerald-400 text-4xl font-black">{partner.name?.[0]}</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
-        {/* Selection Process */}
-        <section className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
-          </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6">
-            <FadeUp className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Selection <span className="text-emerald-400">Process</span>
-              </h2>
-              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
-              <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                A structured and transparent evaluation framework that maintains complete impartiality and ethical standards throughout.
-              </p>
-            </FadeUp>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {[
-                { title: "Judging Criteria", desc: "A structured evaluation framework ensures credibility, consistency, and fairness across all nominations.", icon: "📋" },
-                { title: "Persistent Fairness", desc: "Each entry is reviewed independently by an eminent jury panel, maintaining complete impartiality.", icon: "⚖️" },
-                { title: "Confidentiality", desc: "All nomination data and outcomes are treated with the highest level of security and confidentiality.", icon: "🔒" },
-              ].map((item, index) => (
-                <StaggerItem key={index} className="h-full">
-                  <NeonCard color="emerald" className="h-full">
-                    <div className="relative flex flex-col items-start text-left h-full p-10">
-                      <div className="text-5xl mb-8 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                        {item.icon}
-                      </div>
-                      <h3 className="text-2xl font-black bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent group-hover:text-emerald-400 transition-colors duration-300 mb-4">
-                        {item.title}
-                      </h3>
-                      <p className="text-emerald-100/60 text-base leading-relaxed font-medium group-hover:text-emerald-100 transition-colors duration-300">
-                        {item.desc}
-                      </p>
-                      <div className="mt-auto pt-8">
-                        <div className="h-1.5 w-12 bg-gradient-to-r from-emerald-500/50 to-transparent rounded-full group-hover:w-20 transition-all duration-500" />
-                      </div>
-                    </div>
-                  </NeonCard>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </section>
         {/* ================= KEY FAQ SNAPSHOT ================= */}
         <section className="relative overflow-hidden py-12">
           <div className="absolute inset-0 pointer-events-none -z-10">
@@ -1070,38 +1082,13 @@ export default function Home() {
             </StaggerContainer>
           </div>
         </section>
-        {/* CTA section */}
-        <section className="relative overflow-hidden py-16">
-          <div className="absolute inset-0 pointer-events-none -z-10">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-emerald-500/10 rounded-full blur-[160px] animate-pulse" />
-          </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <FadeUp>
-              <h2 className="text-4xl xs:text-5xl md:text-6xl font-heading font-black mb-8 bg-gradient-to-r from-white via-emerald-100 to-emerald-400 bg-clip-text text-transparent leading-tight">
-                Get the recognition you and your team deserve
-              </h2>
-              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full mb-10" />
-              <p className="text-emerald-100/70 text-xl md:text-2xl mb-12 font-medium leading-relaxed">
-                Nomination Extended Deadline – <span className="text-emerald-400 font-black">15 April 2026</span>
-              </p>
-              <button
-                type="button"
-                onClick={handleNominateClick}
-                className="relative overflow-hidden group/btn rounded-full bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600 text-white font-black px-12 py-6 text-xl transition-all duration-500 hover:scale-110 hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.5)] focus:outline-none tracking-[0.1em] uppercase"
-              >
-                <span className="relative z-10 flex items-center justify-center gap-4">
-                  Nominate Now
-                  <svg className="w-7 h-7 group-hover:translate-x-3 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-transparent -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-1000" />
-              </button>
-            </FadeUp>
-          </div>
-        </section>
+
+
+
 
         {/* PREVIOUS EDITIONS CAROUSEL SECTION */}
-        <section className="relative overflow-hidden py-12">
+        {/* <section className="relative overflow-hidden py-12">
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
             <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-emerald-500/5 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
             <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full animate-pulse delay-700" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
@@ -1114,7 +1101,7 @@ export default function Home() {
               </h2>
               <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
               <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                Relive the moments of global healthcare transformation and cinematic excellence.
+                Relive the moments of international healthcare transformation and cinematic excellence.
               </p>
             </FadeUp>
 
@@ -1206,10 +1193,10 @@ export default function Home() {
               </div>
             )}
           </div>
-        </section>
+        </section> */}
 
         {/* OUR OTHER UPCOMING AWARDS section */}
-        <section className="relative overflow-hidden py-8">
+        <section className="relative overflow-hidden py-5">
           {/* Responsive glowing background blobs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
             <div className="absolute top-[20%] left-[12%] w-[300px] h-[300px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
@@ -1223,7 +1210,7 @@ export default function Home() {
               </h2>
               <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
               <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                Join us in celebrating excellence across various industries globally through our prestigious recognition platforms.
+                Join us in celebrating excellence across various industries internationally through our prestigious recognition platforms.
               </p>
             </FadeUp>
 
@@ -1313,58 +1300,52 @@ export default function Home() {
             </FadeUp>
           </div>
         </section>
-        {/* WHO SHOULD NOMINATE section */}
-        <section className="relative overflow-hidden py-8">
-          {/* Animated Gradient Glows */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-            <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
-            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] animate-pulse delay-1000" />
+        {/* ================= MEDIA PARTNERS / COVERAGE ================= */}
+        <section className="relative overflow-hidden py-2 ">
+          {/* Decorative mesh gradients */}
+          <div className="absolute inset-0 pointer-events-none -z-10">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-emerald-500/5 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12">
-            <FadeUp className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Who Should <span className="text-emerald-400">Nominate?</span>
+          <div className="relative z-10 max-w-7xl mx-auto px-6">
+            <FadeUp className="text-center mb-5 sm:mb-7">
+              <h2 className="text-3xl pb-1 xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                Our Media Partners/Coverage
               </h2>
               <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
               <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                We invite visionaries, researchers, and leading institutions to join our elite circle of global healthcare pioneers.
+                A strong network of national and international media partners has helped amplify our vision across the international healthcare landscape.
               </p>
             </FadeUp>
 
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {nomineeCategories.map((item, index) => (
-                <StaggerItem key={index} className="h-full">
-                  <NeonCard color="emerald" className="h-full">
-                    <div className="relative flex flex-col items-start h-full p-8 text-left">
-                      {/* Icon with Glowing Ring */}
-                      <div className="relative mb-8 flex items-center justify-center">
-                        <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/40 transition-colors duration-500" />
-                        <span className="relative text-5xl drop-shadow-2xl filter brightness-110">
-                          {item.icon}
-                        </span>
-                      </div>
+            {/* Automatic Infinite Slider */}
+            <div className="overflow-hidden py-10 w-full relative pb-20">
+              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--base-bg)] to-transparent z-10" />
+              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--base-bg)] to-transparent z-10" />
 
-                      <div className="space-y-4">
-                        <h3 className="text-xl font-black bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent group-hover:text-emerald-400 transition-colors duration-300">
-                          {item.title}
-                        </h3>
-                        <p className="text-emerald-100/60 text-sm sm:text-base leading-relaxed font-medium group-hover:text-emerald-100 transition-colors duration-300">
-                          {item.desc}
-                        </p>
-                      </div>
-
-                      <div className="mt-auto pt-8 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <div className="h-px w-8 bg-gradient-to-r from-emerald-500/50 to-transparent" />
-                      </div>
+              <div className="animate-marquee flex gap-12 items-center">
+                {[...mediaPartners, ...mediaPartners].map((partner, idx) => (
+                  <div key={idx} className="flex-shrink-0 group">
+                    <div className="
+                      relative h-32 w-32 sm:h-40 sm:w-40 rounded-[2rem]
+                      bg-slate-900/40 
+                      border border-emerald-500/20 hover:border-emerald-400/60
+                      transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(16,185,129,0.3)]
+                      flex items-center justify-center p-6
+                    ">
+                      {partner.logo ? (
+                        <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                      ) : (
+                        <span className="text-emerald-400 text-4xl font-black">{partner.name?.[0]}</span>
+                      )}
                     </div>
-                  </NeonCard>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
+
       </div>
 
     </div>

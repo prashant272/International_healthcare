@@ -9,7 +9,7 @@ const mediaSections = [
     color: "from-emerald-400 to-teal-400",
     accent: "border-emerald-400/40",
     items: [
-      { label: "Times of India Feature", date: "Jan 2024", desc: "Exclusive feature on International Healthcare Awards ceremony and its impact on the global medical community." },
+      { label: "Times of India Feature", date: "Jan 2024", desc: "Exclusive feature on International Healthcare Awards ceremony and its impact on the international medical community." },
       { label: "Hindustan Exclusive Coverage", date: "Feb 2023", desc: "Full-page coverage of award winners, keynote speeches, and healthcare milestones celebrated at the event." },
     ],
   },
@@ -20,7 +20,7 @@ const mediaSections = [
     color: "from-blue-400 to-indigo-400",
     accent: "border-blue-400/40",
     items: [
-      { label: "Zee News Interview", date: "March 2024", desc: "Special broadcast interview with key healthcare leaders and award organisers discussing the future of global healthcare." },
+      { label: "Zee News Interview", date: "March 2024", desc: "Special broadcast interview with key healthcare leaders and award organisers discussing the future of international healthcare." },
       { label: "DD National Event Coverage", date: "2023", desc: "National broadcast of the award ceremony, highlighting winners and their contributions to healthcare excellence." },
     ],
   },
@@ -32,10 +32,59 @@ const mediaSections = [
     accent: "border-purple-400/40",
     items: [
       { label: "The Print – Special Coverage", date: "May 2024", desc: "In-depth digital report covering the awards, jury insights, and the journey of healthcare innovation in 2024." },
-      { label: "#GlobalHealthcareAwards Trending", date: "2024", desc: "Award ceremony trended globally on social media with thousands of posts celebrating healthcare excellence." },
+      { label: "#InternationalHealthcareAwards Trending", date: "2024", desc: "Award ceremony trended internationally on social media with thousands of posts celebrating healthcare excellence." },
     ],
   },
 ];
+// const mediaSections = [
+//   {
+//     icon: "📺",
+//     title: "Premium National & International Media",
+//     badge: "Premium",
+//     color: "from-amber-400 to-orange-400",
+//     accent: "border-amber-400/40",
+//     items: [
+//       { label: "India Today Feature", date: "2024", desc: "Special coverage by India’s Leading News & Media Network on healthcare milestones and innovations." },
+//       { label: "News18 India Broadcast", date: "2024", desc: "Trusted Hindi News Network highlighting exclusive event moments and keynote addresses." },
+//       { label: "First India News Highlight", date: "2024", desc: "Leading Hindi satellite television news channel covering the award ceremony live." }
+//     ],
+//   },
+//   {
+//     icon: "📡",
+//     title: "Strong National Hindi News",
+//     badge: "National",
+//     color: "from-blue-400 to-indigo-400",
+//     accent: "border-blue-400/40",
+//     items: [
+//       { label: "Bharat 24 Coverage", date: "2024", desc: "In-depth reporting on national current affairs and healthcare updates by the Hindi News channel." },
+//       { label: "Doordarshan's Special", date: "2024", desc: "India’s Public Service News Channel broadcasting key moments of the event nationwide." },
+//       { label: "News 1 India Telecast", date: "2024", desc: "National Hindi News Channel tracking the achievements of healthcare pioneers." },
+//       { label: "News 10 India Feature", date: "2024", desc: "National News & Current Affairs Network showcasing excellence in the industry." }
+//     ],
+//   },
+//   {
+//     icon: "🌐",
+//     title: "Regional & Specialised Media",
+//     badge: "Digital & Regional",
+//     color: "from-emerald-400 to-teal-400",
+//     accent: "border-emerald-400/40",
+//     items: [
+//       { label: "Delhi Aaj Tak Segment", date: "2024", desc: "Regional Hindi News Network capturing targeted regional impact and local success stories." },
+//       { label: "SME Times Online", date: "2024", desc: "Digital media coverage focusing on small and medium enterprise contributions to the ecosystem." }
+//     ],
+//   },
+//   {
+//     icon: "🎬",
+//     title: "Production & Foundation",
+//     badge: "Coverage",
+//     color: "from-purple-400 to-violet-400",
+//     accent: "border-purple-400/40",
+//     items: [
+//       { label: "Xoom Studio Production", date: "2024", desc: "Official Media Production & Event Coverage Partner managing high-quality visuals and broadcasting." }
+//     ],
+//   },
+// ];
+
 
 export default function Media() {
   return (

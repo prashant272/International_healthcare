@@ -9,13 +9,13 @@ import GuestCard from "../components/GuestCard.jsx";
 
 const juryMembers = [
   {
-    name: "Rohit Sharma",
+    name: "Mr Rohit Sharma",
     designation: "Indian Cricketer",
     img: "jury1.jpeg"
   },
 
   {
-    name: "Sunil Manohar Gavaskar",
+    name: "Mr. Sunil Gavaskar",
     designation: "Indian Cricket Commentator & Former Cricketer",
     img: "jury2.jpeg"
   },
@@ -27,13 +27,13 @@ const juryMembers = [
   },
 
   {
-    name: "Brett Lee",
+    name: "Mr. Brett Lee",
     designation: "Australian Cricketer",
     img: "jury4.jpeg"
   },
 
   {
-    name: "Virender Sehwag",
+    name: "Mr. Virender Sehwag",
     designation: "Indian Cricket Commentator & Former Cricketer",
     img: "jury5.jpeg"
   },
@@ -45,7 +45,7 @@ const juryMembers = [
   },
 
   {
-    name: "Shri Sandeep Patil",
+    name: "Mr. Sandeep Patil",
     designation: "Former Indian Cricketer & Chief of the BCCI Selection Committee",
     img: "jury7.jpeg"
   },
@@ -57,7 +57,7 @@ const juryMembers = [
   },
 
   {
-    name: "Chetan Sharma",
+    name: "Mr. Chetan Sharma",
     designation: "Former Indian Cricketer",
     img: "jury9.jpeg"
   },
@@ -75,10 +75,22 @@ const juryMembers = [
   },
 
   {
-    name: "Mukesh Agnihotri",
-    designation: "Deputy Chief Minister of Himachal Pradesh",
+    name: "Mr. Chetan Chouhan",
+    designation: "Former Indian Cricketer & Politician",
     img: "jury12.jpeg"
   },
+  {
+    name: "Mr. Jonty Rhodes",
+    designation: "Former South African Cricketer",
+    img: "jury13.png"
+  },
+  {
+    name: "Mr. Sajid Khan",
+    designation: "Film Director & Producer",
+    img: "jury14.png"
+  },
+
+
 ];
 
 export default function Jury() {

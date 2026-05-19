@@ -50,14 +50,14 @@ export default function Footer() {
                   <span
                     className="font-heading text-xl sm:text-2xl font-extrabold bg-clip-text text-transparent"
                     style={{ backgroundImage: blueGrad }}>
-                    International Global Healthcare Awards 2026
+                    International Healthcare Awards 2026
                   </span>
                 </div>
                 <div
                   className="mt-3 rounded-full h-1 w-24 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mb-4"
                 />
                 <p className="text-sm lg:text-base font-medium leading-relaxed opacity-80 text-left">
-                  Recognising outstanding leadership, innovation & excellence in global healthcare – celebrating visionary organisations and individuals shaping tomorrow.
+                  Recognising outstanding leadership, innovation & excellence in international healthcare – celebrating visionary organisations and individuals shaping tomorrow.
                 </p>
               </div>
 
@@ -227,56 +227,39 @@ export default function Footer() {
                 <div className="space-y-3 text-base">
                   <div className="flex items-start gap-2">
                     <span className="inline-block w-5 mt-0.5 text-emerald-500">🏢</span>
-                    <span className="text-sm leading-snug">
-                      <strong>Office:</strong> TIME Cyber Media Pvt Ltd., C-31, Nawada Housing Complex, New Delhi-59
-                    </span>
+                    <a
+                      href="https://www.google.com/maps/place/TIME+Cyber+Media+Pvt+Ltd/@28.6193327,77.0268018,17z/data=!4m14!1m7!3m6!1s0x390ce3de9c8c4cb1:0x3e1d9a9d183cf7a4!2sTIME+Cyber+Media+Pvt+Ltd!8m2!3d28.6193327!4d77.0293767!16s%2Fg%2F11bz014xp_!3m5!1s0x390ce3de9c8c4cb1:0x3e1d9a9d183cf7a4!8m2!3d28.6193327!4d77.0293767!16s%2Fg%2F11bz014xp_"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm leading-snug hover:text-emerald-400 transition-all duration-200"
+                    >
+                      <strong>Delhi Office:</strong> C-31, Nawada Housing Complex, Shivaji Marg, New Delhi-59
+                    </a>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="inline-block w-5 mt-0.5 text-emerald-500">🏢</span>
+                    <a
+                      href="https://www.google.com/maps/place/Vfx+Multimedia+School+Graphic+Design-Video+Editing+Institute+Animation+Institute+In+Vasai-Vfx+Course+In+Vasai+Vfx+Institute/@19.3485819,72.7433027,13.01z/data=!4m22!1m15!4m14!1m6!1m2!1s0x390d05a3b320d5f3:0x9b40cb0d00276119!2sP+Square+Salon+Unisex+salon,+Red+Light+%F0%9F%9A%A6,+P+Square+Salon+1st+Floor+Plot+no+63,+Mohit+Nagar+Dwarka,+opposite+NSUT,+near+Nexa+Showroom,+Kakrola,+Delhi,+110078!2m2!1d77.0352846!2d28.6064227!1m6!1m2!1s0x3be7ae64ffffffff:0x352cd000cf148a0a!2sVfx+Multimedia+School+Graphic+Design-Video+Editing+Institute+Animation+Institute+In+Vasai-Vfx+Course+In+Vasai+Vfx+Institute,+Vinayak+shopping+centre,+A+%2F201+202,+Vasai+Station+Rd,+opp.+Union+bank,+Navghar+Manikpur,+Dindayal+Nagar,+Vasai+West,+Mumbai,+Vasai-Virar,+Maharashtra+401202!2m2!1d72.8274074!2d19.3784544!3m5!1s0x3be7ae64ffffffff:0x352cd000cf148a0a!8m2!3d19.3784544!4d72.8274074!16s%2Fg%2F11b90fq89w?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm leading-snug hover:text-emerald-400 transition-all duration-200"
+                    >
+                      <strong>Mumbai Office:</strong> A/201-202, Vinayak Shopping Centre, Vasai Station Rd, Vasai West, Mumbai-401202
+                    </a>
                   </div>
                   <div className="grid grid-cols-1 gap-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="inline-block w-5 text-[#25D366]">📞</span>
-                      <a href="tel:+919810882769" className="hover:text-emerald-400 transition-all text-sm font-semibold">
-                        +91 9810 88 2769 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Nominations)</span>
+                      <span className="inline-block w-5 text-emerald-500">📞</span>
+                      <a href="tel:+919821020995" className="hover:text-emerald-400 transition-all text-sm font-semibold">
+                        +91 98210 20995 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Customer Service / Helpline)</span>
                       </a>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-5 text-emerald-500">📞</span>
-                      <a href="tel:+919971002984" className="hover:text-emerald-400 transition-all text-sm font-semibold">
-                        +91 9971 00 2984 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Sponsorship)</span>
+                      <a href="tel:+919873004416" className="hover:text-emerald-400 transition-all text-sm font-semibold">
+                        +91 98730 04416 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Other Help / Nominations)</span>
                       </a>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="inline-block w-5 text-emerald-500">📞</span>
-                      <a href="tel:+919810910686" className="hover:text-emerald-400 transition-all text-sm font-semibold">
-                        +91 9810 91 0686 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Helpline)</span>
-                      </a>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="inline-block w-5 text-emerald-500">☎️</span>
-                      <a href="tel:+911169268754" className="hover:text-emerald-400 transition-all text-sm font-semibold">
-                        +91 11-69268754
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 mt-2">
-                    <a
-                      href="https://www.google.com/maps"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-400/40 hover:bg-emerald-500/20 hover:border-emerald-400 text-emerald-400 font-semibold transition-all duration-200"
-                    >
-                      <svg
-                        className="w-5 h-5 mr-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          d="M12 2C8.13 2 5 5.13 5 9c0 2.71 1.99 6.42 6.21 11.54a1 1 0 0 0 1.58 0C17.01 15.42 19 11.71 19 9c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      View on Google Maps
-                    </a>
                   </div>
                 </div>
               </div>
@@ -306,7 +289,7 @@ export default function Footer() {
                 color: "transparent",
               }}
             >
-              International Global Healthcare Awards
+              International Healthcare Awards
             </span>
 
             {" "} &bull; © {new Date().getFullYear()} All Rights Reserved

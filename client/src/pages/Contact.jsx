@@ -3,38 +3,35 @@ import { PageHero, FadeUp, StaggerContainer, StaggerItem, SlideIn } from "../com
 import { motion } from "framer-motion";
 
 const socialLinks = [
-  { icon: Facebook, href: "https://www.facebook.com/primetimeresearch", label: "Facebook", color: "from-blue-600 to-blue-500" },
-  { icon: Instagram, href: "https://www.instagram.com/primetimeresearchmedia/", label: "Instagram", color: "from-pink-600 to-purple-600" },
-  { icon: Youtube, href: "https://www.youtube.com/@primetimermedia", label: "YouTube", color: "from-red-600 to-red-500" },
-  { icon: Linkedin, href: "https://www.linkedin.com/company/primetimeresearch-media/", label: "LinkedIn", color: "from-blue-700 to-blue-600" },
-  { icon: MessageCircle, href: "https://wa.me/919810882769", label: "WhatsApp", color: "from-green-600 to-green-500" },
+  { icon: Facebook, href: "https://www.facebook.com/TimeCyberMedia", label: "Facebook", color: "from-blue-600 to-blue-500" },
+  { icon: Instagram, href: "https://www.instagram.com/TimeCyberMedia/", label: "Instagram", color: "from-pink-600 to-purple-600" },
+  { icon: Youtube, href: "https://www.youtube.com/@timecybermedia", label: "YouTube", color: "from-red-600 to-red-500" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/timecybermedia?originalSubdomain=in", label: "LinkedIn", color: "from-blue-700 to-blue-600" },
+  { icon: MessageCircle, href: "https://wa.me/919821020995", label: "WhatsApp", color: "from-green-600 to-green-500" },
 ];
 
 const phones = [
-  { tel: "+911169268754", label: "Board Line 1", display: "+91 11 69268754", icon: "📞" },
-  { tel: "+911135773024", label: "Board Line 2", display: "+91-11-35773024", icon: "📞" },
-  { tel: "+919810910686", label: "Helpline", display: "+91 9810 91 0686", icon: "🆘" },
-  { tel: "+919971002984", label: "Sponsorship", display: "+91 9971 00 2984", icon: "🤝" },
-  { tel: "+919810882769", label: "Nominations", display: "+91 9810 88 2769", icon: "🏆" },
+  { tel: "+919821020995", display: "+91-98210 20995", icon: "📞" },
+  { tel: "+919873004416", display: "+91-98730 04416", icon: "📞" },
 ];
 
-function ContactItem({ href, icon: Icon, label, value, target }) {
+function ContactItem({ href, icon: Icon, label, value, target, className = "" }) {
   return (
     <motion.a
       href={href}
       target={target}
       rel={target ? "noopener noreferrer" : undefined}
-      className="flex items-center gap-4 p-4 glass-card border border-emerald-500/15 hover:border-emerald-400/40 transition-all duration-300 group"
+      className={`flex items-center gap-4 p-4 glass-card border border-emerald-500/15 hover:border-emerald-400/40 transition-all duration-300 group ${className}`}
       whileHover={{ x: 4 }}
     >
       <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md">
         <Icon size={18} className="text-white" />
       </div>
-      <div>
+      <div className="flex-1 min-w-0">
         <div className="text-[11px] text-emerald-300/60 font-semibold uppercase tracking-widest mb-0.5">{label}</div>
-        <div className="text-sm md:text-base font-bold text-white group-hover:text-emerald-100 transition-colors">{value}</div>
+        <div className="text-sm md:text-base font-bold text-white group-hover:text-emerald-100 transition-colors break-words">{value}</div>
       </div>
-      <ArrowRight size={14} className="ml-auto text-emerald-400/40 group-hover:text-emerald-400 transition-colors" />
+      <ArrowRight size={14} className="ml-auto text-emerald-400/40 group-hover:text-emerald-400 transition-colors flex-shrink-0" />
     </motion.a>
   );
 }
@@ -58,42 +55,107 @@ export default function Contact() {
 
                 {/* Email */}
                 <ContactItem
-                  href="mailto:info@globalhealthcareawards.com"
+                  href="mailto:info@timecybermedia.com"
                   icon={Mail}
                   label="Email"
-                  value="info@globalhealthcareawards.com"
+                  value="info@timecybermedia.com"
                 />
 
-                {/* Website */}
-                <ContactItem
-                  href="https://globalhealthcareawards.com"
-                  icon={Globe}
-                  label="Website"
-                  value="www.globalhealthcareawards.com"
-                  target="_blank"
-                />
+                {/* Websites */}
+                <div className="flex items-start gap-4 p-4 glass-card border border-emerald-500/15 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center flex-shrink-0 shadow-md mt-1">
+                    <Globe size={18} className="text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0 text-left">
+                    <p className="text-xs text-emerald-300/60 uppercase font-bold tracking-wider mb-2">Websites</p>
+                    <div className="space-y-2 flex flex-col">
+                      <a
+                        href="https://internationalhealthcareaward.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-300 break-all"
+                      >
+                        internationalhealthcareaward.com
+                      </a>
+                      <a
+                        href="https://www.timecybermedia.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-300 break-all"
+                      >
+                        timecybermedia.com
+                      </a>
+                      <a
+                        href="https://indiabrandicon.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-300 break-all"
+                      >
+                        indiabrandicon.in
+                      </a>
+                      <a
+                        href="https://internationaleducationaward.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-300 break-all"
+                      >
+                        internationaleducationaward.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Location */}
-                <ContactItem
-                  href="https://maps.app.goo.gl/A9eWn25eF8uXr3pF9"
-                  icon={MapPin}
-                  label="Location"
-                  value="Delhi, India"
-                  target="_blank"
-                />
-
-                {/* Phones */}
-                <div className="space-y-2 pt-2">
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-300/60 mb-3">Phone Numbers</h3>
-                  {phones.map((phone, i) => (
+                <div className="space-y-6">
+                  {/* Delhi Office */}
+                  <div className="space-y-3">
                     <ContactItem
-                      key={i}
-                      href={`tel:${phone.tel}`}
-                      icon={Phone}
-                      label={phone.label}
-                      value={phone.display}
+                      href="https://www.google.com/maps/place/TIME+Cyber+Media+Pvt+Ltd/@28.6193327,77.0268018,17z/data=!4m14!1m7!3m6!1s0x390ce3de9c8c4cb1:0x3e1d9a9d183cf7a4!2sTIME+Cyber+Media+Pvt+Ltd!8m2!3d28.6193327!4d77.0293767!16s%2Fg%2F11bz014xp_!3m5!1s0x390ce3de9c8c4cb1:0x3e1d9a9d183cf7a4!8m2!3d28.6193327!4d77.0293767!16s%2Fg%2F11bz014xp_"
+                      icon={MapPin}
+                      label="Delhi Office"
+                      value="Delhi Office :- C-31, 3rd Floor, Nawada Housing Complex, Opp. Metro Pillar No 792, Shivaji Marg, New Delhi 110059"
+                      target="_blank"
+                      className="text-left"
                     />
-                  ))}
+                    <div className="w-full h-[220px] rounded-3xl overflow-hidden border border-emerald-500/15 shadow-xl relative group">
+                      <iframe
+                        title="Google Maps Delhi Location"
+                        src="https://maps.google.com/maps?q=TIME%20Cyber%20Media%20Pvt%20Ltd%20Nawada%20Delhi&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  {/* Mumbai Office */}
+                  <div className="space-y-3">
+                    <ContactItem
+                      href="https://www.google.com/maps/place/Vfx+Multimedia+School+Graphic+Design-Video+Editing+Institute+Animation+Institute+In+Vasai-Vfx+Course+In+Vasai+Vfx+Institute/@19.3485819,72.7433027,13.01z/data=!4m22!1m15!4m14!1m6!1m2!1s0x390d05a3b320d5f3:0x9b40cb0d00276119!2sP+Square+Salon+Unisex+salon,+Red+Light+%F0%9F%9A%A6,+P+Square+Salon+1st+Floor+Plot+no+63,+Mohit+Nagar+Dwarka,+opposite+NSUT,+near+Nexa+Showroom,+Kakrola,+Delhi,+110078!2m2!1d77.0352846!2d28.6064227!1m6!1m2!1s0x3be7ae64ffffffff:0x352cd000cf148a0a!2sVfx+Multimedia+School+Graphic+Design-Video+Editing+Institute+Animation+Institute+In+Vasai-Vfx+Course+In+Vasai+Vfx+Institute,+Vinayak+shopping+centre,+A+%2F201+202,+Vasai+Station+Rd,+opp.+Union+bank,+Navghar+Manikpur,+Dindayal+Nagar,+Vasai+West,+Mumbai,+Vasai-Virar,+Maharashtra+401202!2m2!1d72.8274074!2d19.3784544!3m5!1s0x3be7ae64ffffffff:0x352cd000cf148a0a!8m2!3d19.3784544!4d72.8274074!16s%2Fg%2F11b90fq89w?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D"
+                      icon={MapPin}
+                      label="Mumbai Office"
+                      value="Mumbai Office :- A /201 202, Vinayak Shopping Centre, Pravati Cross, Vasai Station Rd, opp. Union Bank, Vasai West, Mumbai Maharashtra 401202"
+                      target="_blank"
+                      className="text-left"
+                    />
+                    <div className="w-full h-[220px] rounded-3xl overflow-hidden border border-emerald-500/15 shadow-xl relative group">
+                      <iframe
+                        title="Google Maps Mumbai Location"
+                        src="https://maps.google.com/maps?q=Vfx%20Multimedia%20School%20Graphic%20Design-Video%20Editing%20Institute%20Animation%20Institute%20In%20Vasai-Vfx%20Course%20In%20Vasai%20Vfx%20Institute&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                      ></iframe>
+                    </div>
+                  </div>
                 </div>
               </div>
             </SlideIn>
@@ -101,6 +163,7 @@ export default function Contact() {
             {/* Right – Social + Office info */}
             <SlideIn from="right" delay={0.1}>
               <div className="space-y-6">
+
                 {/* Social Media */}
                 <div className="glass-card border border-emerald-500/15 p-6">
                   <h3 className="text-lg font-black text-gradient-emerald font-serif mb-2">Follow Us</h3>
@@ -150,6 +213,27 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
+                {/* Phone Numbers */}
+                <div className="glass-card border border-emerald-500/15 p-6">
+                  <h3 className="text-lg font-black text-gradient-emerald font-serif mb-4">Phone Numbers</h3>
+                  <div className="space-y-3">
+                    {phones.map((phone, i) => (
+                      <a
+                        key={i}
+                        href={`tel:${phone.tel}`}
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-emerald-500/5 transition-all duration-300 group"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
+                          <Phone size={14} />
+                        </div>
+                        <div>
+                          <p className="text-[10px] text-emerald-300/60 uppercase font-bold tracking-wider">{phone.label}</p>
+                          <p className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors duration-300">{phone.display}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Quick enquiry nudge */}
                 <div className="glass-card border border-emerald-400/20 p-6 bg-emerald-900/10 animate-border-glow">
@@ -157,7 +241,7 @@ export default function Contact() {
                     For <strong className="text-white">nominations</strong>, <strong className="text-white">sponsorships</strong>, or <strong className="text-white">media partnerships</strong> — reach out directly via the contact details above or WhatsApp.
                   </p>
                   <a
-                    href="https://wa.me/919810882769"
+                    href="https://wa.me/919821020995"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary text-sm w-full justify-center"

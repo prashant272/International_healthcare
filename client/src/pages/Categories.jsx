@@ -95,10 +95,10 @@ export default function Categories() {
   return (
 
     <PageHero
-      badge="Global Healthcare Awards 2026"
+      badge="International Healthcare Awards 2026"
       icon="🏆"
       title="International Healthcare Award Categories"
-      subtitle="Recognizing global excellence and innovation across healthcare, leadership and technology."
+      subtitle="Recognizing international excellence and innovation across healthcare, leadership and technology."
 
     >
       {/* Category Sections */}

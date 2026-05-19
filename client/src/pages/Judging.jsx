@@ -51,7 +51,7 @@ const steps = [
       "Excellence & leadership assessed",
       "Innovation & impact evaluated",
       "Sustainability & scalability measured",
-      "Benchmarked against global best practices",
+      "Benchmarked against international best practices",
     ],
   },
   {
@@ -94,7 +94,7 @@ export default function Judging() {
         badge="Evaluation Framework"
         icon="⚖️"
         title="Judging Process"
-        subtitle="A multi-stage, transparent, and fair evaluation framework — recognising only the most deserving organisations and individuals across global healthcare."
+        subtitle="A multi-stage, transparent, and fair evaluation framework — recognising only the most deserving organisations and individuals across international healthcare."
       >
         {/* Timeline Steps */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
@@ -158,7 +158,7 @@ export default function Judging() {
         <FadeUp delay={0.3} className="mt-10 glass-card border border-emerald-500/15 p-6 md:p-8 text-center">
           <h3 className="text-xl font-black text-gradient-emerald font-serif mb-3">Why This Process Matters</h3>
           <p className="text-emerald-100/70 leading-relaxed max-w-2xl mx-auto">
-            Our rigorous and transparent selection process ensures awards are merit-based, truly credible, and that every winner enjoys global trust and respect in the healthcare industry.
+            Our rigorous and transparent selection process ensures awards are merit-based, truly credible, and that every winner enjoys international trust and respect in the healthcare industry.
           </p>
         </FadeUp>
       </PageHero>

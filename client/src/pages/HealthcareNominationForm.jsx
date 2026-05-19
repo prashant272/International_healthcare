@@ -431,7 +431,7 @@ export default function HealthcareNominationForm() {
                 badge={isEditMode ? "Review" : "Nominate"}
                 icon="🏆"
                 title={isEditMode ? "Edit Nomination" : "Submit Nomination"}
-                subtitle="Showcase your healthcare excellence on a global stage."
+                subtitle="Showcase your healthcare excellence on an international stage."
             >
                 <div className="pb-20">
 

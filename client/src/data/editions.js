@@ -2,7 +2,7 @@ export const EDITIONS = [
   {
     year: 2025,
     path: "/2025/global-healthcare-excellence-awards",
-    title: "International Global Healthcare Excellence Awards",
+    title: "International Healthcare Excellence Awards",
     editionLabel: "13th Edition",
     locations: ["Dubai"],
     fullDate: "May 2025",
@@ -25,7 +25,7 @@ export const EDITIONS = [
   {
     year: 2024,
     path: "/2024/global-healthcare-excellence-awards",
-    title: "International Global Healthcare Excellence Awards",
+    title: "International Healthcare Excellence Awards",
     editionLabel: "12th Edition",
     locations: ["New Delhi"],
     fullDate: "Year 2024",
@@ -48,7 +48,7 @@ export const EDITIONS = [
   {
     year: 2023,
     path: "/2023/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "11th Edition",
     locations: ["Mumbai"],
     fullDate: "Year 2023",
@@ -71,7 +71,7 @@ export const EDITIONS = [
   {
     year: 2022,
     path: "/2022/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "10th Edition",
     locations: ["Bengaluru"],
     fullDate: "Year 2022",
@@ -94,7 +94,7 @@ export const EDITIONS = [
   {
     year: 2021,
     path: "/2021/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "9th Edition",
     locations: ["Hyderabad"],
     fullDate: "Year 2021",
@@ -117,7 +117,7 @@ export const EDITIONS = [
   {
     year: 2020,
     path: "/2020/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "8th Edition",
     locations: ["Virtual"],
     fullDate: "Year 2020",
@@ -140,7 +140,7 @@ export const EDITIONS = [
   {
     year: 2019,
     path: "/2019/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "7th Edition",
     locations: ["Chennai"],
     fullDate: "Year 2019",
@@ -163,7 +163,7 @@ export const EDITIONS = [
   {
     year: 2018,
     path: "/2018/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "6th Edition",
     locations: ["New Delhi"],
     fullDate: "Year 2018",
@@ -179,7 +179,7 @@ export const EDITIONS = [
   {
     year: 2017,
     path: "/2017/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "5th Edition",
     locations: ["Mumbai"],
     fullDate: "Year 2017",
@@ -195,7 +195,7 @@ export const EDITIONS = [
   {
     year: 2016,
     path: "/2016/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "4th Edition",
     locations: ["Bengaluru"],
     fullDate: "Year 2016",
@@ -211,7 +211,7 @@ export const EDITIONS = [
   {
     year: 2015,
     path: "/2015/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "3rd Edition",
     locations: ["Hyderabad"],
     fullDate: "Year 2015",
@@ -227,7 +227,7 @@ export const EDITIONS = [
   {
     year: 2014,
     path: "/2014/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "2nd Edition",
     locations: ["New Delhi"],
     fullDate: "Year 2014",
@@ -243,7 +243,7 @@ export const EDITIONS = [
   {
     year: 2013,
     path: "/2013/global-healthcare-awards",
-    title: "International Global Healthcare Awards",
+    title: "International Healthcare Awards",
     editionLabel: "1st Edition",
     locations: ["New Delhi"],
     fullDate: "Year 2013",

@@ -96,7 +96,7 @@ export default function Navbar() {
             <div className="flex flex-col leading-tight">
               <span className="font-semibold text-white">Admin Dashboard</span>
               <span className="text-[11px] text-gray-300">
-                International Global Healthcare Awards – Internal Panel
+                International Healthcare Awards – Internal Panel
               </span>
             </div>
           </div>

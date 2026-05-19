@@ -141,7 +141,7 @@ export default function AdminPreviousEditions({ customToken }) {
             <div className="flex justify-between items-center bg-white/[0.06] p-10 rounded-[3rem] border border-white/15  shadow-[0_0_50px_rgba(16,185,129,0.1)]">
                 <div>
                     <h3 className="text-3xl font-black text-white tracking-tighter uppercase">Historical <span className="text-gradient-emerald">Archives</span></h3>
-                    <p className="text-[10px] text-white/40 font-black uppercase tracking-widest mt-2">Global Edition Records Management</p>
+                    <p className="text-[10px] text-white/40 font-black uppercase tracking-widest mt-2">International Edition Records Management</p>
                 </div>
                 <button
                     onClick={() => { resetForm(); setShowModal(true); }}

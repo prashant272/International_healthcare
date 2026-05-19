@@ -121,7 +121,7 @@ export default function Terms() {
         badge="Legal"
         icon="📜"
         title="Terms & Conditions"
-        subtitle="By submitting a nomination for the Global Healthcare Excellence Awards 2026, the nominee and/or nominator agrees to the following terms and conditions."
+        subtitle="By submitting a nomination for the International Healthcare Excellence Awards 2026, the nominee and/or nominator agrees to the following terms and conditions."
       >
         {/* Terms Grid */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -166,7 +166,7 @@ export default function Terms() {
           <FadeUp delay={0.4} className="mt-12 glass-card border border-emerald-400/20 p-6 md:p-8 text-center animate-border-glow">
             <span className="text-2xl block mb-3">⚖️</span>
             <p className="text-emerald-100/70 text-sm md:text-base leading-relaxed max-w-2xl mx-auto italic">
-              By participating in the International Global Healthcare Awards 2026, you acknowledge that you have read, understood, and agree to all the above Terms & Conditions.
+              By participating in the International Healthcare Awards 2026, you acknowledge that you have read, understood, and agree to all the above Terms & Conditions.
             </p>
           </FadeUp>
         </div>

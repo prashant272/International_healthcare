@@ -70,7 +70,7 @@ export default function Register() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      placeholder="Ex. Dr. John Doe / Global Clinic"
+                      placeholder="Ex. Dr. John Doe / International Clinic"
                     />
                   </div>
 

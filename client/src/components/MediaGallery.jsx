@@ -40,7 +40,7 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
           )}
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&enablejsapi=1`}
-            title={reel.title}
+            title={reel.title || "Video Reel"}
             className="w-full h-full"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -59,7 +59,7 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
           {videoId && (
             <img
               src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-              alt={reel.title}
+              alt={reel.title || "Video Reel"}
               onLoad={() => setImgLoaded(true)}
               onError={(e) => {
                 e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
@@ -79,10 +79,6 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-100 z-20"></div>
 
-          <div className="absolute bottom-0 left-0 right-0 p-8 z-30">
-            <h3 className="text-white font-black text-sm sm:text-base uppercase tracking-tight leading-tight group-hover:text-pink-400 transition-colors">{reel.title}</h3>
-            <div className="h-1 w-0 bg-pink-500 mt-2 group-hover:w-full transition-all duration-500"></div>
-          </div>
         </div>
       )}
     </div>
@@ -91,7 +87,7 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
 
 export default function MediaGallery() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('reels');
+  const [activeTab, setActiveTab] = useState('photos');
   const [playingVideoId, setPlayingVideoId] = useState(null);
 
   useEffect(() => {
@@ -107,14 +103,14 @@ export default function MediaGallery() {
   }, []);
 
   const reels = useMemo(() => [
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
+    { url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
+    { url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
+    { url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
+    { url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
+    { url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
+    { url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
+    { url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
+    { url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
   ], []);
 
   const photos = useMemo(() => [
@@ -123,14 +119,34 @@ export default function MediaGallery() {
   ], []);
 
   const videos = useMemo(() => [
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
-    { title: "International Healthcare Awards Highlights", url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
+
+    { url: "https://www.youtube.com/watch?v=yaFT7MPXbrM" },
+    { url: "" },
+
+
+    { url: "https://www.youtube.com/watch?v=MBoNTrPLeZI&t=5s" },
+    { url: "https://www.youtube.com/watch?v=LuCukRXeE_s&t=1s" },
+    { url: "https://www.youtube.com/watch?v=aY_mh32teqk&t=1s" },
+    { url: "https://www.youtube.com/watch?v=dEYs847mt_w" },
+    { url: "https://www.youtube.com/watch?v=f9qlJN2KXZ0&t=1158s" },
+    { url: "https://www.youtube.com/watch?v=TUYUmSe5jI8" },
+    { url: "https://www.youtube.com/watch?v=QC-9EHL0k6M" },
+    { url: "" },
+
+    { url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
+    { url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
+    { url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
+    { url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
+    { url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
+    { url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
+    { url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
+    { url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
+    { url: "https://www.youtube.com/watch?v=FO9KwVu_GyA&t=2s" },
+    { url: "https://www.youtube.com/watch?v=wh7zwl0SUF4" },
+
+
+
+
   ], []);
 
   const displayPhotos = useMemo(() =>
@@ -141,15 +157,19 @@ export default function MediaGallery() {
     reels.length > 0 && reels.length < 12 ? [...reels, ...reels, ...reels] : reels
     , [reels]);
 
+  const displayVideos = useMemo(() => {
+    const activeVideos = videos.filter(v => v.url);
+    return activeVideos.length > 0 && activeVideos.length < 10
+      ? [...activeVideos, ...activeVideos]
+      : activeVideos;
+  }, [videos]);
+
   const handleReelPlay = useCallback((idx) => {
     setPlayingVideoId(`reel-${idx}`);
   }, []);
 
   return (
-    <PageHero
-      title=""
-      subtitle=""
-      compact={true}>
+    <>
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
@@ -165,7 +185,7 @@ export default function MediaGallery() {
             Relive the greatest moments from our previous editions through our exclusive photo and video coverage.
           </p>
         </FadeUp>
-        <div className="flex justify-center items-center gap-4 mb-10 sm:mb-14">
+        <div className="flex justify-center items-center gap-4 mb-8 sm:mb-12">
           <button
             onClick={() => setActiveTab('photos')}
             className={`relative px-6 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-lg transition-all duration-300 overflow-hidden group ${activeTab === 'photos' ? 'text-white bg-emerald-600/20 border border-emerald-400 shadow-[0_0_20px_rgba(5,150,105,0.3)]' : 'text-slate-400 border border-slate-700 hover:text-white hover:border-emerald-500 bg-emerald-950/50'}`}
@@ -261,36 +281,65 @@ export default function MediaGallery() {
           </div>
 
           <div className={`transition-all duration-700 absolute top-0 left-0 w-full ${activeTab === 'videos' ? 'opacity-100 z-10 translate-y-0 relative' : 'opacity-0 -z-10 translate-y-10'}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2">
-              {videos.map((video, idx) => {
+            <Swiper
+              effect={'coverflow'}
+              grabCursor={true}
+              centeredSlides={true}
+              loop={displayVideos.length > 2}
+              coverflowEffect={{
+                rotate: 5,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+                slideShadows: false,
+              }}
+              autoplay={{
+                delay: 4500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }}
+              pagination={{ clickable: true, dynamicBullets: true }}
+              navigation={true}
+              breakpoints={{
+                320: { slidesPerView: 1.2, spaceBetween: 20 },
+                640: { slidesPerView: 1.8, spaceBetween: 30 },
+                1024: { slidesPerView: 2.4, spaceBetween: 40 },
+                1280: { slidesPerView: 2.8, spaceBetween: 50 }
+              }}
+              modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+              className="videos-swiper w-full pt-5 pb-16"
+            >
+              {displayVideos.map((video, idx) => {
                 const videoId = getYouTubeVideoId(video.url);
-                const isPlaying = playingVideoId === idx;
+                const isPlaying = playingVideoId === `video-${idx}`;
                 return (
-                  <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/10 hover:border-red-500/50 transition-all duration-300 bg-slate-900/40 ">
-                    <div className="relative w-full aspect-video flex justify-center items-center bg-emerald-950 cursor-pointer" onClick={() => videoId && !isPlaying && setPlayingVideoId(idx)}>
-                      {isPlaying && videoId ? (
-                        <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} title={video.title} className="absolute top-0 left-0 w-full h-full" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                      ) : (
-                        <>
-                          {videoId && <img src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} alt={video.title} className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => { e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; }} />}
-                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
-                          <div className="relative z-10 w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(239,68,68,0.6)] group-hover:bg-red-500 transform group-hover:scale-110 transition-all duration-300">
-                            <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                          </div>
-                        </>
-                      )}
+                  <SwiperSlide key={`video-slide-${idx}`} className="pb-4">
+                    <div className="max-w-[640px] mx-auto">
+                      <div
+                        className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/10 hover:border-red-500/50 transition-all duration-300 bg-slate-900/40 aspect-video cursor-pointer flex justify-center items-center"
+                        onClick={() => videoId && !isPlaying && setPlayingVideoId(`video-${idx}`)}
+                      >
+                        {isPlaying && videoId ? (
+                          <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} title={video.title || "Video"} className="absolute top-0 left-0 w-full h-full" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        ) : (
+                          <>
+                            {videoId && <img src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} alt={video.title || "Video"} className="absolute top-0 left-0 w-full h-full object-cover" onError={(e) => { e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; }} />}
+                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
+                            <div className="relative z-10 w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(239,68,68,0.6)] group-hover:bg-red-500 transform group-hover:scale-110 transition-all duration-300">
+                              <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <div className="p-4 bg-slate-900/60  border-t border-white/5 group-hover:bg-slate-800 transition-colors">
-                      <h3 className="text-white font-semibold text-sm sm:text-base line-clamp-1">{video.title}</h3>
-                    </div>
-                  </div>
+                  </SwiperSlide>
                 );
               })}
-            </div>
+            </Swiper>
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16 text-center pb-4">
+        <div className="text-center pb-4">
           <p className="text-slate-400 mb-4 text-sm sm:text-base font-medium">To explore more memories and past events</p>
           <button onClick={() => navigate('/previous-editions')} className="inline-flex items-center gap-3 px-8 sm:px-10 py-3 sm:py-4 rounded-full bg-emerald-950 border border-emerald-500/30 text-white font-bold text-sm sm:text-lg hover:bg-slate-800 hover:border-emerald-400 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(5,150,105,0.2)] transition-all duration-300 group">
             <span>Check out Previous Editions</span>
@@ -298,6 +347,9 @@ export default function MediaGallery() {
           </button>
         </div>
       </div>
-    </PageHero>
+    </>
+
+
+
   );
 }
