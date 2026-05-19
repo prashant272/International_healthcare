@@ -109,98 +109,118 @@ export const StaggerItem = memo(function StaggerItem({ children, className = "te
 /* ------------------------------------------------------------------ */
 /* AuroraBackground — shared ambient behind every page                 */
 /* ------------------------------------------------------------------ */
-/**
- * ⚡ PERFORMANCE OPTIMIZATION BEST PRACTICES:
- * 1. Wrapped in React.memo() to prevent unnecessary Virtual DOM reconciliation when parent states change.
- * 2. All 20 floating background particles are animated using hardware-accelerated CSS keyframe animations
- *    (.animate-particle-accel in index.css) instead of Framer Motion's JS thread ticker loop.
- * 3. React and CSS animations are bridged dynamically via CSS Custom Properties (e.g., --tx, --ty, --dur, --delay),
- *    passing randomly generated coordinates directly to the GPU compositor for smooth 60fps rendering.
- */
 export const AuroraBackground = memo(function AuroraBackground({ children, orbs = true }) {
-  const particles = useMemo(() => {
-    return [...Array(10)].map((_, i) => ({
-      width: Math.random() * 4 + 2,
-      height: Math.random() * 4 + 2,
-      background: ["#34d399", "#06b6d4", "#a855f7", "#ffd700", "#ec4899", "#6366f1"][i % 6],
-      boxShadow: `0 0 15px ${["#34d399", "#06b6d4", "#a855f7", "#ffd700", "#ec4899", "#6366f1"][i % 6]}`,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      y: [0, Math.random() * -100 - 50, 0],
-      x: [0, Math.random() * 60 - 30, 0],
-      duration: 8 + Math.random() * 12,
-      delay: Math.random() * 10,
-    }));
-  }, []);
+  const canvasRef = useRef(null);
 
-  const staticSparkles = useMemo(() => [
-    { top: "15%", left: "8%", size: 3, color: "#34d399", delay: "0s" },
-    { top: "22%", left: "75%", size: 4, color: "#a855f7", delay: "0.5s" },
-    { top: "45%", left: "18%", size: 2, color: "#06b6d4", delay: "1s" },
-    { top: "60%", left: "85%", size: 3, color: "#f59e0b", delay: "1.5s" },
-    { top: "75%", left: "35%", size: 4, color: "#ec4899", delay: "0.8s" },
-    { top: "88%", left: "62%", size: 2, color: "#34d399", delay: "2s" },
-  ], []);
+  useEffect(() => {
+    if (!orbs || !canvasRef.current) return;
+    
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+    let time = 0;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Orb definitions
+    const orbColors = [
+      'rgba(16, 185, 129, 0.15)', // emerald
+      'rgba(6, 182, 212, 0.12)',  // cyan
+      'rgba(168, 85, 247, 0.12)', // purple
+      'rgba(212, 175, 55, 0.15)', // gold
+      'rgba(236, 72, 153, 0.12)', // pink
+      'rgba(59, 130, 246, 0.12)'  // blue
+    ];
+
+    // Particle definitions
+    let particles = Array.from({ length: 15 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.random() * 2 + 1,
+      speedX: (Math.random() - 0.5) * 0.5,
+      speedY: (Math.random() - 0.5) * 0.5 - 0.2, // slight upward drift
+      color: ['#34d399', '#06b6d4', '#a855f7', '#ffd700', '#ec4899'][Math.floor(Math.random() * 5)]
+    }));
+    
+    const render = () => {
+      time += 0.003;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const w = canvas.width;
+      const h = canvas.height;
+      const minDimension = Math.min(w, h);
+      
+      // Draw Orbs
+      const drawOrb = (cx, cy, r, color) => {
+        const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+        gradient.addColorStop(0, color);
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fill();
+      };
+
+      drawOrb(w * 0.2 + Math.sin(time) * 150, h * 0.3 + Math.cos(time * 0.8) * 150, minDimension * 0.6, orbColors[0]);
+      drawOrb(w * 0.8 + Math.cos(time * 1.2) * 150, h * 0.2 + Math.sin(time * 0.9) * 150, minDimension * 0.5, orbColors[1]);
+      drawOrb(w * 0.3 + Math.sin(time * 0.7) * 150, h * 0.8 + Math.cos(time * 1.1) * 150, minDimension * 0.55, orbColors[2]);
+      drawOrb(w * 0.7 + Math.cos(time * 0.9) * 150, h * 0.7 + Math.sin(time * 1.3) * 150, minDimension * 0.5, orbColors[3]);
+      drawOrb(w * 0.5 + Math.sin(time * 1.1) * 200, h * 0.9 + Math.cos(time * 0.7) * 100, minDimension * 0.6, orbColors[4]);
+      drawOrb(w * 0.9 + Math.cos(time * 0.8) * 150, h * 0.9 + Math.sin(time * 1.2) * 150, minDimension * 0.45, orbColors[5]);
+
+      // Draw Particles
+      ctx.globalAlpha = 0.35; // Reduce intensity of floating particles
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        
+        // Wrap around
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+        
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1.0; // Reset shadow/alpha
+      ctx.shadowBlur = 0;
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+    
+    render();
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [orbs]);
 
   return (
     <div className="relative min-h-screen bg-[var(--base-bg)] overflow-x-hidden">
-      {/* Fixed multi-color aurora orbs */}
+      {/* Native Canvas Aurora - replaces heavy DOM/CSS blur */}
       {orbs && (
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          {/* Top-left emerald */}
-          <div className="orb orb-emerald w-[500px] h-[500px] -top-24 -left-24 animate-float" style={{ animationDuration: "7s" }} />
-          {/* Top-right cyan */}
-          <div className="orb orb-cyan w-[400px] h-[400px] -top-16 right-[-8%] animate-float" style={{ animationDuration: "9s", animationDelay: "1s" }} />
-          {/* Mid-left purple */}
-          <div className="orb orb-purple w-[350px] h-[350px] top-[35%] -left-20 animate-float-slow" style={{ animationDuration: "11s", animationDelay: "2s" }} />
-          {/* Mid-right gold */}
-          <div className="orb orb-gold w-[300px] h-[300px] top-[40%] right-[-5%] animate-float" style={{ animationDuration: "8s", animationDelay: "3s" }} />
-          {/* Bottom-center pink */}
-          <div className="orb orb-pink w-[400px] h-[400px] bottom-[-10%] left-1/3 animate-float-slow" style={{ animationDuration: "10s", animationDelay: "1.5s" }} />
-          {/* Bottom-right blue */}
-          <div className="orb orb-blue w-[350px] h-[350px] bottom-0 right-[-5%] animate-float" style={{ animationDuration: "12s", animationDelay: "4s" }} />
-
-          {/* Grid overlay - more prominent */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+          {/* Grid overlay */}
           <div className="bg-cross-pattern absolute inset-0 opacity-100" />
-
-          {/* Full Page Floating Particles */}
-          {particles.map((p, i) => (
-            <div
-              key={`p-${i}`}
-              className="absolute rounded-full pointer-events-none animate-particle-accel"
-              style={{
-                width: p.width,
-                height: p.height,
-                background: p.background,
-                boxShadow: p.boxShadow,
-                left: p.left,
-                top: p.top,
-                '--tx': `${p.x[1]}px`,
-                '--ty': `${p.y[1]}px`,
-                '--dur': `${p.duration}s`,
-                '--delay': `${p.delay}s`,
-              }}
-            />
-          ))}
-
-          {/* Sparkle dots - static fallback */}
-          {staticSparkles.map((s, i) => (
-            <div
-              key={`s-${i}`}
-              className="sparkle animate-twinkle"
-              style={{
-                top: s.top, left: s.left,
-                width: s.size, height: s.size,
-                background: s.color,
-                boxShadow: `0 0 ${s.size * 4}px ${s.color}`,
-                animationDelay: s.delay,
-                animationDuration: `${2 + i * 0.3}s`,
-              }}
-            />
-          ))}
         </div>
       )}
-      {children}
+      {/* Ensure children content stays above the canvas layer */}
+      <div className="relative z-10 w-full min-h-screen">
+        {children}
+      </div>
     </div>
   );
 });
