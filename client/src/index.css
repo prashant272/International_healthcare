@@ -568,11 +568,12 @@ h6 {
 
 .glass-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
-  /* Restored premium backdrop blur (32px) now that the canvas background is lightweight and optimized */
-  backdrop-filter: blur(32px) saturate(220%);
-  -webkit-backdrop-filter: blur(32px) saturate(220%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* Premium dark glass background (mix of deep blue/slate & high contrast) so it never looks hollow even if backdrop-filter is slow or unsupported */
+  background: linear-gradient(135deg, rgba(13, 27, 56, 0.75) 0%, rgba(7, 15, 33, 0.88) 100%);
+  /* Restored premium backdrop blur (24px) now that the canvas background is lightweight and optimized */
+  backdrop-filter: blur(24px) saturate(220%);
+  -webkit-backdrop-filter: blur(24px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1.5rem;
   box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.5),

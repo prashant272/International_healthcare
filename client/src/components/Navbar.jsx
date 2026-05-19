@@ -183,12 +183,17 @@ export default function Navbar() {
         >
           <div className="
                relative
-               bg-slate-950/80  text-white 
-               rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(16,185,129,0.2)] 
+               bg-slate-950/85 backdrop-blur-lg text-white 
+               rounded-full shadow-[0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(16,185,129,0.25)] 
                border border-emerald-500/30 
                px-8 py-2.5 flex items-center gap-10 text-sm
                group
-             ">
+               overflow-hidden
+             "
+            style={{
+              background: "linear-gradient(135deg, rgba(8, 17, 36, 0.85) 0%, rgba(3, 8, 20, 0.95) 100%)",
+            }}
+          >
             {/* Liquid Refractive Element */}
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 opacity-50" />
             <div className="absolute -top-full -left-full w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,transparent_70%)] animate-pulse" />
@@ -213,7 +218,7 @@ export default function Navbar() {
       <div className="block md:hidden">
         <header
           className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex items-center h-16 sm:h-20 px-4 justify-between ${showPill
-            ? "bg-slate-900/80  border-b border-white/10 shadow-xl"
+            ? "bg-slate-950/90 backdrop-blur-lg border-b border-emerald-500/20 shadow-xl"
             : "bg-transparent"
             }`}
           ref={headerRef}

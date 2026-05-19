@@ -431,13 +431,15 @@ export default function Home() {
           <div className="w-full max-w-[1600px] mx-auto relative z-30">
             <div className="w-full relative z-15 px-3">
               {(() => {
-                const displayEvents = events;
+                const displayEvents = events.length > 0 && events.length < 6
+                  ? [...events, ...events]
+                  : events;
                 return (
                   <Swiper
                     modules={[Autoplay, Pagination]}
                     spaceBetween={24}
                     slidesPerView={1}
-                    loop={displayEvents.length > 1}
+                    loop={displayEvents.length > 2}
                     autoplay={{ delay: 3500, disableOnInteraction: false }}
                     speed={1200}
                     pagination={{ clickable: true, dynamicBullets: true }}
@@ -526,7 +528,7 @@ export default function Home() {
 
       <div className="relative w-full">
         {/* OVERVIEW + DATES: Main theme background (use SECTION_BG to keep consistent) */}
-        <section className={`relative overflow-hidden border-b border-[#10b981]/20 pb-2`}>
+        <section className={`relative overflow-hidden border-b border-[#10b981]/20 py-2`}>
           {/* Gradient Glow Background */}
           <div className="absolute inset-0 -z-10 pointer-events-none">
             <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full mix-blend-screen animate-blob" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 65%)' }} />

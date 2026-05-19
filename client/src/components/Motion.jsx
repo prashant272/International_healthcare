@@ -334,6 +334,42 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
     blue: "rgba(59,130,246,0.5)",
   };
 
+  // Static lookup to prevent build-time Tailwind purging of dynamic classes
+  const themeClasses = {
+    emerald: {
+      border: "hover:border-emerald-500/40",
+      via: "via-emerald-500/20",
+      bg: "bg-emerald-500/20",
+    },
+    cyan: {
+      border: "hover:border-cyan-500/40",
+      via: "via-cyan-500/20",
+      bg: "bg-cyan-500/20",
+    },
+    purple: {
+      border: "hover:border-purple-500/40",
+      via: "via-purple-500/20",
+      bg: "bg-purple-500/20",
+    },
+    gold: {
+      border: "hover:border-amber-500/40",
+      via: "via-amber-500/20",
+      bg: "bg-amber-500/20",
+    },
+    pink: {
+      border: "hover:border-pink-500/40",
+      via: "via-pink-500/20",
+      bg: "bg-pink-500/20",
+    },
+    blue: {
+      border: "hover:border-blue-500/40",
+      via: "via-blue-500/20",
+      bg: "bg-blue-500/20",
+    },
+  };
+
+  const currentTheme = themeClasses[color] || themeClasses.emerald;
+
   return (
     <div className="neon-card-wrapper w-full h-full">
       {/* Fog Mist — outside the card, radiates outward on hover */}
@@ -342,7 +378,7 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
       <div
         className={`
           glass-card group relative w-full h-full
-          border-white/10 hover:border-${color === 'gold' ? 'gold' : color + '-500'}/40
+          border-white/10 ${currentTheme.border}
           ${hover ? "glass-card-hover-active" : ""}
           ${className}
         `}
@@ -350,7 +386,7 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
         {/* Intense Multi-layered Background Glow */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit]">
           <div className={`absolute -inset-[100%] opacity-0 group-hover:opacity-30 bg-[radial-gradient(circle_at_50%_50%,${colors[color]}_0%,transparent_70%)] transition-opacity duration-500`} />
-          <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-transparent via-${color === 'gold' ? '[#d4af37]' : color}-500/20 to-transparent`} />
+          <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-br from-transparent ${currentTheme.via} to-transparent`} />
         </div>
 
         {/* Content Layer */}
@@ -364,7 +400,7 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
         </div>
 
         {/* Outer Glow Aura */}
-        <div className={`absolute -inset-2 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10 bg-${color === 'gold' ? '[#d4af37]' : color}-500/20 rounded-[inherit]`} />
+        <div className={`absolute -inset-2 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10 ${currentTheme.bg} rounded-[inherit]`} />
       </div>
     </div>
   );

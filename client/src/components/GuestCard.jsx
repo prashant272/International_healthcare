@@ -32,10 +32,11 @@ export default function GuestCard({ member, index, isFeatured = false }) {
           transition-all duration-500
           relative
           
+          glass-card
           glass-card-hover-active
         "
         style={{
-          background: "rgba(15, 23, 42, 0.25)",
+          background: "linear-gradient(135deg, rgba(13, 27, 56, 0.8) 0%, rgba(7, 15, 33, 0.9) 100%)",
           boxShadow: `0 10px 32px 0 rgba(16,185,129,0.08)`,
         }}
       >
