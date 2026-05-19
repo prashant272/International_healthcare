@@ -590,7 +590,7 @@ export default function NominationForm() {
           </div>
         )}
 
-        <div className="bg-black/40  border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
+        <div className="glass-card p-4 sm:p-6 md:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
           <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-8">
 
             {/* Participation Choice */}
