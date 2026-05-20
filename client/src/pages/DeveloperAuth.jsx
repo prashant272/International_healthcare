@@ -84,7 +84,7 @@ export default function DeveloperAuth() {
                                 Terminate Session
                             </button>
                         </div>
-                        
+
                         <div className="bg-white/[0.03] border border-white/10 p-10 rounded-[2.5rem] flex flex-col justify-center relative overflow-hidden ">
                             <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-500/10 blur-3xl rounded-full" />
                             <p className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-6 italic">Identity Node</p>
@@ -120,10 +120,10 @@ export default function DeveloperAuth() {
                 subtitle="Please enter the high-level security password to access the development node."
             >
                 <div className="flex items-center justify-center p-4 sm:p-6 pb-32">
-                    <div className="w-full max-w-md bg-[#020817]/40 border border-white/10 p-12 rounded-[3.5rem] shadow-[0_0_100px_rgba(16,185,129,0.1)] relative z-10  group overflow-hidden">
+                    <div className="w-full glass-card max-w-md border border-white/10 p-12 rounded-[3.5rem] shadow-[0_0_100px_rgba(16,185,129,0.1)] relative z-10  group overflow-hidden">
                         {/* Decorative Scan Line */}
                         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-scan z-20" />
-                        
+
                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-purple-500/[0.03] pointer-events-none" />
 
                         <div className="flex justify-center mb-10 text-emerald-400 relative">

@@ -131,12 +131,12 @@ export default function Navbar() {
           <div className="bg-transparent h-14">
             <div className="max-w-7xl mx-auto px-3 h-full flex items-center text-sm">
               <div className="flex items-center gap-3">
-                <div className="relative w-43 h-18 flex items-center justify-center bg-white">
+                <div className="relative w-43 h-18 flex items-center justify-center">
                   <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer">
                     <img
                       src="/images/logo.png"
                       alt="time cyber media logo"
-                      className="absolute top-[-10px] left-[-3px] h-[100px] w-auto max-w-none object-contain z-50 drop-shadow-md cursor-pointer"
+                      className="absolute top-[-0.5px] left-[-3px] h-[70px] rounded-md w-auto max-w-none object-contain z-50 drop-shadow-md cursor-pointer"
                     />
                   </a>
                 </div>

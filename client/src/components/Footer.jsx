@@ -251,13 +251,13 @@ export default function Footer() {
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-5 text-emerald-500">📞</span>
                       <a href="tel:+919821020995" className="hover:text-emerald-400 transition-all text-sm font-semibold">
-                        +91 98210 20995 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Customer Service / Helpline)</span>
+                        +91 98210 20995 <span className="text-[10px] opacity-60 font-normal uppercase ml-1"></span>
                       </a>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="inline-block w-5 text-emerald-500">📞</span>
                       <a href="tel:+919873004416" className="hover:text-emerald-400 transition-all text-sm font-semibold">
-                        +91 98730 04416 <span className="text-[10px] opacity-60 font-normal uppercase ml-1">(Other Help / Nominations)</span>
+                        +91 98730 04416 <span className="text-[10px] opacity-60 font-normal uppercase ml-1"></span>
                       </a>
                     </div>
                   </div>

@@ -392,7 +392,7 @@ export default function Home() {
             {/* Backdrop Spotlight */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10 pointer-events-none rounded-full" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
 
-            <h1 className="text-lg xs:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-black font-heading tracking-tight leading-tight text-white px-2 [text-shadow:_0_0_30px_rgba(16,185,129,0.4),_0_0_60px_rgba(16,185,129,0.2)]">
+            <h1 className="text-[13px] xs:text-[16px] sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-black font-heading tracking-tight leading-tight text-white px-2 [text-shadow:_0_0_30px_rgba(16,185,129,0.4),_0_0_60px_rgba(16,185,129,0.2)]">
               <span className="inline-block whitespace-nowrap text-center">
                 <span className="text-cyan-50 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">International</span>{" "}
                 <span className="bg-gradient-to-r from-emerald-300 via-white to-cyan-300 bg-clip-text text-transparent inline-block font-black filter drop-shadow-[0_0_50px_rgba(16,185,129,1)]">
@@ -403,7 +403,7 @@ export default function Home() {
               </span>
             </h1>
             <div className="mx-auto w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent rounded-full -mt-2" />
-            <p className="mt-2 text-sm xs:text-base md:text-lg lg:text-xl text-white font-black leading-relaxed [text-shadow:_0_2px_15px_rgba(0,0,0,1)] max-w-none mx-auto whitespace-nowrap">
+            <p className="mt-2 text-[10px] xs:text-xs sm:text-sm md:text-lg lg:text-xl text-white font-black leading-relaxed [text-shadow:_0_2px_15px_rgba(0,0,0,1)] max-w-none mx-auto whitespace-normal sm:whitespace-nowrap">
               Organised by{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-black drop-shadow-[0_0_10px_rgba(16,185,129,0.6)]">
                 TIME Cyber Media Pvt Ltd.

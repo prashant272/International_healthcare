@@ -46,7 +46,7 @@ export default function AdminRegister() {
                         <FiShield className="h-10 w-10 text-white -rotate-[15deg] group-hover:scale-110 transition-transform" />
                     </div>
 
-                    <div className="w-full bg-white/[0.02]  border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[85dvh] custom-scrollbar">
+                    <div className="w-full glass-card border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[85dvh] custom-scrollbar">
                         <div className="text-center mb-8">
                             <h1 className="text-2xl md:text-3xl font-black bg-gradient-to-b from-white via-white to-emerald-400 bg-clip-text text-transparent tracking-tight mb-2 uppercase">
                                 Admin Setup

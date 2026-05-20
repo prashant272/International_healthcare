@@ -46,7 +46,7 @@ export default function AdminLogin() {
       >
         <section className="min-h-[80vh] w-full relative flex items-center justify-center p-4 sm:p-6 pb-32">
           <div className="relative w-full max-w-[440px] flex flex-col items-center">
-            <div className="w-full bg-white/[0.02]  border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] group overflow-hidden">
+            <div className="w-full glass-card border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-[#d4af37]/5 pointer-events-none" />
 
               {error && (
