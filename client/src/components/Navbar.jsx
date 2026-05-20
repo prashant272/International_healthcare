@@ -171,8 +171,8 @@ export default function Navbar() {
             </div>
           </div>
           <nav className="bg-transparent h-12">
-            <div className="max-w-7xl mx-auto px-6 h-full flex justify-center items-center gap-6 text-sm">
-              {menuLinks("white", undefined, headerRef, isUser, false, editions)}
+            <div className="max-w-7xl mx-auto px-6 h-full flex justify-center items-center gap-0">
+              {menuLinks(undefined, headerRef, isUser, false, editions, false)}
             </div>
           </nav>
         </header>
@@ -186,7 +186,7 @@ export default function Navbar() {
                bg-slate-950/85 backdrop-blur-lg text-white 
                rounded-full shadow-[0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(16,185,129,0.25)] 
                border border-emerald-500/30 
-               px-8 py-2.5 flex items-center gap-10 text-sm
+               px-6 py-2 flex items-center gap-5
                group
              "
             style={{
@@ -199,7 +199,7 @@ export default function Navbar() {
               <div className="absolute -top-full -left-full w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,transparent_70%)] animate-pulse" />
             </div>
 
-            <div className="flex items-center gap-4 z-10">
+            <div className="flex items-center gap-3 z-10">
               <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-300">
                 <img
                   src="/images/logo.png"
@@ -207,10 +207,10 @@ export default function Navbar() {
                   className="h-8 w-auto object-contain cursor-pointer brightness-110"
                 />
               </a>
-              <div className="h-6 w-px bg-white/10 mx-1"></div>
+              <div className="h-5 w-px bg-white/10 mx-1"></div>
             </div>
-            <div className="relative flex gap-6 items-center z-10">
-              {menuLinks("white", undefined, headerRef, isUser, false, editions)}
+            <div className="relative flex gap-0 items-center z-10">
+              {menuLinks(undefined, headerRef, isUser, false, editions, false)}
             </div>
           </div>
         </div>
@@ -276,7 +276,7 @@ export default function Navbar() {
   );
 }
 
-const menuLinks = (color, onClick, headerRef, isUser, showDashboard = true, editions = []) => {
+const menuLinks = (onClick, headerRef, isUser, showDashboard = true, editions = [], isMobile = false) => {
   const createNavHandler = (routeHandler) => (e) => {
     if (onClick) onClick();
     setTimeout(() => {
@@ -288,23 +288,22 @@ const menuLinks = (color, onClick, headerRef, isUser, showDashboard = true, edit
   };
   return (
     <>
-      <NavItem to="/" icon={<FaHome />} label="Home" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/categories" icon={<FaListAlt />} label="Category" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/jury" icon={<FaUsers />} label="Guest" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/guidelines" icon={<FaBook />} label="Entry Guidelines" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/judging" icon={<FaGavel />} label="Selection Process" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/terms" icon={<FaFileContract />} label="T&C" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/contact" icon={<FaEnvelope />} label="Contact Us" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/media" icon={<FaTrophy />} label="Media" color={color} onClick={createNavHandler(onClick)} />
-      <NavDropdown icon={<FaHistory />} label="Previous Editions" color={color} options={editions} onClick={createNavHandler(onClick)} />
-      <NavItem to="/faq" icon={<FaQuestionCircle />} label="FAQ" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/nominate" icon={<FaRegEdit />} label="Nominate Now" color={color} onClick={createNavHandler(onClick)} />
+      <NavItem to="/" icon={<FaHome />} label="Home" onClick={createNavHandler(onClick)} />
+      <NavItem to="/categories" icon={<FaListAlt />} label="Category" onClick={createNavHandler(onClick)} />
+      <NavItem to="/jury" icon={<FaUsers />} label="Guest" onClick={createNavHandler(onClick)} />
+      <NavItem to="/guidelines" icon={<FaBook />} label="Entry Guidelines" className={isMobile ? "" : "hidden xl:flex"} onClick={createNavHandler(onClick)} />
+      <NavItem to="/judging" icon={<FaGavel />} label="Selection Process" className={isMobile ? "" : "hidden xl:flex"} onClick={createNavHandler(onClick)} />
+      <NavItem to="/terms" icon={<FaFileContract />} label="T&C" className={isMobile ? "" : "hidden xl:flex"} onClick={createNavHandler(onClick)} />
+      <NavItem to="/contact" icon={<FaEnvelope />} label="Contact Us" onClick={createNavHandler(onClick)} />
+      <NavItem to="/media" icon={<FaTrophy />} label="Media" onClick={createNavHandler(onClick)} />
+      <NavDropdown icon={<FaHistory />} label="Previous Editions" options={editions} onClick={createNavHandler(onClick)} isMobile={isMobile} />
+      <NavItem to="/faq" icon={<FaQuestionCircle />} label="FAQ" className={isMobile ? "" : "hidden xl:flex"} onClick={createNavHandler(onClick)} />
+      <NavItem to="/nominate" icon={<FaRegEdit />} label="Nominate Now" onClick={createNavHandler(onClick)} />
       {isUser && showDashboard && (
         <NavItem
           to="/dashboard"
           icon={<FaRegClone />}
           label="My Nominations"
-          color={color}
           onClick={createNavHandler(onClick)}
         />
       )}
@@ -312,22 +311,20 @@ const menuLinks = (color, onClick, headerRef, isUser, showDashboard = true, edit
   );
 };
 
-function NavItem({ to, icon, label, color, onClick }) {
+function NavItem({ to, icon, label, onClick, className = "" }) {
   return (
     <NavLink
       to={to}
       onClick={onClick}
       className={({ isActive }) =>
-        `flex items-center gap-1 ${isActive
-          ? `font-semibold border-b-2 ${color === "white" ? "border-white" : "border-black"
-          }`
-          : color === "white"
-            ? "opacity-80 hover:opacity-100"
-            : "text-gray-700 hover:text-black"
-        }`
+        `flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 select-none ${
+          isActive
+            ? "bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+            : "text-gray-300 hover:text-white hover:bg-white/5"
+        } ${className}`
       }
     >
-      <span className="text-[11px]">{icon}</span>
+      <span className="text-[12px]">{icon}</span>
       <span>{label}</span>
     </NavLink>
   );
@@ -345,11 +342,18 @@ function MobileMenuDrawer({
 }) {
   useEffect(() => {
     if (!open) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const onKey = (e) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open, onClose]);
 
   return (
@@ -359,42 +363,32 @@ function MobileMenuDrawer({
           {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[110] bg-slate-950/60 "
             onClick={onClose}
+            className="fixed inset-0 bg-black z-[200] block md:hidden"
           />
 
-          {/* Drawer */}
-          <motion.aside
+          {/* Drawer Panel */}
+          <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-[120] w-[85%] max-w-xs h-full bg-[#0b1120] text-white shadow-2xl flex flex-col overflow-hidden rounded-4xl justify-between"
+            className="fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-slate-950/95 backdrop-blur-xl border-l border-white/10 shadow-2xl z-[250] flex flex-col block md:hidden"
           >
-            {/* Liquid Background Accents */}
-            <div className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-20">
-              <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl animate-pulse" />
-              <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
-            </div>
-
             {/* Header */}
-            <div className="relative z-10 flex items-center justify-between px-6 h-20 border-b border-white/5 bg-slate-900/40 ">
-              <div className="flex items-center gap-3">
+            <div className="relative z-10 flex items-center justify-between px-6 py-5 border-b border-white/10">
+              <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-300">
                 <img
                   src="/images/logo.png"
                   alt="Logo"
-                  className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]"
+                  className="h-9 w-auto object-contain brightness-110"
                 />
-                <div className="flex flex-col leading-none">
-                  <span className="font-black text-[10px] uppercase tracking-tighter">TIME Cyber Media <br /> Pvt Ltd.</span>
-                </div>
-              </div>
+              </a>
               <button
-                aria-label="Close Menu"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all"
                 onClick={onClose}
+                className="text-white hover:text-emerald-400 text-2xl transition"
               >
                 <FaTimes />
               </button>
@@ -415,43 +409,42 @@ function MobileMenuDrawer({
                   }}
                   className="flex flex-col gap-3"
                 >
-                  {menuLinks("white", onClose, headerRef, isUser, true, editions)}
+                  {menuLinks(onClose, headerRef, isUser, true, editions, true)}
                 </motion.div>
               </nav>
 
-              {/* Bottom Section */}
-              <div className="mt-12 space-y-6">
-                {user && (
-                  <div className="px-2 py-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-center">
-                    <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-1">Authenticated Session</p>
-                    <p className="text-sm font-black text-white">{user.name}</p>
+              {/* Bottom Actions */}
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-4">
+                {isAuthenticated && user && (
+                  <div className="flex items-center gap-3 px-2">
+                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/40 text-emerald-400 font-bold">
+                      {user.name ? user.name[0].toUpperCase() : "U"}
+                    </div>
+                    <div className="flex flex-col text-left">
+                      <span className="text-white text-sm font-bold truncate max-w-[150px]">{user.name}</span>
+                      <span className="text-gray-400 text-xs truncate max-w-[150px]">{user.email}</span>
+                    </div>
                   </div>
                 )}
-
                 <button
                   onClick={() => {
-                    handleLoginClick();
                     onClose();
+                    handleLoginClick();
                   }}
-                  className="w-full relative overflow-hidden group/btn rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-black py-4 text-xs uppercase tracking-[0.2em] shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold py-3 rounded-xl transition shadow-lg"
                 >
-                  <span className="relative z-10">{isAuthenticated ? "Sign Out" : "Secure Login"}</span>
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+                  {isAuthenticated ? "Logout" : "Login / Register"}
                 </button>
-
-                <p className="text-[10px] text-center text-slate-500 font-medium">
-                  &copy; 2026 TIME Cyber Media Pvt Ltd. <br /> All Rights Reserved.
-                </p>
               </div>
             </div>
-          </motion.aside>
+          </motion.div>
         </>
       )}
     </AnimatePresence>
   );
 }
 
-function NavDropdown({ icon, label, color, options, onClick }) {
+function NavDropdown({ icon, label, options, onClick, isMobile = false }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
@@ -485,18 +478,20 @@ function NavDropdown({ icon, label, color, options, onClick }) {
           setOpen(!open);
           if (onClick) onClick();
         }}
-        className={`flex items-center gap-1 transition-colors ${color === "white"
-          ? (isActiveGroup ? "text-emerald-400 font-semibold" : "opacity-80 hover:opacity-100 text-white")
-          : (isActiveGroup ? "text-emerald-600 font-semibold" : "text-gray-700 hover:text-black")
-          }`}
+        className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 select-none ${
+          isActiveGroup
+            ? "bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+            : "text-gray-300 hover:text-white hover:bg-white/5"
+        }`}
       >
-        <span className="text-[11px]">{icon}</span>
+        <span className="text-[12px]">{icon}</span>
         <span>{label}</span>
       </NavLink>
 
       <div
-        className={`md:absolute top-[100%] left-0 pt-2 z-50 transition-all duration-200 ${open ? "md:opacity-100 md:visible md:translate-y-0 flex" : "md:opacity-0 md:invisible hidden"
-          } ${window.innerWidth < 768 && !open ? 'hidden' : ''}`}
+        className={`md:absolute top-[100%] left-0 pt-2 z-50 transition-all duration-200 ${
+          open ? "md:opacity-100 md:visible md:translate-y-0 flex" : "md:opacity-0 md:invisible hidden"
+        } ${window.innerWidth < 768 && !open ? 'hidden' : ''}`}
       >
         <div className="min-w-[240px] max-h-[70vh] overflow-y-auto medical-scrollbar bg-slate-900 border border-emerald-400/30 rounded-xl shadow-2xl py-3 flex flex-col">
           {options.map((opt) => {
@@ -507,7 +502,11 @@ function NavDropdown({ icon, label, color, options, onClick }) {
                 key={`${opt.year}-${opt.title}`}
                 to={`/${opt.year}/${formattedTitle}`}
                 onClick={() => { setOpen(false); if (onClick) onClick(); }}
-                className={`px-5 py-2.5 text-sm transition-colors ${isAct ? 'bg-emerald-600/20 font-bold border-l-4 border-emerald-400 text-white' : 'text-emerald-100 hover:bg-white/10 hover:text-white border-l-4 border-transparent'}`}
+                className={`px-5 py-2.5 text-sm transition-colors ${
+                  isAct 
+                    ? 'bg-emerald-600/20 font-bold border-l-4 border-emerald-400 text-white' 
+                    : 'text-emerald-100 hover:bg-white/10 hover:text-white border-l-4 border-transparent'
+                }`}
               >
                 {opt.title} ({opt.year})
               </NavLink>

@@ -114,7 +114,7 @@ export const sendNominationSuccessEmail = async (email, nomineeName, credentials
         
         <p style="font-size: 12px; color: #888; text-align: center; margin-bottom: 0;">
             Sent by <strong>International Healthcare Awards & Summit 2026</strong><br>
-            Organised by Prime Time Research Media Pvt. Ltd.
+            Organised by Time Cyber Media Pvt. Ltd.<br>
         </p>
       </div>
     `,

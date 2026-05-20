@@ -25,12 +25,13 @@ export default function Home() {
   const { isAuthenticated, user } = useAuth();
   const sectionRefs = useRef([]);
 
-  // Removed local video playbackRate effect as we've switched to YouTube embed
+  // Async state for loading YouTube iframe progressively
+  const [shouldRenderIframe, setShouldRenderIframe] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // Delay heavy iframe load to unblock main thread
-    const timer = setTimeout(() => setIsVideoLoaded(true), 2000);
+    // Render iframe shortly after mount to keep initial page paint ultra-fast
+    const timer = setTimeout(() => setShouldRenderIframe(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -342,17 +343,25 @@ export default function Home() {
       <section className="relative min-h-screen w-full overflow-hidden">
         {/* ===== BACKGROUND VIDEO: Responsive & Premium ===== */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none select-none overflow-hidden ">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000"
-            style={{
-              width: "100vw",
-              height: "56.25vw",
-              minHeight: "100vh",
-              minWidth: "177.77vh",
-              opacity: isVideoLoaded ? 1 : 0
-            }}
-          >
-            {isVideoLoaded && (
+          {/* Fallback / Placeholder Image displayed immediately */}
+          <img
+            src="/banner.jpg"
+            alt="Award Ceremony Fallback"
+            className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
+            style={{ opacity: isVideoLoaded ? 0.2 : 1 }}
+          />
+
+          {shouldRenderIframe && (
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000"
+              style={{
+                width: "100vw",
+                height: "56.25vw",
+                minHeight: "100vh",
+                minWidth: "177.77vh",
+                opacity: isVideoLoaded ? 1 : 0
+              }}
+            >
               <iframe
                 className="absolute inset-0 w-full h-full"
                 src="https://www.youtube.com/embed/Th0wptIA0f4?autoplay=1&mute=1&loop=1&playlist=Th0wptIA0f4&start=35&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
@@ -360,22 +369,14 @@ export default function Home() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                onLoad={() => setIsVideoLoaded(true)}
                 style={{
                   pointerEvents: "none",
                   transform: "scale(1.3)", // Zoom in slightly to hide black bars/UI
                 }}
               ></iframe>
-            )}
-          </div>
-          {/* Fallback Image for mobile if video fails */}
-          <noscript>
-            <img
-              src="/videos/hero-poster.jpg"
-              alt="Award Ceremony"
-              loading="lazy"
-              className="w-full h-full object-cover object-center"
-            />
-          </noscript>
+            </div>
+          )}
           {/* Top, bottom subtle overlays for extra premium depth */}
           <div className="absolute top-0 left-0 w-full h-1/6 bg-gradient-to-b from-black/60 via-transparent to-transparent pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-t from-[#2d180a]/80 via-transparent to-transparent pointer-events-none" />
@@ -637,7 +638,9 @@ export default function Home() {
                     <div key={idx} className="relative group"
                       style={{ animation: `fade-up 0.8s ease-out ${(idx + 1) * 120}ms both` }}>
                       <div className={`absolute -inset-1 bg-gradient-to-r ${item.border} opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl`} />
-                      <div className="relative border border-emerald-500/30 shadow-xl overflow-hidden hover:bg-slate-900/20 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/10 transform hover:-translate-x-1 hover:scale-[1.02] transition-all duration-500 rounded-2xl bg-slate-900/40 ">
+                      <div className="relative border border-white/20 shadow-xl overflow-hidden hover:bg-white/10 hover:border-white/40 hover:shadow-2xl transform hover:-translate-x-1 hover:scale-[1.02] transition-all duration-500 rounded-2xl bg-white/5 backdrop-blur-md ">
+                        {/* Animated RGB Strip */}
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-gradient-x" style={{ backgroundSize: "200% 100%" }} />
                         <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${item.border}`} />
                         <div className="p-6 flex items-center gap-5 text-left">
                           {/* Icon */}
@@ -664,9 +667,9 @@ export default function Home() {
                 {/* CTA Card */}
                 <div className="relative group mt-8">
                   <div className="absolute -inset-1 bg-gradient-to-r from-emerald-50 via-emerald-500 to-emerald-500 opacity-20 group-hover:opacity-40 blur-xl transition-all duration-700 rounded-2xl" />
-                  <div className="relative bg-emerald-950/70  rounded-2xl border border-emerald-500/30 shadow-2xl overflow-hidden hover:bg-emerald-900/40 hover:border-emerald-500/50 transition-all duration-500 p-8 text-left">
-                    {/* Emerald Bar */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-emerald-100 to-emerald-500" />
+                  <div className="relative bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl overflow-hidden hover:bg-white/10 hover:border-white/40 transition-all duration-500 p-8 text-left">
+                    {/* RGB Bar */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-gradient-x" style={{ backgroundSize: "200% 100%" }} />
                     <div className="flex items-center gap-4 mb-4 text-left">
                       <span className="text-2xl text-emerald-400 animate-pulse">✨</span>
                       <h4 className="text-xl font-black text-white text-left">Don't Miss Out!</h4>
