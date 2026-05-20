@@ -138,7 +138,7 @@ export default function AdminPreviousEditions({ customToken }) {
 
     return (
         <div className="space-y-12">
-            <div className="flex justify-between items-center bg-white/[0.06] p-10 rounded-[3rem] border border-white/15  shadow-[0_0_50px_rgba(16,185,129,0.1)]">
+            <div className="flex justify-between items-center bg-slate-900/40 p-10 rounded-[3rem] border border-white/15  shadow-[0_0_50px_rgba(16,185,129,0.1)]">
                 <div>
                     <h3 className="text-3xl font-black text-white tracking-tighter uppercase">Historical <span className="text-gradient-emerald">Archives</span></h3>
                     <p className="text-[10px] text-white/40 font-black uppercase tracking-widest mt-2">International Edition Records Management</p>
@@ -200,7 +200,7 @@ export default function AdminPreviousEditions({ customToken }) {
                             </div>
 
                             <div className="mt-auto space-y-6">
-                                <div className="flex items-center gap-6 p-6 rounded-3xl bg-white/[0.03] border border-white/5 group-hover:bg-white/[0.05] transition-colors">
+                                <div className="flex items-center gap-6 p-6 rounded-3xl bg-slate-900/40 border border-white/5 group-hover:bg-slate-800/40 transition-colors">
                                     <div className="flex-1">
                                         <p className="text-[9px] text-white/20 uppercase font-black tracking-widest mb-1">Archive Integrity</p>
                                         <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
@@ -282,7 +282,7 @@ export default function AdminPreviousEditions({ customToken }) {
                                 </div>
                             </div>
 
-                            <div className="bg-white/[0.02] border border-white/5 p-8 rounded-3xl space-y-6">
+                            <div className="bg-slate-900/40 border border-white/5 p-8 rounded-3xl space-y-6">
                                 <div>
                                     <label className="text-[10px] font-black uppercase tracking-widest text-cyan-400/40 ml-1 mb-2 block">Video Intelligence Links (Comma-separated)</label>
                                     <textarea className={`${inputClass} min-h-[80px] border-cyan-500/20`} placeholder="YouTube URLs..." value={formData.videoLinks} onChange={e => setFormData({ ...formData, videoLinks: e.target.value })} />

@@ -188,17 +188,18 @@ export default function Navbar() {
                border border-emerald-500/30 
                px-8 py-2.5 flex items-center gap-10 text-sm
                group
-               overflow-hidden
              "
             style={{
               background: "linear-gradient(135deg, rgba(8, 17, 36, 0.85) 0%, rgba(3, 8, 20, 0.95) 100%)",
             }}
           >
             {/* Liquid Refractive Element */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 opacity-50" />
-            <div className="absolute -top-full -left-full w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,transparent_70%)] animate-pulse" />
+            <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 opacity-50" />
+              <div className="absolute -top-full -left-full w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,transparent_70%)] animate-pulse" />
+            </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 z-10">
               <a href="https://www.timecybermedia.com/" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-300">
                 <img
                   src="/images/logo.png"

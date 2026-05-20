@@ -1248,12 +1248,14 @@ export default function Home() {
                       <SwiperSlide key={index} className="!px-0">
                         <NeonCard color="emerald" className="h-[450px] sm:h-[480px] !p-0">
                           <div className="relative w-full h-1/2 overflow-hidden">
-                            <img
-                              src={award.banner}
-                              alt={award.title}
-                              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
-                              loading="lazy"
-                            />
+                            {award.banner && (
+                              <img
+                                src={award.banner}
+                                alt={award.title}
+                                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                                loading="lazy"
+                              />
+                            )}
                             {/* Overlay Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
 

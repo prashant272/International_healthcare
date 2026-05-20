@@ -272,7 +272,7 @@ export default function AdminDashboard() {
   /* ================== HELPERS ================== */
   const renderNominationsTable = () => (
     <div className="relative group/table">
-      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-white/[0.02]  shadow-2xl overflow-y-auto">
+      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-slate-900/40  shadow-2xl overflow-y-auto">
         <table className="min-w-[1600px] w-full text-left border-separate border-spacing-0">
           <thead>
             <tr className="sticky top-0 z-40">
@@ -304,7 +304,7 @@ export default function AdminDashboard() {
           </thead>
           <tbody className="divide-y divide-white/5">
             {filteredNominations.map((n, idx) => (
-              <tr key={n._id} className="group/row hover:bg-white/[0.03] transition-colors duration-300">
+              <tr key={n._id} className="group/row hover:bg-slate-800/40 transition-colors duration-300">
                 <td className="px-6 py-5">
                   <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg border text-[10px] font-black uppercase tracking-widest ${n.participationType === "nominated as award" ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" :
                     n.participationType === "attend as speaker" ? "bg-cyan-500/10 border-cyan-500/20 text-cyan-400" :
@@ -473,7 +473,7 @@ export default function AdminDashboard() {
   );
 
   const renderStatusTab = () => (
-    <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-white/[0.02]  shadow-2xl overflow-y-auto">
+    <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/5 bg-slate-900/40  shadow-2xl overflow-y-auto">
       <table className="min-w-[1100px] w-full text-left border-separate border-spacing-0">
         <thead>
           <tr className="sticky top-0 z-40">
@@ -496,7 +496,7 @@ export default function AdminDashboard() {
           {nominations.map((n, idx) => {
             const userLabel = n.status === "in_progress" ? "Shortlisted" : STATUS_OPTIONS.find((s) => s.value === n.status)?.label || "Nomination Received";
             return (
-              <tr key={n._id} className="group hover:bg-white/[0.03] transition-colors duration-300">
+              <tr key={n._id} className="group hover:bg-slate-800/40 transition-colors duration-300">
                 <td className="px-8 py-6">
                   <div className="text-sm font-black text-white uppercase tracking-tighter">{n.nomineeName}</div>
                 </td>
@@ -552,7 +552,7 @@ export default function AdminDashboard() {
     const rows = Array.from(byUser.values());
 
     return (
-      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/10 bg-white/[0.04]  shadow-2xl overflow-y-auto">
+      <div className="overflow-x-auto max-h-[75vh] medical-scrollbar rounded-[2rem] border border-white/10 bg-slate-900/40  shadow-2xl overflow-y-auto">
         <table className="min-w-[800px] w-full text-left border-separate border-spacing-0">
           <thead>
             <tr className="sticky top-0 z-40">
@@ -570,7 +570,7 @@ export default function AdminDashboard() {
           </thead>
           <tbody className="divide-y divide-white/10">
             {rows.map((row, idx) => (
-              <tr key={row.email} className="group hover:bg-white/[0.05] transition-colors duration-300">
+              <tr key={row.email} className="group hover:bg-slate-800/40 transition-colors duration-300">
                 <td className="px-10 py-6">
                   <div className="text-sm font-black text-white uppercase tracking-widest">{row.email}</div>
                 </td>
@@ -596,7 +596,7 @@ export default function AdminDashboard() {
   };
 
   const renderAdminsTab = () => (
-    <div className="border border-emerald-500/20 rounded-[3rem] bg-white/[0.03] p-12 text-md text-white/80 shadow-2xl  relative overflow-hidden">
+    <div className="border border-emerald-500/20 rounded-[3rem] bg-slate-900/40 p-12 text-md text-white/80 shadow-2xl  relative overflow-hidden">
       <div className="absolute top-0 right-0 p-12 opacity-5">🛡️</div>
       <h2 className="text-3xl font-black mb-6 text-white uppercase tracking-tighter flex items-center gap-3">
         <ShieldCheck className="text-emerald-400" size={32} /> System <span className="text-gradient-emerald">Configuration</span>
@@ -605,11 +605,11 @@ export default function AdminDashboard() {
         Access restricted to administrative entities only.
       </p>
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl">
+        <div className="p-6 bg-slate-900/40 border border-white/5 rounded-2xl">
           <p className="font-black text-emerald-400 text-[10px] uppercase tracking-[0.2em] mb-2">Access Control</p>
           <p className="text-sm text-white/60">Manage administrative privileges and authentication nodes.</p>
         </div>
-        <div className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl">
+        <div className="p-6 bg-slate-900/40 border border-white/5 rounded-2xl">
           <p className="font-black text-cyan-400 text-[10px] uppercase tracking-[0.2em] mb-2">Protocol Logs</p>
           <p className="text-sm text-white/60">View real-time system audit logs and registration events.</p>
         </div>
@@ -628,7 +628,7 @@ export default function AdminDashboard() {
         ].map((stat, i) => (
           <div key={i} className="group relative">
             <div className={`absolute inset-0 bg-${stat.color}-500/10 blur-[80px] rounded-[2.5rem] transition-all group-hover:bg-${stat.color}-500/20`} />
-            <div className="relative bg-white/[0.04] border border-white/10 rounded-[2.5rem] p-10 flex flex-col items-center text-center transition-all group-hover:-translate-y-2 group-hover:border-white/20 shadow-2xl ">
+            <div className="relative bg-slate-900/40 border border-white/10 rounded-[2.5rem] p-10 flex flex-col items-center text-center transition-all group-hover:-translate-y-2 group-hover:border-white/20 shadow-2xl ">
               <div className="text-4xl mb-6 group-hover:scale-110 transition-transform">{stat.icon}</div>
               <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-2">{stat.label}</div>
               <div className={`text-5xl font-black text-${stat.color}-400 tabular-nums tracking-tighter`}>{stat.val}</div>
@@ -639,7 +639,7 @@ export default function AdminDashboard() {
 
       <div className="relative">
         <div className="absolute -inset-4 bg-emerald-500/5 blur-[100px] rounded-full opacity-50" />
-        <div className="relative overflow-x-auto border border-white/5 rounded-[3rem] bg-white/[0.01]  shadow-2xl">
+        <div className="relative overflow-x-auto border border-white/5 rounded-[3rem] bg-slate-900/40  shadow-2xl">
           <table className="w-full text-left border-separate border-spacing-0">
             <thead>
               <tr>
@@ -652,7 +652,7 @@ export default function AdminDashboard() {
             </thead>
             <tbody className="divide-y divide-white/5">
               {dailySummary.map((row, idx) => (
-                <tr key={row.date} className="group hover:bg-white/[0.03] transition-colors duration-300">
+                <tr key={row.date} className="group hover:bg-slate-800/40 transition-colors duration-300">
                   <td className="px-10 py-6">
                     <div className="text-sm font-black text-emerald-400 uppercase tracking-widest">{row.date}</div>
                   </td>
@@ -708,7 +708,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                <nav className="flex items-center bg-white/[0.06] p-2 rounded-[2rem] border border-white/10 overflow-x-auto no-scrollbar  max-w-full">
+                <nav className="flex items-center bg-slate-900/40 p-2 rounded-[2rem] border border-white/10 overflow-x-auto no-scrollbar  max-w-full">
                   {[
                     { id: "nominations", label: "Nominations", icon: "🏆" },
                     { id: "status", label: "Payment", icon: "💸" },
@@ -733,7 +733,7 @@ export default function AdminDashboard() {
                   ))}
                 </nav>
 
-                <div className="hidden xl:flex items-center gap-6 px-10 py-4 rounded-[2rem] bg-white/[0.06] border border-white/10 ">
+                <div className="hidden xl:flex items-center gap-6 px-10 py-4 rounded-[2rem] bg-slate-900/40 border border-white/10 ">
                   <div className="text-right">
                     <p className="text-[9px] text-white/40 uppercase font-black tracking-widest mb-0.5">Total Database</p>
                     <p className="text-lg font-black text-emerald-400 tabular-nums tracking-tighter">{paymentSummary.total} Entries</p>
@@ -765,7 +765,7 @@ export default function AdminDashboard() {
             </header>
 
             {activeTab !== "analytics" && activeTab !== "admins" && activeTab !== "previous-editions" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-14 bg-white/[0.04] p-10 rounded-[3.5rem] border border-white/10  shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-14 bg-slate-900/40 p-10 rounded-[3.5rem] border border-white/10  shadow-[0_0_100px_rgba(0,0,0,0.5)]">
                 <div className="flex flex-col gap-3">
                   <label className="text-[10px] text-emerald-400 font-black uppercase tracking-widest ml-1">Filter Status</label>
                   <select
@@ -886,7 +886,7 @@ export default function AdminDashboard() {
 
                   <div className="grid md:grid-cols-2 gap-8">
                     {/* Participation & Category */}
-                    <div className="space-y-6 bg-white/[0.02] p-8 rounded-3xl border border-white/5">
+                    <div className="space-y-6 bg-slate-900/40 p-8 rounded-3xl border border-white/5">
                       <h3 className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-4">Categorization</h3>
                       <div className="space-y-4">
                         <div>
@@ -915,7 +915,7 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Identity */}
-                    <div className="space-y-6 bg-white/[0.02] p-8 rounded-3xl border border-white/5">
+                    <div className="space-y-6 bg-slate-900/40 p-8 rounded-3xl border border-white/5">
                       <h3 className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-4">Core Identity</h3>
                       <div className="space-y-4">
                         <div>
@@ -951,7 +951,7 @@ export default function AdminDashboard() {
 
                     {/* Leadership & Contact */}
                     <div className="md:col-span-2 grid md:grid-cols-2 gap-8">
-                      <div className="space-y-6 bg-white/[0.01] p-8 rounded-3xl border border-white/5">
+                      <div className="space-y-6 bg-slate-900/40 p-8 rounded-3xl border border-white/5">
                         <h3 className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-4">Leadership (Org Head)</h3>
                         <div className="grid grid-cols-2 gap-4">
                           <input className={inputClass} value={editForm.orgHeadName || ""} onChange={(e) => setEditForm({ ...editForm, orgHeadName: e.target.value })} placeholder="Name" />
@@ -960,7 +960,7 @@ export default function AdminDashboard() {
                           <input className={inputClass} value={editForm.orgHeadEmail || ""} onChange={(e) => setEditForm({ ...editForm, orgHeadEmail: e.target.value })} placeholder="Email" />
                         </div>
                       </div>
-                      <div className="space-y-6 bg-white/[0.01] p-8 rounded-3xl border border-white/5">
+                      <div className="space-y-6 bg-slate-900/40 p-8 rounded-3xl border border-white/5">
                         <h3 className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-4">Operational Point (Contact)</h3>
                         <div className="grid grid-cols-2 gap-4">
                           <input className={inputClass} value={editForm.contactName || ""} onChange={(e) => setEditForm({ ...editForm, contactName: e.target.value })} placeholder="Name" />
@@ -972,7 +972,7 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Logistics & Remarks */}
-                    <div className="md:col-span-2 space-y-6 bg-white/[0.02] p-8 rounded-3xl border border-white/5">
+                    <div className="md:col-span-2 space-y-6 bg-slate-900/40 p-8 rounded-3xl border border-white/5">
                       <h3 className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-4">Logistics & Assessment</h3>
                       <div className="grid md:grid-cols-4 gap-4">
                         <input className={inputClass} value={editForm.city || ""} onChange={(e) => setEditForm({ ...editForm, city: e.target.value })} placeholder="City" />
@@ -1046,7 +1046,7 @@ export default function AdminDashboard() {
                           { label: "Fee Status", val: viewingNomination.paymentStatus || 'not_paid', color: "purple" },
                           { label: "Valuation", val: viewingNomination.amount || '—', color: "pink" }
                         ].map((item, i) => (
-                          <div key={i} className="bg-white/[0.02] border border-white/5 p-5 rounded-2xl">
+                          <div key={i} className="bg-slate-900/40 border border-white/5 p-5 rounded-2xl">
                             <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mb-1">{item.label}</p>
                             <p className={`text-[10px] font-black uppercase tracking-widest text-${item.color}-400`}>{item.val}</p>
                           </div>
@@ -1054,7 +1054,7 @@ export default function AdminDashboard() {
                       </div>
 
                       {/* Timeline */}
-                      <div className="bg-white/[0.01] border border-white/5 p-8 rounded-[2rem] relative overflow-hidden group">
+                      <div className="bg-slate-900/40 border border-white/5 p-8 rounded-[2rem] relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">📅</div>
                         <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400 mb-6">Timeline</h3>
                         <div className="grid md:grid-cols-2 gap-8">
@@ -1093,7 +1093,7 @@ export default function AdminDashboard() {
 
                       {/* Leadership & Operations */}
                       <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-white/[0.01] border border-white/5 p-8 rounded-[2rem]">
+                        <div className="bg-slate-900/40 border border-white/5 p-8 rounded-[2rem]">
                           <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400 mb-6">Leadership (Org Head)</h3>
                           <div className="space-y-4">
                             <DetailItem label="Head Name" val={viewingNomination.orgHeadName} />
@@ -1102,7 +1102,7 @@ export default function AdminDashboard() {
                             <DetailItem label="Official Email" val={viewingNomination.orgHeadEmail} />
                           </div>
                         </div>
-                        <div className="bg-white/[0.01] border border-white/5 p-8 rounded-[2rem]">
+                        <div className="bg-slate-900/40 border border-white/5 p-8 rounded-[2rem]">
                           <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-pink-400 mb-6">Operations (Contact)</h3>
                           <div className="space-y-4">
                             <DetailItem label="Contact Person" val={viewingNomination.contactName} />
@@ -1114,7 +1114,7 @@ export default function AdminDashboard() {
                       </div>
 
                       {/* Geography & Presence */}
-                      <div className="bg-white/[0.01] border border-white/5 p-8 rounded-[2rem]">
+                      <div className="bg-slate-900/40 border border-white/5 p-8 rounded-[2rem]">
                         <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-6">Geographic Presence</h3>
                         <div className="grid md:grid-cols-2 gap-8">
                           <DetailItem label="Physical Address" val={viewingNomination.street} />
@@ -1161,7 +1161,7 @@ export default function AdminDashboard() {
                       )}
 
                       {/* Remarks Area */}
-                      <div className="bg-white/[0.02] border border-white/5 p-8 rounded-[2.5rem] space-y-8">
+                      <div className="bg-slate-900/40 border border-white/5 p-8 rounded-[2.5rem] space-y-8">
                         <div>
                           <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 mb-4">Public Remarks</h3>
                           <p className="text-sm italic text-white/60 leading-relaxed">"{viewingNomination.remarks || 'No public remarks provided.'}"</p>

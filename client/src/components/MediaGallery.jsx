@@ -58,12 +58,9 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
 
           {videoId && (
             <img
-              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+              src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
               alt={reel.title || "Video Reel"}
               onLoad={() => setImgLoaded(true)}
-              onError={(e) => {
-                e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-              }}
               className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'} brightness-[1.05] contrast-[1.05]`}
               loading="lazy"
             />
@@ -323,7 +320,7 @@ export default function MediaGallery() {
                           <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} title={video.title || "Video"} className="absolute top-0 left-0 w-full h-full" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         ) : (
                           <>
-                            {videoId && <img src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} alt={video.title || "Video"} className="absolute top-0 left-0 w-full h-full object-cover" onError={(e) => { e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; }} />}
+                            {videoId && <img src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} alt={video.title || "Video"} className="absolute top-0 left-0 w-full h-full object-cover" />}
                             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
                             <div className="relative z-10 w-16 h-16 bg-red-600/90 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(239,68,68,0.6)] group-hover:bg-red-500 transform group-hover:scale-110 transition-all duration-300">
                               <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
