@@ -23,6 +23,8 @@ const app = express();
 app.use(cors({
   origin: [
     config.FRONTEND_URL,
+    config.FRONTEND_URL ? config.FRONTEND_URL.replace(/\/$/, "") : "",
+    "https://international-healthcare-award.vercel.app",
     "https://globalhealthcareawards.com",
     "https://www.globalhealthcareawards.com",
     "http://localhost:5173",
