@@ -3,7 +3,7 @@
 export function getBaseUrl() {
   // Use production API URL explicitly when running in production mode
   if (import.meta.env?.PROD) {
-    return "https://api.globalhealthcareawards.com";
+    return "https://api.internationalhealthcareaward.com";
   }
 
   // Prefer explicit API base URL if provided in .env
