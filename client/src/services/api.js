@@ -131,8 +131,8 @@ export function fetchPreviousEditions() {
 }
 
 export function fetchPreviousEditionByYear(year, slug) {
-  const url = slug 
-    ? `/api/previous-editions/${year}?slug=${slug}` 
+  const url = slug
+    ? `/api/previous-editions/${year}?slug=${slug}`
     : `/api/previous-editions/${year}`;
   return request(url, { method: "GET" });
 }

@@ -38,8 +38,8 @@ function BannerSlider({ images, year }) {
                 alt={`Banner ${curr + 1}`}
                 loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-emerald-950/20 to-transparent opacity-80 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/50 via-transparent to-[#020617]/50 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-emerald-950/20 to-transparent opacity-80 pointer-events-none z-20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/50 via-transparent to-[#020617]/50 pointer-events-none z-20" />
 
             {/* Navigation Buttons */}
             <button
@@ -185,12 +185,7 @@ export default function EditionDetail() {
     const displayYear = edition ? edition.year : identifier;
 
     return (
-        <PageHero
-            badge={edition?.editionLabel || "Previous Edition"}
-            icon="🕰️"
-            title={<span>Healthcare Awards <span className="text-gradient-emerald">{displayYear}</span></span>}
-            subtitle={edition?.hero || `Celebrating the visionaries and clinical leaders of the ${displayYear} edition.`}
-        >
+        <PageHero compact>
             <div className="max-w-7xl mx-auto px-4 sm:px-8 pb-32 relative z-10">
 
                 {!edition && isCovidYear ? (
@@ -228,10 +223,9 @@ export default function EditionDetail() {
                             </span>
                             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#d4af37]"></div>
                         </div>
-                        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.15] tracking-tight">
-                            <span className="text-white drop-shadow-lg">INTERNATIONAL</span>
-                            <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-100 to-emerald-400 drop-shadow-[0_2px_15px_rgba(16,185,129,0.3)]"> Healthcare Awards {displayYear}</span>
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black mb-8 leading-[1.15] tracking-tight">
+                            <span className="text-white drop-shadow-lg">INTERNATIONAL </span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-100 to-emerald-400 drop-shadow-[0_2px_15px_rgba(16,185,129,0.3)]">Healthcare Awards {displayYear}</span>
                         </h1>
                         <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto whitespace-pre-line font-medium">
                             {edition?.hero || `The ${displayYear} Healthcare Excellence Awards celebrated the visionaries, institutions, and clinical leaders who redefined medical standards internationally.`}

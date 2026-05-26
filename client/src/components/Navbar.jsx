@@ -474,9 +474,16 @@ function NavDropdown({ icon, label, options, onClick, isMobile = false }) {
       <NavLink
         to="/previous-editions"
         onClick={(e) => {
-          e.preventDefault();
-          setOpen(!open);
-          if (onClick) onClick();
+          if (window.innerWidth >= 768) {
+            // On desktop, hover opens/closes dropdown, so click should navigate to /previous-editions
+            setOpen(false);
+            if (onClick) onClick();
+          } else {
+            // On mobile, click toggles dropdown
+            e.preventDefault();
+            setOpen(!open);
+            if (onClick) onClick();
+          }
         }}
         className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 select-none ${
           isActiveGroup
@@ -512,6 +519,15 @@ function NavDropdown({ icon, label, options, onClick, isMobile = false }) {
               </NavLink>
             );
           })}
+          <NavLink
+            to="/previous-editions"
+            onClick={() => { setOpen(false); if (onClick) onClick(); }}
+            className={`px-5 py-2.5 text-sm font-bold text-emerald-400 hover:bg-white/10 hover:text-emerald-300 transition-colors ${
+              options.length > 0 ? "border-t border-white/5 mt-1" : ""
+            }`}
+          >
+            {options.length > 0 ? "View All Editions" : "Browse Editions Archive"}
+          </NavLink>
         </div>
       </div>
     </div>

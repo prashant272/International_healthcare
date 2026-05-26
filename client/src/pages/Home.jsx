@@ -1091,7 +1091,7 @@ export default function Home() {
 
 
         {/* PREVIOUS EDITIONS CAROUSEL SECTION */}
-        {/* <section className="relative overflow-hidden py-12">
+        <section className="relative overflow-hidden py-12">
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
             <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-emerald-500/5 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
             <div className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full animate-pulse delay-700" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
@@ -1196,7 +1196,7 @@ export default function Home() {
               </div>
             )}
           </div>
-        </section> */}
+        </section>
 
         {/* OUR OTHER UPCOMING AWARDS section */}
         <section className="relative overflow-hidden py-5">

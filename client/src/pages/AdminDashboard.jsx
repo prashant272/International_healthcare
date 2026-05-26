@@ -7,6 +7,7 @@ import {
 } from "../services/api.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { ShieldCheck, Edit2, Trash2, Eye } from "lucide-react";
+import AdminPreviousEditions from "../components/AdminPreviousEditions.jsx";
 
 /* ------------------ Constants ------------------ */
 const goldGrad =
