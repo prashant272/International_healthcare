@@ -140,6 +140,7 @@ export default function EditionDetail() {
                     setEdition(null);
                     setImages([]);
                 }
+                //he;;p
             } catch (err) {
                 console.error("Failed to fetch edition:", err);
                 setEdition(null);
