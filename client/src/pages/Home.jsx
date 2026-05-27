@@ -62,10 +62,10 @@ export default function Home() {
 
   const events = [
     {
-      title: "International Healthcare Awards 2026 – Delhi Edition ",
+      title: "International Healthcare Awards 2026 – Mumbai Edition ",
       desc: "Honoring groundbreaking achievements and revolutionary leaders who are shaping the future of international medicine and healthcare excellence across the UAE.",
-      date: "18 july 2026",
-      place: "Delhi",
+      date: "12 July 2026",
+      place: "Mumbai",
       highlight: "International Excellence",
     },
     {
@@ -615,8 +615,8 @@ export default function Home() {
                 <div className="space-y-6">
                   {[
                     {
-                      title: 'Delhi Edition',
-                      date: '18 July 2026',
+                      title: 'Mumbai Edition',
+                      date: '12 July 2026',
                       icon: (
                         <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-300 flex items-center justify-center shadow-lg">
                           <span className="text-xl">🇮🇳</span>
