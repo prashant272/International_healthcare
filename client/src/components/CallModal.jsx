@@ -42,7 +42,7 @@ export default function CallModal({ onClose }) {
             onClick={onClose}
         >
             <div
-                className="relative bg-gradient-to-br from-[#3a1418] via-[#4a1820] to-[#3a1418] rounded-2xl shadow-2xl max-w-md w-full border-2 border-[#d4af37]/30 animate-slideUp"
+                className="relative bg-gradient-to-br from-[#3a1418] via-[#4a1820] to-[#3a1418] rounded-2xl shadow-2xl max-w-md w-full border-2 border-[#34d399]/30 animate-slideUp"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Close Button */}
@@ -55,14 +55,14 @@ export default function CallModal({ onClose }) {
                 </button>
 
                 {/* Header */}
-                <div className="p-6 border-b border-[#d4af37]/20">
+                <div className="p-6 border-b border-[#34d399]/20">
                     <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8941f] flex items-center justify-center shadow-lg">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#34d399] to-[#b8941f] flex items-center justify-center shadow-lg">
                             <FaPhoneAlt className="w-8 h-8 text-white" />
                         </div>
                         <div>
                             <h2 className="text-2xl font-bold text-white">Contact Us</h2>
-                            <p className="text-[#d4af37] font-semibold mt-1">{displayNumber}</p>
+                            <p className="text-[#34d399] font-semibold mt-1">{displayNumber}</p>
                         </div>
                     </div>
                 </div>
@@ -74,9 +74,9 @@ export default function CallModal({ onClose }) {
                     {/* Phone Call Option */}
                     <button
                         onClick={handlePhoneCall}
-                        className="w-full flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-[#d4af37]/10 to-[#d4af37]/5 border-2 border-[#d4af37]/30 hover:border-[#d4af37] hover:bg-[#d4af37]/20 transition-all duration-300 group"
+                        className="w-full flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-[#34d399]/10 to-[#34d399]/5 border-2 border-[#34d399]/30 hover:border-[#34d399] hover:bg-[#34d399]/20 transition-all duration-300 group"
                     >
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8941f] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#34d399] to-[#b8941f] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <FaPhoneAlt className="w-6 h-6 text-white" />
                         </div>
                         <div className="text-left flex-1">

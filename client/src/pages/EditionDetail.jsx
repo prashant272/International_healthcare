@@ -19,7 +19,7 @@ function BannerSlider({ images, year }) {
     if (images.length === 0) {
         return (
             <div className="relative w-full h-[250px] sm:h-[400px] md:h-[500px] mb-12 rounded-[2rem] overflow-hidden bg-emerald-950/40  border border-white/10 flex flex-col items-center justify-center text-center p-6 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#34d399]/5 to-transparent pointer-events-none"></div>
                 <div className="text-4xl sm:text-6xl mb-4 sm:mb-6 animate-pulse">📸</div>
                 <h3 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 mb-3">Capturing Memories...</h3>
                 <p className="text-slate-400 text-sm sm:text-base max-w-md">We are currently organizing and uploading high-quality photos for the {year} edition. Check back soon!</p>
@@ -45,14 +45,14 @@ function BannerSlider({ images, year }) {
             <button
                 aria-label="Previous"
                 onClick={prev}
-                className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center bg-black/40 hover:bg-[#d4af37] hover:text-black text-white rounded-full transition-all duration-300 z-10 border border-white/20  opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+                className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center bg-black/40 hover:bg-[#34d399] hover:text-black text-white rounded-full transition-all duration-300 z-10 border border-white/20  opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
             >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
             </button>
             <button
                 aria-label="Next"
                 onClick={next}
-                className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-8 w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center bg-black/40 hover:bg-[#d4af37] hover:text-black text-white rounded-full transition-all duration-300 z-10 border border-white/20  opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+                className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-8 w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center bg-black/40 hover:bg-[#34d399] hover:text-black text-white rounded-full transition-all duration-300 z-10 border border-white/20  opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
             >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
             </button>
@@ -82,11 +82,11 @@ function EventGallery({ images }) {
     return (
         <div className="mb-16 sm:mb-24 overflow-hidden relative">
             <div className="flex items-center justify-center gap-3 mb-8 sm:mb-12">
-                <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#d4af37]"></div>
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#34d399]"></div>
                 <h3 className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 tracking-wide uppercase">
                     Media Gallery
                 </h3>
-                <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#d4af37]"></div>
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#34d399]"></div>
             </div>
 
             <div className="relative group">
@@ -98,7 +98,7 @@ function EventGallery({ images }) {
                     {[...images, ...images].map((img, i) => (
                         <div
                             key={i}
-                            className="shrink-0 w-[260px] h-[180px] sm:w-[380px] sm:h-[260px] md:w-[450px] md:h-[300px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:border-[#d4af37]/40 bg-emerald-950 group/item relative"
+                            className="shrink-0 w-[260px] h-[180px] sm:w-[380px] sm:h-[260px] md:w-[450px] md:h-[300px] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:border-[#34d399]/40 bg-emerald-950 group/item relative"
                         >
                             <img
                                 src={img}
@@ -155,9 +155,9 @@ export default function EditionDetail() {
     if (loading) {
         return (
             <div className="min-h-screen bg-[#020617] text-white flex items-center justify-center p-6 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/5 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#34d399]/5 to-transparent pointer-events-none"></div>
                 <div className="relative">
-                    <div className="w-16 h-16 border-4 border-slate-700 border-t-[#d4af37] rounded-full animate-spin shadow-[0_0_30px_rgba(212,175,55,0.3)]" />
+                    <div className="w-16 h-16 border-4 border-slate-700 border-t-[#34d399] rounded-full animate-spin shadow-[0_0_30px_rgba(212,175,55,0.3)]" />
                 </div>
             </div>
         );
@@ -191,7 +191,7 @@ export default function EditionDetail() {
 
                 {!edition && isCovidYear ? (
                     <div className="relative w-full py-20 px-6 sm:px-12 mb-12 sm:mb-16 rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-emerald-950/40  border border-white/10 flex flex-col items-center justify-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-                        <div className="absolute inset-0 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
+                        <div className="absolute inset-0 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
                         <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 blur-[80px] rounded-full group-hover:bg-red-500/10 transition-colors duration-700" />
                         <div className="text-7xl mb-6 drop-shadow-2xl">😷</div>
                         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 tracking-tight">
@@ -218,11 +218,11 @@ export default function EditionDetail() {
                     {/* Header Info */}
                     <header className="max-w-5xl text-center mx-auto">
                         <div className="inline-flex items-center justify-center gap-3 mb-6">
-                            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#d4af37]"></div>
-                            <span className="text-[#d4af37] text-xs sm:text-sm font-black uppercase tracking-[0.2em]">
+                            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#34d399]"></div>
+                            <span className="text-[#34d399] text-xs sm:text-sm font-black uppercase tracking-[0.2em]">
                                 {edition?.editionLabel || "Previous Edition"}
                             </span>
-                            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#d4af37]"></div>
+                            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#34d399]"></div>
                         </div>
                         <h1 className="text-2xl sm:text-4xl md:text-5xl font-black mb-8 leading-[1.15] tracking-tight">
                             <span className="text-white drop-shadow-lg">INTERNATIONAL </span>
@@ -237,15 +237,15 @@ export default function EditionDetail() {
                         <div className="grid lg:grid-cols-12 gap-10 sm:gap-12 items-stretch">
                             {/* Legacy Card */}
                             <section className="lg:col-span-5 flex">
-                                <div className="w-full bg-emerald-950/50 p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] border border-white/10  relative overflow-hidden group hover:border-[#d4af37]/30 transition-all duration-500 shadow-2xl flex flex-col justify-center">
-                                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#d4af37]/5 blur-[80px] rounded-full group-hover:bg-[#d4af37]/10 transition-colors duration-700" />
+                                <div className="w-full bg-emerald-950/50 p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] border border-white/10  relative overflow-hidden group hover:border-[#34d399]/30 transition-all duration-500 shadow-2xl flex flex-col justify-center">
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#34d399]/5 blur-[80px] rounded-full group-hover:bg-[#34d399]/10 transition-colors duration-700" />
                                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-6 sm:mb-8 flex items-center gap-4 relative z-10">
-                                        <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20 text-[#d4af37] text-xl shadow-[0_0_15px_rgba(212,175,55,0.2)]">🏅</span>
+                                        <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#34d399]/10 border border-[#34d399]/20 text-[#34d399] text-xl shadow-[0_0_15px_rgba(212,175,55,0.2)]">🏅</span>
                                         The {displayYear} Legacy
                                     </h2>
                                     <div className="text-base sm:text-lg text-slate-300 leading-relaxed space-y-6 relative z-10">
                                         <p>
-                                            Organized by <strong className="text-white font-bold tracking-wide">TIME Cyber Media Pvt Ltd</strong>, the {displayYear} ceremony in <strong className="text-[#d4af37] whitespace-nowrap">{edition.locations?.join(", ") || edition.locations}</strong> served as a powerful platform for networking, recognition, and medical innovation.
+                                            Organized by <strong className="text-white font-bold tracking-wide">TIME Cyber Media Pvt Ltd</strong>, the {displayYear} ceremony in <strong className="text-[#34d399] whitespace-nowrap">{edition.locations?.join(", ") || edition.locations}</strong> served as a powerful platform for networking, recognition, and medical innovation.
                                         </p>
                                         <p>
                                             From specialized clinics to multi-specialty conglomerates, we identified leaders who prioritize patient safety, ethical practice, and technological advancement in healthcare.
@@ -262,11 +262,11 @@ export default function EditionDetail() {
                                     { label: "100+", sub: "Hospitals Represented", icon: "🏥" },
                                     { label: edition.editionLabel?.split(" ")[0] || "Past", sub: "Successful Edition", icon: "🌟" }
                                 ].map((item, i) => (
-                                    <div key={i} className="bg-emerald-950/30 p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border border-white/5 flex flex-col justify-center items-center text-center group hover:border-[#d4af37]/30 hover:bg-emerald-950/70 transition-all duration-500 relative overflow-hidden ">
-                                        <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af37]/0 via-[#d4af37]/5 to-[#d4af37]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <div key={i} className="bg-emerald-950/30 p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border border-white/5 flex flex-col justify-center items-center text-center group hover:border-[#34d399]/30 hover:bg-emerald-950/70 transition-all duration-500 relative overflow-hidden ">
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-[#34d399]/0 via-[#34d399]/5 to-[#34d399]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <div className="text-2xl mb-3 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-transform">{item.icon}</div>
                                         <div className="text-3xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 font-black mb-2 group-hover:from-white group-hover:to-white transition-all">{item.label}</div>
-                                        <div className="text-[10px] sm:text-xs font-bold text-[#d4af37] uppercase tracking-widest leading-tight">{item.sub}</div>
+                                        <div className="text-[10px] sm:text-xs font-bold text-[#34d399] uppercase tracking-widest leading-tight">{item.sub}</div>
                                     </div>
                                 ))}
                             </section>
@@ -275,13 +275,13 @@ export default function EditionDetail() {
 
                     {/* Evaluation Architecture */}
                     <section className="bg-emerald-950/60 p-8 sm:p-14 md:p-16 rounded-[2rem] sm:rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden ">
-                        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#d4af37]/5 blur-[120px] rounded-full pointer-events-none" />
+                        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#34d399]/5 blur-[120px] rounded-full pointer-events-none" />
 
                         <div className="text-center mb-12 sm:mb-20 relative z-10">
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-                                Rigorous <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#ffeec3]">Evaluation</span> Architecture
+                                Rigorous <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#34d399] to-[#ffeec3]">Evaluation</span> Architecture
                             </h2>
-                            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto"></div>
+                            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#34d399] to-transparent mx-auto"></div>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 relative z-10">
@@ -293,13 +293,13 @@ export default function EditionDetail() {
                             ].map((step, i) => (
                                 <div key={i} className="text-center group relative">
                                     {/* Connecting Line for desktop */}
-                                    {i < 3 && <div className="hidden lg:block absolute top-[2.5rem] sm:top-[3rem] left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-[#d4af37]/20 to-transparent z-0"></div>}
+                                    {i < 3 && <div className="hidden lg:block absolute top-[2.5rem] sm:top-[3rem] left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-[#34d399]/20 to-transparent z-0"></div>}
 
-                                    <div className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-emerald-950 border-2 border-white/10 rounded-full flex items-center justify-center text-2xl sm:text-3xl font-black text-[#d4af37] mb-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:border-[#d4af37]/50 group-hover:scale-110 transition-all duration-500">
+                                    <div className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-emerald-950 border-2 border-white/10 rounded-full flex items-center justify-center text-2xl sm:text-3xl font-black text-[#34d399] mb-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:border-[#34d399]/50 group-hover:scale-110 transition-all duration-500">
                                         0{i + 1}
-                                        <div className="absolute inset-0 rounded-full bg-[#d4af37]/10 opacity-0 group-hover:opacity-100 transition-opacity blur-md"></div>
+                                        <div className="absolute inset-0 rounded-full bg-[#34d399]/10 opacity-0 group-hover:opacity-100 transition-opacity blur-md"></div>
                                     </div>
-                                    <h4 className="text-lg sm:text-xl font-bold text-white mb-3 group-hover:text-[#d4af37] transition-colors">{step.title}</h4>
+                                    <h4 className="text-lg sm:text-xl font-bold text-white mb-3 group-hover:text-[#34d399] transition-colors">{step.title}</h4>
                                     <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-[180px] sm:max-w-[220px] mx-auto">{step.desc}</p>
                                 </div>
                             ))}

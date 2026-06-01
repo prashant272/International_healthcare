@@ -27,9 +27,9 @@ function VideoCard({ video }) {
                     <img
                         src={video.thumbnailUrl}
                         onError={(e) => {
-                            // Fallback if maxresdefault isn't available for this video
-                            if (e.target.src !== video.fallbackThumbnailUrl) {
-                                e.target.src = video.fallbackThumbnailUrl;
+                            // If even hqdefault fails, fallback to default
+                            if (!e.target.src.includes('default.jpg')) {
+                                e.target.src = `https://img.youtube.com/vi/${video.videoId}/default.jpg`;
                             }
                         }}
                         alt="Video Thumbnail"
@@ -42,7 +42,7 @@ function VideoCard({ video }) {
 
                     {/* Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#d4af37]/90  flex items-center justify-center transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#34d399]/90  flex items-center justify-center transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
                             <Play className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-2" fill="currentColor" />
                         </div>
                     </div>
@@ -50,7 +50,7 @@ function VideoCard({ video }) {
             )}
 
             {/* Border highlight on hover */}
-            <div className="absolute inset-0 border-2 border-[#d4af37]/0 group-hover:border-[#d4af37]/50 rounded-[2rem] transition-colors duration-500 pointer-events-none" />
+            <div className="absolute inset-0 border-2 border-[#34d399]/0 group-hover:border-[#34d399]/50 rounded-[2rem] transition-colors duration-500 pointer-events-none" />
         </a>
     );
 }
@@ -70,8 +70,7 @@ export default function VideoGallery({ videoLinks }) {
         return {
             originalUrl: link,
             videoId,
-            thumbnailUrl: videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null,
-            fallbackThumbnailUrl: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null
+            thumbnailUrl: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null,
         };
     }).filter(v => v.videoId); // Keep only valid YouTube links
 
@@ -81,9 +80,9 @@ export default function VideoGallery({ videoLinks }) {
         <section className="mt-16 sm:mt-24 space-y-8 sm:space-y-12">
             <div className="flex items-center gap-4 sm:gap-6">
                 <h2 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60 tracking-tight">
-                    Video <span className="text-[#d4af37]">Gallery</span>
+                    Video <span className="text-[#34d399]">Gallery</span>
                 </h2>
-                <div className="flex-1 h-px bg-gradient-to-r from-[#d4af37]/30 to-transparent" />
+                <div className="flex-1 h-px bg-gradient-to-r from-[#34d399]/30 to-transparent" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

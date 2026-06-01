@@ -81,7 +81,7 @@ export default function NominationDetails() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
                         <button
                             onClick={() => navigate("/dashboard")}
-                            className="flex items-center gap-2 text-[#d4af37] hover:text-[#f2d06b] transition-colors font-bold uppercase tracking-[0.2em] text-xs"
+                            className="flex items-center gap-2 text-[#34d399] hover:text-[#f2d06b] transition-colors font-bold uppercase tracking-[0.2em] text-xs"
                         >
                             <FiArrowLeft className="text-lg" /> Back to Dashboard
                         </button>
@@ -93,7 +93,7 @@ export default function NominationDetails() {
                             {isEditable && (
                                 <button
                                     onClick={() => navigate(`/nominate/${nomination._id}`)}
-                                    className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#d4af37] text-black font-black uppercase tracking-widest text-xs hover:bg-[#f2d06b] transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-[#d4af37]/20"
+                                    className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#34d399] text-black font-black uppercase tracking-widest text-xs hover:bg-[#f2d06b] transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-[#34d399]/20"
                                 >
                                     <FiEdit2 /> Edit Details
                                 </button>
@@ -104,17 +104,17 @@ export default function NominationDetails() {
                     {/* Details Card */}
                     <div className="bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent rounded-[2.5rem] border border-white/10 p-8 sm:p-12  shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-8 opacity-10">
-                            <Crown className="w-32 h-32 text-[#d4af37]" />
+                            <Crown className="w-32 h-32 text-[#34d399]" />
                         </div>
 
                         <div className="relative z-10">
                             <div className="mb-12">
-                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d4af37] mb-2 block">Nomination Profile</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#34d399] mb-2 block">Nomination Profile</span>
                                 <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
                                     {nomination.nomineeName}
                                 </h1>
                                 <div className="flex items-center gap-3 text-[#ffeec3a0]">
-                                    <FiBriefcase className="text-[#d4af37]" />
+                                    <FiBriefcase className="text-[#34d399]" />
                                     <span className="text-lg font-medium">{nomination.designation} at {nomination.organization}</span>
                                 </div>
                             </div>
@@ -124,14 +124,14 @@ export default function NominationDetails() {
                                 <div className="space-y-8">
                                     <div className="space-y-2">
                                         <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                            <FiInfo className="text-[#d4af37]" /> Application Category
+                                            <FiInfo className="text-[#34d399]" /> Application Category
                                         </h3>
                                         <p className="text-xl font-bold text-white uppercase tracking-tight">{nomination.category}</p>
                                     </div>
 
                                     <div className="space-y-2">
                                         <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                            <FiMapPin className="text-[#d4af37]" /> Participation Type
+                                            <FiMapPin className="text-[#34d399]" /> Participation Type
                                         </h3>
                                         <p className="text-lg font-semibold text-white/90">{nomination.participationType}</p>
                                     </div>
@@ -144,9 +144,9 @@ export default function NominationDetails() {
                                     {nomination.preferredLocation && (
                                         <div className="space-y-2">
                                             <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                                <FiMapPin className="text-[#d4af37]" /> Event Preference
+                                                <FiMapPin className="text-[#34d399]" /> Event Preference
                                             </h3>
-                                            <p className="text-lg font-bold text-[#d4af37]">{nomination.preferredLocation}</p>
+                                            <p className="text-lg font-bold text-[#34d399]">{nomination.preferredLocation}</p>
                                         </div>
                                     )}
                                 </div>
@@ -155,14 +155,14 @@ export default function NominationDetails() {
                                 <div className="space-y-8">
                                     <div className="space-y-2">
                                         <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                            <FiMail className="text-[#d4af37]" /> Email Address
+                                            <FiMail className="text-[#34d399]" /> Email Address
                                         </h3>
                                         <p className="text-lg font-semibold text-white/90">{nomination.email}</p>
                                     </div>
 
                                     <div className="space-y-2">
                                         <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                            <FiPhone className="text-[#d4af37]" /> Contact Number
+                                            <FiPhone className="text-[#34d399]" /> Contact Number
                                         </h3>
                                         <p className="text-lg font-semibold text-white/90">{nomination.mobile}</p>
                                     </div>
@@ -170,7 +170,7 @@ export default function NominationDetails() {
                                     {nomination.participationType === "nominated as award" && (
                                         <div className="space-y-2">
                                             <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                                <FiMapPin className="text-[#d4af37]" /> Address Details
+                                                <FiMapPin className="text-[#34d399]" /> Address Details
                                             </h3>
                                             <div className="text-lg font-semibold text-white/80 space-y-1">
                                                 <p>{nomination.street}</p>
@@ -181,7 +181,7 @@ export default function NominationDetails() {
 
                                     <div className="space-y-2">
                                         <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                                            <FiClock className="text-[#d4af37]" /> Submission Date
+                                            <FiClock className="text-[#34d399]" /> Submission Date
                                         </h3>
                                         <p className="text-lg font-semibold text-white/80">
                                             {new Date(nomination.createdAt).toLocaleDateString(undefined, {
@@ -197,14 +197,14 @@ export default function NominationDetails() {
                             {nomination.pdfUrl && (
                                 <div className="mt-12 pt-12 border-t border-white/5">
                                     <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 mb-4 flex items-center gap-2">
-                                        <FiBriefcase className="text-[#d4af37]" /> Supporting Document
+                                        <FiBriefcase className="text-[#34d399]" /> Supporting Document
                                     </h3>
                                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                                         <a
                                             href={nomination.pdfUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#d4af37] font-bold hover:bg-[#d4af37]/20 transition-all group"
+                                            className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-[#34d399]/10 border border-[#34d399]/30 text-[#34d399] font-bold hover:bg-[#34d399]/20 transition-all group"
                                         >
                                             <FiInfo className="text-xl group-hover:scale-110 transition-transform" />
                                             View Uploaded Profile / Document

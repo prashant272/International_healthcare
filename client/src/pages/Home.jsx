@@ -1,12 +1,12 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
 import MediaGallery from "../components/MediaGallery.jsx";
 import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
 import GuestCard from "../components/GuestCard.jsx";
 import { Autoplay, Pagination, EffectCoverflow, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { fetchPreviousEditions } from "../services/api.js";
+import UpcomingAwards from "../components/UpcomingAwards.jsx";
 
 
 
@@ -20,10 +20,7 @@ import "swiper/css/effect-coverflow";
 // Centralized medical background
 
 export default function Home() {
-  const videoRef = useRef(null);
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useAuth();
-  const sectionRefs = useRef([]);
 
   // Async state for loading YouTube iframe progressively
   const [shouldRenderIframe, setShouldRenderIframe] = useState(false);
@@ -253,43 +250,8 @@ export default function Home() {
       title: "HealthTech & Digital Healthcare",
       desc: "Recognising innovation in digital health, telemedicine, AI-driven healthcare, and medical technology platforms.",
       icon: "💊",
-      color: "from-indigo-50 to-indigo-600"
+      color: "from-emerald-50 to-emerald-600"
     }
-  ];
-  // upcoming awards  
-
-  const upcomingAwards = [
-    {
-      title: "India Brand Icon Award 2026",
-      desc: "A prestigious award to recognize and honor leading entrepreneurs, innovators, and achievers across various industries.",
-      date: "",
-      location: "",
-      banner: "",
-      link: "https://indiabrandicon.in/",
-      color: "from-[#11998e] to-[#38ef7d]"
-
-    },
-    {
-      title: "International Education Award 2026",
-      desc: "A premier accolade awarded by TIME Cyber Media that recognizes innovation and confers honors for excellence in the field of education",
-      date: "",
-      location: "",
-      banner: "",
-      link: "",
-      color: "from-[#11998e] to-[#38ef7d]"
-    },
-    {
-      title: "Icon Of The Year Award 2026",
-      desc: "Award to honor outstanding performance in a wide range of categories and industries to ensure that achievements in across all fields are acknowledged",
-      date: "",
-      location: "",
-      banner: "",
-      link: "",
-      color: "from-[#11998e] to-[#38ef7d]"
-
-    }
-
-
   ];
 
   const homeFaqs = [
@@ -318,20 +280,6 @@ export default function Home() {
       a: "Yes, eligible organisations and individuals can nominate themselves directly for relevant categories.",
     },
   ];
-
-  // Responsive and premium utility variables
-  const getGridCols = (len) => {
-    if (len >= 4) {
-      return "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
-    }
-    if (len === 3) {
-      return "grid-cols-1 sm:grid-cols-2 md:grid-cols-3";
-    }
-    if (len === 2) {
-      return "grid-cols-1 sm:grid-cols-2";
-    }
-    return "grid-cols-1";
-  };
 
   return (
     <div className={`w-full text-[#f5f3f0]  `}>
@@ -1199,112 +1147,7 @@ export default function Home() {
         </section>
 
         {/* OUR OTHER UPCOMING AWARDS section */}
-        <section className="relative overflow-hidden py-5">
-          {/* Responsive glowing background blobs */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-            <div className="absolute top-[20%] left-[12%] w-[300px] h-[300px] bg-emerald-500/10 rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
-            <div className="absolute bottom-[15%] right-[16%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[140px] animate-pulse delay-700" />
-          </div>
-
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
-            <FadeUp className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Upcoming <span className="text-emerald-400">Awards</span>
-              </h2>
-              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
-              <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-                Join us in celebrating excellence across various industries internationally through our prestigious recognition platforms.
-              </p>
-            </FadeUp>
-
-            <FadeUp delay={0.2} className="w-full">
-              {(() => {
-                const displayAwards = upcomingAwards.length > 0 && upcomingAwards.length < 6
-                  ? [...upcomingAwards, ...upcomingAwards]
-                  : upcomingAwards;
-
-                return (
-                  <Swiper
-                    modules={[Autoplay, Pagination]}
-                    spaceBetween={20}
-                    slidesPerView={1.1}
-                    loop={displayAwards.length > 1}
-                    speed={1200}
-                    autoplay={{
-                      delay: 3000,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                    }}
-
-                    pagination={{
-                      clickable: true,
-                      dynamicBullets: true,
-                    }}
-                    breakpoints={{
-                      640: { slidesPerView: 2, spaceBetween: 24 },
-                      1024: { slidesPerView: 3, spaceBetween: 30 },
-                      1280: { slidesPerView: 4, spaceBetween: 32 },
-                    }}
-                    className="!pb-20"
-                  >
-                    {displayAwards.map((award, index) => (
-                      <SwiperSlide key={index} className="!px-0">
-                        <NeonCard color="emerald" className="h-[450px] sm:h-[480px] !p-0">
-                          <div className="relative w-full h-1/2 overflow-hidden">
-                            {award.banner && (
-                              <img
-                                src={award.banner}
-                                alt={award.title}
-                                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
-                                loading="lazy"
-                              />
-                            )}
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-
-                            <div className="absolute bottom-4 left-4 z-20">
-                              <span className="px-4 py-1.5 rounded-full bg-emerald-500/20  text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-400/30">
-                                {award.location}
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col flex-grow justify-between px-2.5 xs:px-3.5 sm:px-5 pt-2 xs:pt-3 sm:pt-4 pb-2.5 sm:pb-5 h-full text-left">
-                            <div className="space-y-4">
-                              <h3 className="text-xl sm:text-2xl font-black bg-gradient-to-r from-white via-emerald-200 to-emerald-400 bg-clip-text text-transparent group-hover:text-white transition-colors duration-300 leading-tight line-clamp-2">
-                                {award.title}
-                              </h3>
-                              <div className="flex items-center gap-2 text-emerald-400/80 font-bold text-sm tracking-wide">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /></svg>
-                                {award.date}
-                              </div>
-                              <p className="text-emerald-100/60 text-sm sm:text-base leading-relaxed line-clamp-3 group-hover:text-emerald-100 transition-colors">
-                                {award.desc}
-                              </p>
-                            </div>
-                            <a
-                              href={award.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="relative overflow-hidden group/btn rounded-md xs:rounded-lg sm:rounded-xl bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600 text-white hover:text-white font-extrabold px-2.5 xs:px-3 sm:px-4 py-1.5 xs:py-2 text-xs xs:text-sm sm:text-base text-center transition-all duration-300 hover:scale-105 hover:shadow-[0_2px_16px_-2px_rgba(37,99,235,0.5)] border border-emerald-300/40 group-hover/btn:border-emerald-200 tracking-wide"
-                            >
-                              <span className="relative z-10 flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2">
-                                Visit Website
-                                <svg className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-4.5 sm:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
-                              </span>
-                            </a>
-                          </div>
-                        </NeonCard>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                );
-              })()}
-            </FadeUp>
-          </div>
-        </section>
+        <UpcomingAwards />
         {/* ================= MEDIA PARTNERS / COVERAGE ================= */}
         <section className="relative overflow-hidden py-2 ">
           {/* Decorative mesh gradients */}

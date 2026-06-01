@@ -30,6 +30,13 @@ export const config = {
         CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
         CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
     },
+    WHATSAPP: {
+        TEMPLATE_NAME: process.env.WHATSAPP_TEMPLATE_NAME || "tcm_website_auth",
+        TEMPLATE_LANG: process.env.WHATSAPP_TEMPLATE_LANG || "en_US",
+        PHONE_NUMBER_ID: process.env.WHATSAPP_PHONE_NUMBER_ID,
+        WABA_ID: process.env.WHATSAPP_WABA_ID,
+        ACCESS_TOKEN: process.env.WHATSAPP_ACCESS_TOKEN,
+    },
     NODE_ENV: process.env.NODE_ENV || "development"
 };
 

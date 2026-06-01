@@ -352,9 +352,9 @@ export const NeonCard = memo(function NeonCard({ children, className = "", color
       bg: "bg-purple-500/20",
     },
     gold: {
-      border: "hover:border-amber-500/40",
-      via: "via-amber-500/20",
-      bg: "bg-amber-500/20",
+      border: "hover:border-emerald-500/40",
+      via: "via-emerald-500/20",
+      bg: "bg-emerald-500/20",
     },
     pink: {
       border: "hover:border-pink-500/40",
