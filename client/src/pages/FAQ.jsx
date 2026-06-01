@@ -86,70 +86,70 @@ const faqs = [
 
 export default function FAQ() {
   return (
+    <PageHero className="!pt-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 py-4">
 
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-8 py-4 pt-28">
+        {/* Custom Header block based on request */}
+        <FadeUp className="text-center mb-8">
+          <div className="flex justify-center mb-2">
+            <span className="inline-flex animate-pulse text-3xl sm:text-4xl mr-2">✨</span>
+            <span className="inline-flex animate-pulse text-3xl sm:text-4xl text-emerald-400">🏆</span>
+            <span className="inline-flex animate-pulse text-3xl sm:text-4xl ml-2">✨</span>
+          </div>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold font-heading mb-2 tracking-tight bg-gradient-to-r from-white via-emerald-300 via-50% to-emerald-800 bg-clip-text text-transparent drop-shadow-lg shadow-emerald-500/20 leading-tight">
+            International Healthcare Awards 2026
+            <span className="block text-lg sm:text-2xl font-[350] text-emerald-100 tracking-widest opacity-90 mt-1 uppercase">Frequently Asked Questions</span>
+          </h1>
+          <div className="mt-4 w-28 sm:w-40 h-[5px] mx-auto rounded-full bg-gradient-to-r from-transparent via-emerald-500 via-60% to-transparent shadow-[0_0_20px_3px_rgba(16,185,129,0.3)]" />
+          <p className="mt-5 text-base sm:text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto font-medium tracking-wide leading-relaxed drop-shadow whitespace-pre-line">
+            <span className="bg-gradient-to-br from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent font-bold">Everything you need to know about nominations, eligibility, the process and the celebration—</span> all in one place.
+          </p>
+        </FadeUp>
 
-      {/* Custom Header block based on request */}
-      <FadeUp className="text-center mb-8">
-        <div className="flex justify-center mb-2">
-          <span className="inline-flex animate-pulse text-3xl sm:text-4xl mr-2">✨</span>
-          <span className="inline-flex animate-pulse text-3xl sm:text-4xl text-emerald-400">🏆</span>
-          <span className="inline-flex animate-pulse text-3xl sm:text-4xl ml-2">✨</span>
-        </div>
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold font-heading mb-2 tracking-tight bg-gradient-to-r from-white via-emerald-300 via-50% to-emerald-800 bg-clip-text text-transparent drop-shadow-lg shadow-emerald-500/20 leading-tight">
-          International Healthcare Awards 2026
-          <span className="block text-lg sm:text-2xl font-[350] text-emerald-100 tracking-widest opacity-90 mt-1 uppercase">Frequently Asked Questions</span>
-        </h1>
-        <div className="mt-4 w-28 sm:w-40 h-[5px] mx-auto rounded-full bg-gradient-to-r from-transparent via-emerald-500 via-60% to-transparent shadow-[0_0_20px_3px_rgba(16,185,129,0.3)]" />
-        <p className="mt-5 text-base sm:text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto font-medium tracking-wide leading-relaxed drop-shadow whitespace-pre-line">
-          <span className="bg-gradient-to-br from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent font-bold">Everything you need to know about nominations, eligibility, the process and the celebration—</span> all in one place.
-        </p>
-      </FadeUp>
+        {/* FAQ Grid */}
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 md:gap-8" staggerDelay={0.05}>
+          {faqs.map((faq, index) => (
+            <StaggerItem key={index}>
+              <NeonCard color="emerald" className="h-full !p-0">
+                <div className="p-6 sm:p-8 flex flex-col h-full min-h-[220px] text-left">
+                  {/* Q Number Circle & Icon */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="inline-flex items-center justify-center bg-gradient-to-r from-emerald-50 via-emerald-200 to-cyan-400 rounded-full shadow-lg w-9 h-9 text-lg font-bold text-white border-2 border-emerald-300/70 group-hover:scale-110 group-hover:rotate-6 transition duration-300">
+                      Q{index + 1}
+                    </span>
+                    <svg className="w-5 h-5 text-emerald-400 opacity-70" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" />
+                    </svg>
+                  </div>
 
-      {/* FAQ Grid */}
-      <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 md:gap-8" staggerDelay={0.05}>
-        {faqs.map((faq, index) => (
-          <StaggerItem key={index}>
-            <NeonCard color="emerald" className="h-full !p-0">
-              <div className="p-6 sm:p-8 flex flex-col h-full min-h-[220px] text-left">
-                {/* Q Number Circle & Icon */}
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="inline-flex items-center justify-center bg-gradient-to-r from-emerald-50 via-emerald-200 to-cyan-400 rounded-full shadow-lg w-9 h-9 text-lg font-bold text-white border-2 border-emerald-300/70 group-hover:scale-110 group-hover:rotate-6 transition duration-300">
-                    Q{index + 1}
-                  </span>
-                  <svg className="w-5 h-5 text-emerald-400 opacity-70" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" />
-                  </svg>
+                  {/* Question */}
+                  <h3 className="mb-3 text-lg sm:text-xl md:text-2xl font-extrabold bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent drop-shadow transition-all duration-300">
+                    {faq.q}
+                  </h3>
+
+                  {/* Answer */}
+                  <p className="text-sm sm:text-base md:text-lg text-emerald-100/70 leading-relaxed font-medium drop-shadow-sm mt-auto transition-all duration-300">
+                    {faq.a}
+                  </p>
+
+                  {/* Bottom Accent */}
+                  <div className="mt-5 sm:mt-7 h-1 w-12 sm:w-16 mx-auto bg-gradient-to-r from-emerald-500 to-transparent opacity-50 rounded-full group-hover:opacity-95 transition-all duration-400"></div>
                 </div>
+              </NeonCard>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
 
-                {/* Question */}
-                <h3 className="mb-3 text-lg sm:text-xl md:text-2xl font-extrabold bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent drop-shadow transition-all duration-300">
-                  {faq.q}
-                </h3>
-
-                {/* Answer */}
-                <p className="text-sm sm:text-base md:text-lg text-emerald-100/70 leading-relaxed font-medium drop-shadow-sm mt-auto transition-all duration-300">
-                  {faq.a}
-                </p>
-
-                {/* Bottom Accent */}
-                <div className="mt-5 sm:mt-7 h-1 w-12 sm:w-16 mx-auto bg-gradient-to-r from-emerald-500 to-transparent opacity-50 rounded-full group-hover:opacity-95 transition-all duration-400"></div>
-              </div>
-            </NeonCard>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
-
-      {/* Footer Quote */}
-      <FadeUp className="mt-14 mb-2 flex flex-col items-center">
-        <span className="inline-flex items-center gap-2 text-emerald-200 text-base sm:text-lg font-medium">
-          <svg className="w-5 h-5 animate-pulse text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" /></svg>
-          <span>Celebrating Excellence, Innovation, and Healthcare Leadership</span>
-          <svg className="w-5 h-5 animate-pulse animation-delay-1000 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" /></svg>
-        </span>
-        <div className="w-20 h-px bg-gradient-to-r from-transparent via-emerald-500/60 to-transparent mt-3" />
-      </FadeUp>
-    </div>
-
+        {/* Footer Quote */}
+        <FadeUp className="mt-14 mb-2 flex flex-col items-center">
+          <span className="inline-flex items-center gap-2 text-emerald-200 text-base sm:text-lg font-medium">
+            <svg className="w-5 h-5 animate-pulse text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" /></svg>
+            <span>Celebrating Excellence, Innovation, and Healthcare Leadership</span>
+            <svg className="w-5 h-5 animate-pulse animation-delay-1000 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" /></svg>
+          </span>
+          <div className="w-20 h-px bg-gradient-to-r from-transparent via-emerald-500/60 to-transparent mt-3" />
+        </FadeUp>
+      </div>
+    </PageHero>
   );
 }
