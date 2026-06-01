@@ -48,7 +48,7 @@ export const createEdition = async (req, res) => {
 export const getEditions = async (req, res) => {
     try {
         const editions = await PreviousEdition.find()
-            .select("year title editionLabel locations date images") // Only fields needed for list/cards
+            .select("year title editionLabel locations date hero images videoLinks") // Only fields needed for list/cards
             .sort({ year: -1 });
         res.status(200).json({ success: true, count: editions.length, data: editions });
     } catch (err) {

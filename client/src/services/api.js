@@ -6,6 +6,7 @@ export function getBaseUrl() {
     return "https://api.internationalhealthcareaward.com";
   }
 
+
   // Prefer explicit API base URL if provided in .env
   const fromEnv =
     typeof import.meta !== "undefined"
@@ -156,3 +157,73 @@ export function updatePreviousEdition(id, payload, token) {
 export function deletePreviousEdition(id, token) {
   return request(`/api/previous-editions/${id}`, { method: "DELETE", token });
 }
+
+
+/* ---------------- Upcoming Editions ---------------- */
+export function fetchUpcomingEditions() {
+  return request("/api/upcoming-editions", { method: "GET" });
+}
+
+export function fetchUpcomingEditionByYear(year, title) {
+  const url = title
+    ? `/api/upcoming-editions/${year}?title=${title}`
+    : `/api/upcoming-editions/${year}`;
+  return request(url, { method: "GET" });
+}
+
+export function createUpcomingEdition(payload, token) {
+  return request("/api/upcoming-editions", {
+    method: "POST",
+    body: payload,
+    token,
+  });
+}
+
+export function updateUpcomingEdition(id, payload, token) {
+  return request(`/api/upcoming-editions/${id}`, {
+    method: "PUT",
+    body: payload,
+    token,
+  });
+}
+
+export function deleteUpcomingEdition(id, token) {
+  return request(`/api/upcoming-editions/${id}`, { method: "DELETE", token });
+}
+
+/* ---------------- Inquiries / (Quick Access) ---------------- */
+
+/**
+ * Triggers backend WhatsApp/SMS OTP code generation for a phone number
+ * @param {object} payload - { phone, name }
+ */
+export function sendInquiryOTP(payload) {
+  return request("/api/inquiries/send-otp", { method: "POST", body: payload });
+}
+
+/**
+ * Submits the OTP code and details of the lead to finalize verification
+ * @param {object} payload - { name, phone, inquiryType, purpose, otp }
+ */
+export function verifyInquiryOTP(payload) {
+  return request("/api/inquiries/verify-otp", { method: "POST", body: payload });
+}
+
+/**
+ * Fetches all verified inquiries for the Admin Dashboard
+ * @param {string} token - Admin authorization JWT token
+ */
+export function fetchAdminInquiries(token) {
+  return request("/api/admin/inquiries", { method: "GET", token });
+}
+
+/**
+ * Deletes a specific verified inquiry lead from the dashboard
+ * @param {string} id - Inquiry database document ID
+ * @param {string} token - Admin JWT token
+ */
+export function deleteAdminInquiry(id, token) {
+  return request(`/api/admin/inquiries/${id}`, { method: "DELETE", token });
+}
+
+

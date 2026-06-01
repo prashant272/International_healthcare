@@ -86,7 +86,7 @@ export default function VerifyEmail() {
 
                         <div className="w-full glass-card border border-white/10 rounded-[2.5rem] p-6 sm:p-8 md:px-12 md:py-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]">
                             <div className="text-center mb-6">
-                                <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-white to-[#d4af37] bg-clip-text text-transparent tracking-tighter mb-2">
+                                <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-white to-[#34d399] bg-clip-text text-transparent tracking-tighter mb-2">
                                     Verify Email
                                 </h1>
                                 <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.3em] ml-1">
@@ -108,12 +108,12 @@ export default function VerifyEmail() {
 
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-3 group">
-                                    <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#d4af37]/70 group-focus-within:text-[#d4af37] transition-colors ml-1">
+                                    <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#34d399]/70 group-focus-within:text-[#34d399] transition-colors ml-1">
                                         <FiMail /> Email Address
                                     </label>
                                     <input
                                         type="email"
-                                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white text-base placeholder:text-white/10 focus:outline-none focus:border-[#d4af37]/40 focus:bg-white/[0.06] transition-all"
+                                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white text-base placeholder:text-white/10 focus:outline-none focus:border-[#34d399]/40 focus:bg-white/[0.06] transition-all"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
@@ -122,13 +122,13 @@ export default function VerifyEmail() {
                                 </div>
 
                                 <div className="space-y-3 group">
-                                    <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#d4af37]/70 group-focus-within:text-[#d4af37] transition-colors ml-1">
+                                    <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#34d399]/70 group-focus-within:text-[#34d399] transition-colors ml-1">
                                         <FiCheckCircle /> 6-Digit Code
                                     </label>
                                     <input
                                         type="text"
                                         maxLength={6}
-                                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white text-2xl text-center tracking-[0.5em] font-bold placeholder:text-white/10 focus:outline-none focus:border-[#d4af37]/40 focus:bg-white/[0.06] transition-all"
+                                        className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-4 text-white text-2xl text-center tracking-[0.5em] font-bold placeholder:text-white/10 focus:outline-none focus:border-[#34d399]/40 focus:bg-white/[0.06] transition-all"
                                         value={otp}
                                         onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
                                         required
@@ -164,7 +164,7 @@ export default function VerifyEmail() {
                                 <button
                                     onClick={handleResend}
                                     disabled={resending}
-                                    className="text-[#d4af37] hover:text-white transition-colors text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2"
+                                    className="text-[#34d399] hover:text-white transition-colors text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2"
                                 >
                                     <FiRotateCw className={`${resending ? "animate-spin" : ""}`} />
                                     {resending ? "Resending Code..." : "Resend Code"}
@@ -174,7 +174,7 @@ export default function VerifyEmail() {
                                         Wrong email?{" "}
                                         <Link
                                             to="/register"
-                                            className="text-white hover:text-[#d4af37] transition-colors ml-2 underline decoration-[#d4af37]/30"
+                                            className="text-white hover:text-[#34d399] transition-colors ml-2 underline decoration-[#34d399]/30"
                                         >
                                             Change Email
                                         </Link>

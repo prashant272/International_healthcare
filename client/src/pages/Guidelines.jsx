@@ -18,8 +18,8 @@ const GUIDELINES = [
   {
     icon: "👨‍⚖️",
     title: "Evaluation & Judging",
-    color: "from-amber-400 to-yellow-400",
-    accentColor: "border-amber-400/40",
+    color: "from-emerald-400 to-yellow-400",
+    accentColor: "border-emerald-400/40",
     items: [
       "All nominations reviewed by an independent jury panel.",
       "Evaluation based on quality, innovation, and impact.",
@@ -30,7 +30,7 @@ const GUIDELINES = [
   {
     icon: "📑",
     title: "Documentation & Verification",
-    color: "from-blue-400 to-indigo-400",
+    color: "from-blue-400 to-emerald-400",
     accentColor: "border-blue-400/40",
     items: [
       "Requested supporting documents must be valid and authentic.",

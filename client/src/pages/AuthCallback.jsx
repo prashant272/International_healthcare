@@ -40,7 +40,7 @@ export default function AuthCallback() {
                 subtitle="Please wait while we finalize your authentication..."
             >
                 <div className="min-h-[40vh] flex flex-col items-center justify-center text-white">
-                    <div className="w-12 h-12 border-4 border-[#d4af37]/20 border-t-[#d4af37] rounded-full animate-spin mb-4" />
+                    <div className="w-12 h-12 border-4 border-[#34d399]/20 border-t-[#34d399] rounded-full animate-spin mb-4" />
                     <p className="text-lg font-bold tracking-widest uppercase animate-pulse">
                         Completing Login...
                     </p>

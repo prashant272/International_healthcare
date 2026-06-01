@@ -12,6 +12,8 @@ import authRoutes from "./routes/authRoutes.js";
 import nominationRoutes from "./routes/nominationRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import previousEditionRoutes from "./routes/previousEditionRoutes.js";
+import upcomingEditionRoutes from "./routes/upcomingEditionRoutes.js";
+import inquiryRoutes from "./routes/inquiryRoutes.js";
 import developerRoutes from "./routes/developerRoutes.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import passport from "passport";
@@ -153,6 +155,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/nominations", nominationRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/previous-editions", previousEditionRoutes);
+app.use("/api/upcoming-editions", upcomingEditionRoutes);
+app.use("/api/inquiries", inquiryRoutes);
 app.use("/api/developer", developerRoutes);
 
 // Global Error Handler

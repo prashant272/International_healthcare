@@ -16,7 +16,7 @@ const terms = [
   {
     num: "02",
     title: "Information Accuracy",
-    color: "from-blue-400 to-indigo-400",
+    color: "from-blue-400 to-emerald-400",
     accent: "border-blue-400/30",
     items: [
       "All information, data, documents, and claims must be true, accurate, and verifiable.",
@@ -27,8 +27,8 @@ const terms = [
   {
     num: "03",
     title: "Research & Evaluation Process",
-    color: "from-amber-400 to-orange-400",
-    accent: "border-amber-400/30",
+    color: "from-emerald-400 to-orange-400",
+    accent: "border-emerald-400/30",
     items: [
       "Each valid nomination will undergo a multi-stage evaluation process.",
       "Stages include: initial screening, research & data validation, independent jury assessment, and scoring.",
@@ -82,7 +82,7 @@ const terms = [
   {
     num: "08",
     title: "Use of Name, Logo & Content",
-    color: "from-yellow-400 to-amber-500",
+    color: "from-yellow-400 to-emerald-500",
     accent: "border-yellow-400/30",
     items: [
       "By submitting a nomination, the nominee grants permission to use their name, logo, and photographs.",

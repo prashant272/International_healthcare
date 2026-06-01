@@ -5,6 +5,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 import User from "../models/User.js";
 import Nomination from "../models/Nomination.js";
+import Inquiry from "../models/Inquiry.js";
 import { authenticate, requireAdmin, signToken } from "../middleware/authMiddleware.js";
 import s3Client from "../utils/s3Config.js";
 import config from "../config/config.js";
@@ -143,6 +144,29 @@ router.delete("/nominations/:id", authenticate, requireAdmin, async (req, res, n
   try {
     const deleted = await Nomination.findByIdAndDelete(req.params.id);
     if (!deleted) return res.status(404).json({ message: "Nomination not found" });
+    return res.json({ ok: true });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// List all verified inquiries (admin)
+router.get("/inquiries", authenticate, requireAdmin, async (_req, res, next) => {
+  try {
+    const docs = await Inquiry.find({ isVerified: true })
+      .sort({ createdAt: -1 })
+      .lean();
+    return res.json(docs);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Delete a verified inquiry (admin)
+router.delete("/inquiries/:id", authenticate, requireAdmin, async (req, res, next) => {
+  try {
+    const deleted = await Inquiry.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Inquiry not found" });
     return res.json({ ok: true });
   } catch (err) {
     next(err);

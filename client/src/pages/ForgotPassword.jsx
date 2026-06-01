@@ -45,7 +45,7 @@ export default function ForgotPassword() {
 
                         <div className="w-full glass-card border border-white/10 rounded-[2.5rem] p-6 sm:p-8 md:px-12 md:py-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)]">
                             <div className="text-center mb-6">
-                                <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-white to-[#d4af37] bg-clip-text text-transparent tracking-tighter mb-3">
+                                <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-b from-white via-white to-[#34d399] bg-clip-text text-transparent tracking-tighter mb-3">
                                     Recover
                                 </h1>
                                 <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.3em] ml-1">
@@ -60,19 +60,19 @@ export default function ForgotPassword() {
                             )}
 
                             {message && (
-                                <div className="mb-6 p-4 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/20 text-[#d4af37] text-xs font-bold text-center italic">
+                                <div className="mb-6 p-4 rounded-2xl bg-[#34d399]/10 border border-[#34d399]/20 text-[#34d399] text-xs font-bold text-center italic">
                                     {message}
                                 </div>
                             )}
 
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-3 group">
-                                    <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#d4af37]/70 group-focus-within:text-[#d4af37] transition-colors ml-1">
+                                    <label className="flex items-center gap-2 text-xs md:text-sm font-black uppercase tracking-widest text-[#34d399]/70 group-focus-within:text-[#34d399] transition-colors ml-1">
                                         <FiMail /> Registered Email
                                     </label>
                                     <input
                                         type="email"
-                                        className="w-full bg-white/[0.03] border border-[#d4af37]/20 rounded-2xl px-6 py-4 text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#d4af37] focus:bg-white/[0.06] focus:shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-all"
+                                        className="w-full bg-white/[0.03] border border-[#34d399]/20 rounded-2xl px-6 py-4 text-white text-base placeholder:text-white/40 focus:outline-none focus:border-[#34d399] focus:bg-white/[0.06] focus:shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-all"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
@@ -109,7 +109,7 @@ export default function ForgotPassword() {
                                     Remembered your password?{" "}
                                     <Link
                                         to="/login"
-                                        className="text-white hover:text-[#d4af37] transition-colors ml-2 underline decoration-[#d4af37]/30"
+                                        className="text-white hover:text-[#34d399] transition-colors ml-2 underline decoration-[#34d399]/30"
                                     >
                                         Sign In
                                     </Link>

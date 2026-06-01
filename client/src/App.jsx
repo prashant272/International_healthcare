@@ -15,6 +15,7 @@ const Terms = lazy(() => import("./pages/Terms"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Media = lazy(() => import("./pages/Media.jsx"));
 const EditionDetail = lazy(() => import("./pages/EditionDetail.jsx"));
+const UpcomingEditionDetail = lazy(() => import("./pages/UpComingEditionDetail.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
 const NominationForm = lazy(() => import("./pages/NominationForm.jsx"));
@@ -37,6 +38,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
 import CallButton from "./components/CallButton.jsx";
+import QuickAccess from "./pages/QuickAccess.jsx";
 
 
 export default function App() {
@@ -75,6 +77,8 @@ export default function App() {
                 <Route path="/previous-editions" element={<PreviousEditions />} />
                 <Route path="/editions/:year" element={<EditionDetail />} />
                 <Route path="/:year/:slug" element={<EditionDetail />} />
+                <Route path="/upcoming-editions/:year/:title" element={<UpcomingEditionDetail />} />
+                <Route path="/upcoming-editions/:year" element={<UpcomingEditionDetail />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/nominate" element={<NominationForm />} />
                 <Route path="/nominate/:id" element={<NominationForm />} />
@@ -112,6 +116,7 @@ export default function App() {
       {!location.pathname.startsWith("/admin") && <Footer />}
       {!location.pathname.startsWith("/admin") && (
         <>
+          <QuickAccess />
           <WhatsAppButton />
           <CallButton />
         </>

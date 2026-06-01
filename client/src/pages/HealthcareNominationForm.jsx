@@ -406,14 +406,14 @@ export default function HealthcareNominationForm() {
     const groupedSubCategories = healthcareCategoryMap[form.category] || {};
 
     const getSelectClass = (name) => {
-        const base = "w-full bg-black/60 border rounded-lg px-4 py-3 text-white outline-none transition-all focus:ring-2 focus:ring-[#d4af37]/50";
-        const errorClass = fieldErrors[name] ? "border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]" : "border-white/20 hover:border-[#d4af37]/40";
+        const base = "w-full bg-black/60 border rounded-lg px-4 py-3 text-white outline-none transition-all focus:ring-2 focus:ring-[#34d399]/50";
+        const errorClass = fieldErrors[name] ? "border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]" : "border-white/20 hover:border-[#34d399]/40";
         return `${base} ${errorClass}`;
     };
 
     const getInputClass = (name) => {
-        const base = "w-full bg-white/5 border rounded-lg px-4 py-3 text-white placeholder-gray-500 outline-none transition-all focus:bg-white/10 focus:ring-2 focus:ring-[#d4af37]/50";
-        const errorClass = fieldErrors[name] ? "border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]" : "border-white/20 hover:border-[#d4af37]/40";
+        const base = "w-full bg-white/5 border rounded-lg px-4 py-3 text-white placeholder-gray-500 outline-none transition-all focus:bg-white/10 focus:ring-2 focus:ring-[#34d399]/50";
+        const errorClass = fieldErrors[name] ? "border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]" : "border-white/20 hover:border-[#34d399]/40";
         return `${base} ${errorClass}`;
     };
 
@@ -439,7 +439,7 @@ export default function HealthcareNominationForm() {
                         <div className="mb-8 flex justify-between items-center">
                             <button
                                 onClick={() => isEditMode ? navigate(-1) : navigate("/")}
-                                className="flex items-center gap-2 text-[#d4af37] hover:text-[#f2d06b] transition-colors font-bold uppercase tracking-widest text-xs"
+                                className="flex items-center gap-2 text-[#34d399] hover:text-[#f2d06b] transition-colors font-bold uppercase tracking-widest text-xs"
                             >
                                 <FiArrowLeft className="text-lg" /> {isEditMode ? "Go Back" : "Back to Home"}
                             </button>
@@ -465,7 +465,7 @@ export default function HealthcareNominationForm() {
                                 </h1>
                             </div>
 
-                            <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto rounded-full mb-8"></div>
+                            <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-transparent via-[#34d399] to-transparent mx-auto rounded-full mb-8"></div>
 
                             <p className="text-gray-300 max-w-2xl mx-auto text-base sm:text-lg font-light leading-relaxed px-4 italic">
                                 {isEditMode
@@ -488,7 +488,7 @@ export default function HealthcareNominationForm() {
 
                                 {/* Participation Choice */}
                                 <div className="md:col-span-2 space-y-6">
-                                    <label className="text-sm font-bold text-[#d4af37] uppercase tracking-widest pl-1">
+                                    <label className="text-sm font-bold text-[#34d399] uppercase tracking-widest pl-1">
                                         Choose Your Presence Role
                                     </label>
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
@@ -517,7 +517,7 @@ export default function HealthcareNominationForm() {
                                                         <span className={`text-[8px] sm:text-xs font-bold uppercase tracking-widest mb-1 transition-colors duration-300 ${form.participationType === type.id ? "opacity-90 text-white" : "text-gray-500"}`}>
                                                             {type.prefix}
                                                         </span>
-                                                        <span className={`text-sm sm:text-2xl font-black uppercase tracking-tighter leading-none transition-all duration-300 ${form.participationType === type.id ? "scale-110 text-white" : "text-[#d4af37] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"}`}>
+                                                        <span className={`text-sm sm:text-2xl font-black uppercase tracking-tighter leading-none transition-all duration-300 ${form.participationType === type.id ? "scale-110 text-white" : "text-[#34d399] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"}`}>
                                                             {type.highlight}
                                                         </span>
                                                     </div>
@@ -537,7 +537,7 @@ export default function HealthcareNominationForm() {
                                         <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/5">
                                             <div className="sm:col-span-2 mb-2">
                                                 <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                                                    <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Award Classification
+                                                    <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Award Classification
                                                 </h3>
                                             </div>
 
@@ -550,9 +550,9 @@ export default function HealthcareNominationForm() {
                                                     onChange={handleChange}
                                                     className={getSelectClass("category")}
                                                 >
-                                                    <option value="" className="bg-[#3a1418]">Select Category</option>
+                                                    <option value="" className="bg-[#020617]">Select Category</option>
                                                     {Object.keys(healthcareCategoryMap).map((t) => (
-                                                        <option key={t} value={t} className="bg-[#3a1418]">{t}</option>
+                                                        <option key={t} value={t} className="bg-[#020617]">{t}</option>
                                                     ))}
                                                 </select>
                                             </div>
@@ -567,32 +567,32 @@ export default function HealthcareNominationForm() {
                                                     disabled={!form.category}
                                                     className={getSelectClass("subCategory")}
                                                 >
-                                                    <option value="" className="bg-[#3a1418]">Select Subcategory</option>
+                                                    <option value="" className="bg-[#020617]">Select Subcategory</option>
                                                     {Object.entries(groupedSubCategories).map(([group, list]) => (
-                                                        <optgroup key={group} label={group} className="bg-black text-[#d4af37] font-bold">
+                                                        <optgroup key={group} label={group} className="bg-black text-[#34d399] font-bold">
                                                             {list.map((item) => (
-                                                                <option key={item} value={item} className="bg-[#3a1418] text-white font-normal">
+                                                                <option key={item} value={item} className="bg-[#020617] text-white font-normal">
                                                                     {item}
                                                                 </option>
                                                             ))}
                                                         </optgroup>
                                                     ))}
                                                     {form.category && (
-                                                        <option value="Other" className="bg-[#3a1418] text-[#d4af37] font-bold italic">Other Category...</option>
+                                                        <option value="Other" className="bg-[#020617] text-[#34d399] font-bold italic">Other Category...</option>
                                                     )}
                                                 </select>
                                             </div>
 
                                             {form.subCategory === "Other" && (
                                                 <div className="md:col-span-2">
-                                                    <label className="block text-xs font-bold text-[#d4af37] uppercase tracking-wider mb-2">Custom Category Details *</label>
+                                                    <label className="block text-xs font-bold text-[#34d399] uppercase tracking-wider mb-2">Custom Category Details *</label>
                                                     <input
                                                         name="otherSubCategory"
                                                         ref={el => inputRef.current.otherSubCategory = el}
                                                         value={form.otherSubCategory}
                                                         onChange={handleChange}
                                                         placeholder="Type your suggested category title here"
-                                                        className={`${getInputClass("otherSubCategory")} border-[#d4af37]/30 ring-[#d4af37]/10`}
+                                                        className={`${getInputClass("otherSubCategory")} border-[#34d399]/30 ring-[#34d399]/10`}
                                                     />
                                                 </div>
                                             )}
@@ -600,7 +600,7 @@ export default function HealthcareNominationForm() {
 
                                         <div className="md:col-span-2">
                                             <h3 className="text-base sm:text-lg font-bold text-white mb-6 flex items-center gap-2">
-                                                <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Nominee Information
+                                                <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Nominee Information
                                             </h3>
                                             <div className="grid md:grid-cols-2 gap-6">
                                                 <div className="md:col-span-2">
@@ -630,7 +630,7 @@ export default function HealthcareNominationForm() {
 
                                         <div className="md:col-span-2 pt-6 border-t border-white/5">
                                             <h3 className="text-base sm:text-lg font-bold text-white mb-6 flex items-center gap-2">
-                                                <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Organization Head Details
+                                                <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Organization Head Details
                                             </h3>
                                             <div className="grid md:grid-cols-2 gap-6">
                                                 <div>
@@ -654,7 +654,7 @@ export default function HealthcareNominationForm() {
 
                                         <div className="md:col-span-2 pt-6 border-t border-white/5">
                                             <h3 className="text-base sm:text-lg font-bold text-white mb-6 flex items-center gap-2">
-                                                <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Contact Person Details
+                                                <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Contact Person Details
                                             </h3>
                                             <div className="grid md:grid-cols-2 gap-6">
                                                 <div>
@@ -678,7 +678,7 @@ export default function HealthcareNominationForm() {
 
                                         <div className="md:col-span-2 pt-6 border-t border-white/5">
                                             <h3 className="text-base sm:text-lg font-bold text-white mb-6 flex items-center gap-2">
-                                                <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Social Media Presence
+                                                <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Social Media Presence
                                             </h3>
                                             <div className="grid md:grid-cols-2 gap-6">
                                                 <div>
@@ -702,7 +702,7 @@ export default function HealthcareNominationForm() {
 
                                         <div className="md:col-span-2 pt-6 border-t border-white/5 space-y-6">
                                             <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                                                <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Location & Logistics
+                                                <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Location & Logistics
                                             </h3>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
                                                 <div className="sm:col-span-2">
@@ -727,37 +727,37 @@ export default function HealthcareNominationForm() {
                                 ) : (
                                     <>
                                         <div className="md:col-span-2 p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 flex flex-col items-center">
-                                            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#d4af37]/20 flex items-center justify-center mb-6 border border-[#d4af37]/30 shadow-inner text-2xl">
+                                            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#34d399]/20 flex items-center justify-center mb-6 border border-[#34d399]/30 shadow-inner text-2xl">
                                                 📝
                                             </div>
-                                            <h3 className="text-xl sm:text-2xl font-bold text-[#d4af37] mb-2 uppercase tracking-tighter text-center">Registration Info</h3>
+                                            <h3 className="text-xl sm:text-2xl font-bold text-[#34d399] mb-2 uppercase tracking-tighter text-center">Registration Info</h3>
                                             <p className="text-gray-400 text-xs sm:text-sm mb-8 text-center max-w-md italic">
                                                 You are registering to attend as a {form.participationType.split(' ').pop()}. Our team will review your profile and reach out for coordination.
                                             </p>
 
                                             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
                                                 <div className="sm:col-span-2">
-                                                    <label className="block text-[10px] font-black text-[#d4af37] uppercase tracking-[0.2em] mb-3 ml-1">Full Name *</label>
+                                                    <label className="block text-[10px] font-black text-[#34d399] uppercase tracking-[0.2em] mb-3 ml-1">Full Name *</label>
                                                     <input name="nomineeName" ref={el => inputRef.current.nomineeName = el} placeholder="Ex: Dr. Prashant Kumar" value={form.nomineeName} onChange={handleChange} className={getInputClass("nomineeName")} />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-[10px] font-black text-[#d4af37] uppercase tracking-[0.2em] mb-3 ml-1">Organization *</label>
+                                                    <label className="block text-[10px] font-black text-[#34d399] uppercase tracking-[0.2em] mb-3 ml-1">Organization *</label>
                                                     <input name="organization" ref={el => inputRef.current.organization = el} placeholder="Company / Institution Name" value={form.organization} onChange={handleChange} className={getInputClass("organization")} />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-[10px] font-black text-[#d4af37] uppercase tracking-[0.2em] mb-3 ml-1">Designation *</label>
+                                                    <label className="block text-[10px] font-black text-[#34d399] uppercase tracking-[0.2em] mb-3 ml-1">Designation *</label>
                                                     <input name="designation" ref={el => inputRef.current.designation = el} placeholder="Current Job Title" value={form.designation} onChange={handleChange} className={getInputClass("designation")} />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-[10px] font-black text-[#d4af37] uppercase tracking-[0.2em] mb-3 ml-1">Mobile Contact *</label>
+                                                    <label className="block text-[10px] font-black text-[#34d399] uppercase tracking-[0.2em] mb-3 ml-1">Mobile Contact *</label>
                                                     <input name="mobile" ref={el => inputRef.current.mobile = el} placeholder="+91 XXXXX XXXXX" value={form.mobile} onChange={handleChange} className={getInputClass("mobile")} />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-[10px] font-black text-[#d4af37] uppercase tracking-[0.2em] mb-3 ml-1">Official Email *</label>
+                                                    <label className="block text-[10px] font-black text-[#34d399] uppercase tracking-[0.2em] mb-3 ml-1">Official Email *</label>
                                                     <input name="email" ref={el => inputRef.current.email = el} placeholder="work@domain.com" value={form.email} onChange={handleChange} className={getInputClass("email")} />
                                                 </div>
                                                 <div className="md:col-span-2">
-                                                    <label className="block text-[10px] font-black text-[#d4af37] uppercase tracking-[0.2em] mb-3 ml-1">Portfolio / Website</label>
+                                                    <label className="block text-[10px] font-black text-[#34d399] uppercase tracking-[0.2em] mb-3 ml-1">Portfolio / Website</label>
                                                     <input name="website" placeholder="https://example.com" value={form.website} onChange={handleChange} className={getInputClass("website")} />
                                                 </div>
                                             </div>
@@ -769,7 +769,7 @@ export default function HealthcareNominationForm() {
                                 <div className="md:col-span-2 pt-8 border-t border-white/5 space-y-6">
                                     <div className="flex flex-col">
                                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                                            <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Preferred Event Location
+                                            <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Preferred Event Location
                                         </h3>
                                         <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold ml-1 mt-1">
                                             (Optional - Please select your preference)
@@ -782,7 +782,7 @@ export default function HealthcareNominationForm() {
                                                 key={loc}
                                                 className={`flex items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 cursor-pointer text-center
                       ${form.preferredLocation?.includes(loc)
-                                                        ? "bg-[#d4af37]/20 border-[#d4af37] text-[#d4af37] shadow-[0_5px_15px_rgba(212,175,55,0.2)]"
+                                                        ? "bg-[#34d399]/20 border-[#34d399] text-[#34d399] shadow-[0_5px_15px_rgba(212,175,55,0.2)]"
                                                         : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/20"
                                                     }`}
                                             >
@@ -804,7 +804,7 @@ export default function HealthcareNominationForm() {
                                 <div className="md:col-span-2 pt-8 border-t border-white/5 space-y-6">
                                     <div className="flex flex-col">
                                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                                            <span className="h-2 w-2 rounded-full bg-[#d4af37]"></span> Support Document (Optional)
+                                            <span className="h-2 w-2 rounded-full bg-[#34d399]"></span> Support Document (Optional)
                                         </h3>
                                         <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold ml-1 mt-1">
                                             Upload any supporting document or profile (PDF only, max 5MB)
@@ -837,8 +837,8 @@ export default function HealthcareNominationForm() {
                                             htmlFor="pdf-upload"
                                             className={`flex flex-col items-center justify-center p-8 rounded-2xl border-2 border-dashed transition-all duration-300 cursor-pointer
                     ${form.pdf
-                                                    ? "bg-[#d4af37]/10 border-[#d4af37] text-[#d4af37]"
-                                                    : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:border-[#d4af37]/40"
+                                                    ? "bg-[#34d399]/10 border-[#34d399] text-[#34d399]"
+                                                    : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:border-[#34d399]/40"
                                                 }`}
                                         >
                                             <div className="text-3xl mb-3">
@@ -872,12 +872,12 @@ export default function HealthcareNominationForm() {
                                 <div className="md:col-span-2 bg-white/5 border border-white/5 p-6 rounded-2xl group transition-all hover:bg-white/[0.07]">
                                     <label className="flex gap-4 cursor-pointer select-none">
                                         <div className="relative flex items-center pt-1">
-                                            <input type="checkbox" name="acceptTerms" ref={el => inputRef.current.acceptTerms = el} checked={form.acceptTerms} onChange={handleChange} className="w-5 h-5 rounded border-2 border-[#d4af37]/40 bg-transparent checked:bg-[#d4af37] appearance-none transition-all cursor-pointer" />
+                                            <input type="checkbox" name="acceptTerms" ref={el => inputRef.current.acceptTerms = el} checked={form.acceptTerms} onChange={handleChange} className="w-5 h-5 rounded border-2 border-[#34d399]/40 bg-transparent checked:bg-[#34d399] appearance-none transition-all cursor-pointer" />
                                             {form.acceptTerms && <span className="absolute left-[3px] top-[4px] text-black text-[10px] font-bold pointer-events-none">✓</span>}
                                         </div>
                                         <div className="flex-1">
                                             <p className={`text-sm tracking-tight transition-colors ${fieldErrors.acceptTerms ? "text-red-400" : "text-gray-300"}`}>
-                                                <span className="font-bold text-[#d4af37]">DECLARATION:</span> I hereby verify that I have reviewed the Terms & Conditions. The data provided is true to the best of my knowledge.
+                                                <span className="font-bold text-[#34d399]">DECLARATION:</span> I hereby verify that I have reviewed the Terms & Conditions. The data provided is true to the best of my knowledge.
                                             </p>
                                         </div>
                                     </label>
@@ -887,7 +887,7 @@ export default function HealthcareNominationForm() {
                                     <button
                                         type="submit"
                                         disabled={submitting}
-                                        className="group relative inline-flex items-center justify-center w-full sm:w-auto px-12 py-4 font-black tracking-[0.2em] uppercase transition-all duration-300 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-black rounded-full overflow-hidden shadow-[0_20px_40px_-10px_rgba(212,175,55,0.4)] hover:shadow-[0_20px_50px_-5px_rgba(212,175,55,0.6)] hover:-translate-y-1 active:scale-95 disabled:grayscale disabled:opacity-50"
+                                        className="group relative inline-flex items-center justify-center w-full sm:w-auto px-12 py-4 font-black tracking-[0.2em] uppercase transition-all duration-300 bg-gradient-to-r from-[#34d399] to-[#b8860b] text-black rounded-full overflow-hidden shadow-[0_20px_40px_-10px_rgba(212,175,55,0.4)] hover:shadow-[0_20px_50px_-5px_rgba(212,175,55,0.6)] hover:-translate-y-1 active:scale-95 disabled:grayscale disabled:opacity-50"
                                     >
                                         <span className="relative z-10 flex items-center gap-3">
                                             {submitting ? "Processing..." : isEditMode ? "Update Submission" : "Submit Registration"}

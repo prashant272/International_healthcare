@@ -19,7 +19,7 @@ const mediaSections = [
     icon: "📺",
     title: "Electronic Media",
     badge: "Featured",
-    color: "from-blue-400 to-indigo-400",
+    color: "from-blue-400 to-emerald-400",
     accent: "border-blue-400/40",
     activeClasses: "text-white bg-blue-600/20 border border-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)]",
     items: [

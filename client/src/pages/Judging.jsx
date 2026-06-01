@@ -18,7 +18,7 @@ const steps = [
   {
     icon: "🔍",
     title: "Research & Data Validation",
-    color: "from-blue-400 to-indigo-400",
+    color: "from-blue-400 to-emerald-400",
     accent: "border-blue-400/40",
     points: [
       "In-house research team performs qualitative & quantitative analysis",
@@ -31,8 +31,8 @@ const steps = [
   {
     icon: "👨‍⚖️",
     title: "Independent Jury Evaluation",
-    color: "from-amber-400 to-orange-400",
-    accent: "border-amber-400/40",
+    color: "from-emerald-400 to-orange-400",
+    accent: "border-emerald-400/40",
     points: [
       "Shortlisted nominations evaluated by eminent jury",
       "Panel comprises industry experts and healthcare professionals",
@@ -69,7 +69,7 @@ const steps = [
   {
     icon: "🏅",
     title: "Final Review & Approval",
-    color: "from-yellow-400 to-amber-500",
+    color: "from-yellow-400 to-emerald-500",
     accent: "border-yellow-400/40",
     points: [
       "Comprehensive internal audit conducted",

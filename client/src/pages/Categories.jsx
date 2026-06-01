@@ -25,7 +25,7 @@ const categoryGroups = [
   {
     group: "Leadership",
     icon: "👑",
-    color: "from-amber-400 to-yellow-500",
+    color: "from-emerald-400 to-yellow-500",
     items: [
       { title: "Visionary Healthcare Leader in Digital Transformation", desc: "Honors healthcare leaders driving large-scale digital transformation, innovation, and technology-led healthcare excellence." },
       { title: "Transformative Hospital CEO of the Year", desc: "Recognizes hospital CEOs leading technology-driven growth, operational excellence, and patient-centric innovation." },
@@ -37,7 +37,7 @@ const categoryGroups = [
   {
     group: "HealthTech / MedTech",
     icon: "💊",
-    color: "from-blue-400 to-indigo-500",
+    color: "from-blue-400 to-emerald-500",
     items: [
       { title: "Excellence in AI-Powered Healthcare Solutions", desc: "Recognizes companies delivering AI-driven platforms for diagnostics, clinical decision support, and healthcare automation." },
       { title: "Excellence in Digital Health & Telemedicine Innovation", desc: "Honors organizations redefining healthcare delivery through telehealth platforms, virtual care, and remote monitoring technologies." },
@@ -82,7 +82,7 @@ const categoryGroups = [
 
 const colorMap = {
   "Healthcare Institution": "border-emerald-400/30 hover:border-emerald-400/60",
-  "Leadership": "border-amber-400/30 hover:border-amber-400/60",
+  "Leadership": "border-emerald-400/30 hover:border-emerald-400/60",
   "HealthTech / MedTech": "border-blue-400/30 hover:border-blue-400/60",
   "Patient Care & Clinical Excellence": "border-rose-400/30 hover:border-rose-400/60",
   "Public Health & Social Impact": "border-green-400/30 hover:border-green-400/60",
