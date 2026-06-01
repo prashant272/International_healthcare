@@ -224,10 +224,10 @@ export default function EditionDetail() {
                             </span>
                             <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#34d399]"></div>
                         </div>
-                        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black mb-8 leading-[1.15] tracking-tight">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black mb-8 leading-[1.15] tracking-tight">
                             <span className="text-white drop-shadow-lg">INTERNATIONAL </span>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-100 to-emerald-400 drop-shadow-[0_2px_15px_rgba(16,185,129,0.3)]">Healthcare Awards {displayYear}</span>
-                        </h1>
+                        </h2>
                         <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto whitespace-pre-line font-medium">
                             {edition?.hero || `The ${displayYear} Healthcare Excellence Awards celebrated the visionaries, institutions, and clinical leaders who redefined medical standards internationally.`}
                         </p>

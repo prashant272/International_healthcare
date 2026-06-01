@@ -110,9 +110,9 @@ export default function NominationDetails() {
                         <div className="relative z-10">
                             <div className="mb-12">
                                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#34d399] mb-2 block">Nomination Profile</span>
-                                <h1 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
+                                <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
                                     {nomination.nomineeName}
-                                </h1>
+                                </h2>
                                 <div className="flex items-center gap-3 text-[#ffeec3a0]">
                                     <FiBriefcase className="text-[#34d399]" />
                                     <span className="text-lg font-medium">{nomination.designation} at {nomination.organization}</span>
