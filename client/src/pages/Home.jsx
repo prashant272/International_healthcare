@@ -68,7 +68,7 @@ export default function Home() {
     {
       title: "International Healthcare Awards 2026 – Washington Dc  Edition",
       desc: "Celebrating high-impact pioneers and visionaries in medical research and healthcare management in   most prestigious clinical landscape.",
-      date: "31 oct 2026",
+      date: "12 October 2026",
       place: "Washington Dc , USA",
       highlight: "International Recognition",
     },
@@ -574,7 +574,7 @@ export default function Home() {
                     },
                     {
                       title: 'Washington DC Edition',
-                      date: '31 October 2026',
+                      date: '12 October 2026',
                       icon: (
                         <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg">
                           <span className="text-xl">🇺🇸</span>
