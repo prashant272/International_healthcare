@@ -40,7 +40,7 @@ export default function QuickAccess() {
             if (localStorage.getItem("quickAccessVerified") !== "true") {
                 setIsVisible(true);
             }
-        }, 2000); // 2 seconds delay
+        }, 2000);
 
         // Clean up the timeout timer when component unmounts or route changes
         return () => clearTimeout(timer);
@@ -60,12 +60,12 @@ export default function QuickAccess() {
     const handleClose = () => {
         setIsVisible(false);
 
-        // Nudge recycle: automatically pop up again after 2 seconds
+        // Nudge recycle: automatically pop up again after 2 ml seconds
         setTimeout(() => {
             if (localStorage.getItem("quickAccessVerified") !== "true") {
                 setIsVisible(true);
             }
-        }, 2000); // 2 seconds delay
+        }, 20);
     };
 
     return (

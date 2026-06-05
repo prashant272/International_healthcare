@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MediaGallery from "../components/MediaGallery.jsx";
 import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../components/Motion.jsx";
-import GuestCard from "../components/GuestCard.jsx";
+
+import JurySection from "../components/JurySection.jsx";
 import { Autoplay, Pagination, EffectCoverflow, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { fetchPreviousEditions } from "../services/api.js";
@@ -74,89 +75,6 @@ export default function Home() {
     },
   ];
 
-  const juryMembers = [
-    {
-      name: "Mr Rohit Sharma",
-      designation: "Indian Cricketer",
-      img: "jury1.jpeg"
-    },
-
-    {
-      name: "Mr. Sunil Gavaskar",
-      designation: "Indian Cricket Commentator & Former Cricketer",
-      img: "jury2.jpeg"
-    },
-
-    {
-      name: "Ms. Lara Dutta",
-      designation: "Indian Actress & Model",
-      img: "jury3.jpeg"
-    },
-
-    {
-      name: "Mr. Brett Lee",
-      designation: "Australian Cricketer",
-      img: "jury4.jpeg"
-    },
-
-    {
-      name: "Mr. Virender Sehwag",
-      designation: "Indian Cricket Commentator & Former Cricketer",
-      img: "jury5.jpeg"
-    },
-
-    {
-      name: "Dr. Yoganand Shashtri",
-      designation: "Former Reader, Shaheed Bhagat Singh College, Delhi",
-      img: "jury6.jpeg"
-    },
-
-    {
-      name: "Mr. Sandeep Patil",
-      designation: "Former Indian Cricketer & Chief of the BCCI Selection Committee",
-      img: "jury7.jpeg"
-    },
-
-    {
-      name: "Dr. Raj Aggarwal",
-      designation: "Director of AIMA-CME",
-      img: "jury8.jpeg"
-    },
-
-    {
-      name: "Mr. Chetan Sharma",
-      designation: "Former Indian Cricketer",
-      img: "jury9.jpeg"
-    },
-
-    {
-      name: "Padma Shri Dr. J. K. Singh",
-      designation: "President, Cancer Care India; Former National Vice President, India Medical Association",
-      img: "jury10.jpeg"
-    },
-
-    {
-      name: "Mr. Arvind Sawant",
-      designation: "Hon'ble Minister of Heavy Industries and Public Enterprise",
-      img: "jury11.jpeg"
-    },
-
-    {
-      name: "Mr. Chetan Chouhan",
-      designation: "Former Indian Cricketer & Politician",
-      img: "jury12.jpeg"
-    },
-    {
-      name: "Mr. Jonty Rhodes",
-      designation: "Former South African Cricketer",
-      img: "jury13.png"
-    },
-    {
-      name: "Mr. Sajid Khan",
-      designation: "Film Director & Producer",
-      img: "jury14.png"
-    },
-  ];
   // Previous Media Partners
   const mediaPartners = [
     // ===== Premium National & International Media =====
@@ -341,7 +259,8 @@ export default function Home() {
             {/* Backdrop Spotlight */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10 pointer-events-none rounded-full" style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%)' }} />
 
-            <h1 className="text-[13px] xs:text-[16px] sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-black font-heading tracking-tight leading-tight text-white px-2 [text-shadow:_0_0_30px_rgba(16,185,129,0.4),_0_0_60px_rgba(16,185,129,0.2)]">
+            {/* Changed from h1 to h2 for SEO to avoid multiple H1 tags on the page */}
+            <h2 className="text-[13px] xs:text-[16px] sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-black font-heading tracking-tight leading-tight text-white px-2 [text-shadow:_0_0_30px_rgba(16,185,129,0.4),_0_0_60px_rgba(16,185,129,0.2)]">
               <span className="inline-block whitespace-nowrap text-center">
                 <span className="text-cyan-50 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">International</span>{" "}
                 <span className="bg-gradient-to-r from-emerald-300 via-white to-cyan-300 bg-clip-text text-transparent inline-block font-black filter drop-shadow-[0_0_50px_rgba(16,185,129,1)]">
@@ -350,7 +269,7 @@ export default function Home() {
                 <span className="text-emerald-50 drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]">Awards</span>
                 <span className="text-emerald-50 drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]">, 2026</span>
               </span>
-            </h1>
+            </h2>
             <div className="mx-auto w-24 sm:w-32 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent rounded-full -mt-2" />
             <p className="mt-2 text-[10px] xs:text-xs sm:text-sm md:text-lg lg:text-xl text-white font-black leading-relaxed [text-shadow:_0_2px_15px_rgba(0,0,0,1)] max-w-none mx-auto whitespace-normal sm:whitespace-nowrap">
               Organised by{" "}
@@ -914,50 +833,7 @@ export default function Home() {
         </section>
 
         {/* ================= GUESTS & SPEAKERS ================= */}
-        <section className="relative overflow-hidden py-12">
-          <FadeUp className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
-              Our Esteemed <span className="text-emerald-400">Guests & Speakers</span>
-            </h2>
-            <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto rounded-full" />
-            <p className="mt-6 text-emerald-100/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
-              Join our network of eminent medical professionals and visionaries.
-            </p>
-          </FadeUp>
-          <FadeUp className="max-w-7xl mx-auto px-6 pt-10">
-            {(() => {
-              const displayJury = juryMembers.length > 0 && juryMembers.length < 12
-                ? [...juryMembers, ...juryMembers]
-                : juryMembers;
-              return (
-                <Swiper
-                  modules={[Autoplay, Pagination, EffectCoverflow]}
-                  effect="coverflow"
-                  grabCursor
-                  centeredSlides
-                  slidesPerView="auto"
-                  coverflowEffect={{
-                    rotate: 15,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 2.5,
-                    slideShadows: false
-                  }}
-                  autoplay={{ delay: 1000, disableOnInteraction: false }}
-                  pagination={{ clickable: true, dynamicBullets: true }}
-                  loop={displayJury.length > 1}
-                  className="!pb-20"
-                >
-                  {displayJury.map((member, i) => (
-                    <SwiperSlide key={i} className="!w-[320px] md:!w-[380px]">
-                      <GuestCard member={member} index={i} isFeatured={true} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              );
-            })()}
-          </FadeUp>
-        </section>
+        <JurySection />
 
         {/* ================= MEDIA GALLERY ================= */}
         <MediaGallery />
@@ -1099,7 +975,7 @@ export default function Home() {
                               {edition.images && edition.images.length > 0 ? (
                                 <img
                                   src={edition.images[0]}
-                                  alt={edition.title}
+                                  alt={edition.title || "Edition Title"}
                                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                   loading="lazy"
                                 />
@@ -1182,7 +1058,15 @@ export default function Home() {
                       flex items-center justify-center p-6
                     ">
                       {partner.logo ? (
-                        <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                        <>
+                          {/* Added fallback alt attribute for SEO when partner.name is missing */}
+                          <img
+                            src={partner.logo}
+                            alt={partner.name || "Media Partner"}
+                            className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                        </>
                       ) : (
                         <span className="text-emerald-400 text-4xl font-black">{partner.name?.[0]}</span>
                       )}
