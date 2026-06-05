@@ -132,7 +132,7 @@ export default function UpcomingEditionDetail() {
             >
                 <div className="min-h-[40vh] flex flex-col items-center justify-center p-6 text-center">
                     <Link
-                        to="/upcoming-awards"
+                        to="/#upcoming-awards"
                         className="btn-primary"
                     >
                         Browse Upcoming Awards
@@ -156,7 +156,7 @@ export default function UpcomingEditionDetail() {
                 <div className="lg:col-span-8 space-y-8">
                     <div className="bg-emerald-950 border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-2xl">
                         <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight text-gradient-emerald">
-                            {edition.title}, {displayYear}  - {locationString}
+                            {edition.title}
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-transparent mb-8 rounded-full"></div>
 

@@ -6,7 +6,7 @@ import { PageHero, FadeUp, StaggerContainer, StaggerItem, NeonCard } from "../co
 import JurySection from "../components/JurySection.jsx";
 import { Autoplay, Pagination, EffectCoverflow, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { fetchPreviousEditions } from "../services/api.js";
+import { fetchPreviousEditions, fetchUpcomingEditions } from "../services/api.js";
 import UpcomingAwards from "../components/UpcomingAwards.jsx";
 
 
@@ -36,6 +36,9 @@ export default function Home() {
   const [editions, setEditions] = useState([]);
   const [editionsLoading, setEditionsLoading] = useState(true);
 
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [upcomingLoading, setUpcomingLoading] = useState(true);
+
   useEffect(() => {
     const loadEditions = async () => {
       try {
@@ -50,6 +53,24 @@ export default function Home() {
     loadEditions();
   }, []);
 
+  useEffect(() => {
+    const loadUpcoming = async () => {
+      try {
+        const res = await fetchUpcomingEditions();
+        // The API returns an array of groups, each with a year and items array
+        const flattened = (res.data || res).reduce((acc, group) =>
+          acc.concat(group.items.map(item => ({ ...item, year: group.year }))),
+          []);
+        setUpcomingEvents(flattened);
+      } catch (err) {
+        console.error("Failed to load upcoming events:", err);
+      } finally {
+        setUpcomingLoading(false);
+      }
+    };
+    loadUpcoming();
+  }, []);
+
 
 
   const handleNominateClick = () => {
@@ -58,22 +79,6 @@ export default function Home() {
 
   //Event Data
 
-  const events = [
-    {
-      title: "International Healthcare Awards 2026 – Mumbai Edition ",
-      desc: "Honoring groundbreaking achievements and revolutionary leaders who are shaping the future of international medicine and healthcare excellence across the UAE.",
-      date: "12 July 2026",
-      place: "Mumbai",
-      highlight: "International Excellence",
-    },
-    {
-      title: "International Healthcare Awards 2026 – Washington Dc  Edition",
-      desc: "Celebrating high-impact pioneers and visionaries in medical research and healthcare management in   most prestigious clinical landscape.",
-      date: "12 October 2026",
-      place: "Washington Dc , USA",
-      highlight: "International Recognition",
-    },
-  ];
 
   // Previous Media Partners
   const mediaPartners = [
@@ -284,9 +289,19 @@ export default function Home() {
           <div className="w-full max-w-[1600px] mx-auto relative z-30">
             <div className="w-full relative z-15 px-3">
               {(() => {
-                const displayEvents = events.length > 0 && events.length < 6
-                  ? [...events, ...events]
-                  : events;
+                const displayEvents = upcomingEvents.length > 0 && upcomingEvents.length < 6
+                  ? [...upcomingEvents, ...upcomingEvents]
+                  : upcomingEvents;
+
+                // Show loading state if loading
+                if (upcomingLoading) {
+                  return (
+                    <div className="flex justify-center items-center h-[450px]">
+                      <div className="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+                    </div>
+                  );
+                }
+
                 return (
                   <Swiper
                     modules={[Autoplay, Pagination]}
@@ -331,7 +346,7 @@ export default function Home() {
                           {/* Left-Aligned Description & Data */}
                           <div className="flex-1 flex flex-col justify-start text-left space-y-2.5 relative z-10">
                             <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed">
-                              {event.desc}
+                              {event.hero || "Join us in celebrating excellence..."}
                             </p>
 
                             {/* Side-by-Side Data Boxes */}
@@ -341,14 +356,14 @@ export default function Home() {
                                   <svg className="w-3 h-3 text-emerald-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /></svg>
                                   <span className="text-[7px] font-black text-emerald-400 uppercase tracking-widest">DATE</span>
                                 </div>
-                                <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{event.date}</span>
+                                <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{event.date || "To Be Announced"}</span>
                               </div>
                               <div className="bg-white/5  p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
                                 <div className="flex items-center gap-1.5 mb-0.5 w-full justify-center">
                                   <svg className="w-3 h-3 text-cyan-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                                   <span className="text-[7px] font-black text-cyan-400 uppercase tracking-widest">VENUE</span>
                                 </div>
-                                <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{event.place}</span>
+                                <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{Array.isArray(event.locations) ? event.locations.join(", ") : (event.locations || "Location TBA")}</span>
                               </div>
                             </div>
                           </div>
@@ -359,7 +374,11 @@ export default function Home() {
                               className="bg-gradient-to-r from-emerald-500 to-emerald-700 py-2.5 rounded-lg font-black text-white shadow-lg hover:shadow-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
                               NOMINATE <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                             </button>
-                            <button onClick={() => navigate(`/edition/${event._id || event.id}`)}
+                            <button onClick={() => {
+                              const formattedTitle = event.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                              const year = event.year || event.date?.match(/\d{4}/)?.[0] || "2026";
+                              navigate(`/upcoming-editions/${year}/${formattedTitle}`);
+                            }}
                               className="bg-white/10  border border-white/20 py-2.5 rounded-lg font-black text-emerald-400 shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
                               MORE INFO <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             </button>
@@ -1023,7 +1042,9 @@ export default function Home() {
         </section>
 
         {/* OUR OTHER UPCOMING AWARDS section */}
-        <UpcomingAwards />
+        <div id="upcoming-awards">
+          <UpcomingAwards />
+        </div>
         {/* ================= MEDIA PARTNERS / COVERAGE ================= */}
         <section className="relative overflow-hidden py-2 ">
           {/* Decorative mesh gradients */}
