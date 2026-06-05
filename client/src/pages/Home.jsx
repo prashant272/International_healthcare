@@ -36,7 +36,7 @@ export default function Home() {
   const [editions, setEditions] = useState([]);
   const [editionsLoading, setEditionsLoading] = useState(true);
 
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [upcomingAwards, setUpcomingAwards] = useState([]);
   const [upcomingLoading, setUpcomingLoading] = useState(true);
 
   useEffect(() => {
@@ -54,20 +54,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const loadUpcoming = async () => {
+    async function loadUpcoming() {
       try {
         const res = await fetchUpcomingEditions();
-        // The API returns an array of groups, each with a year and items array
-        const flattened = (res.data || res).reduce((acc, group) =>
-          acc.concat(group.items.map(item => ({ ...item, year: group.year }))),
-          []);
-        setUpcomingEvents(flattened);
+        const flattened = res.reduce((acc, group) => acc.concat(group.items.map(item => ({ ...item, year: group.year }))), []);
+        setUpcomingAwards(flattened);
       } catch (err) {
-        console.error("Failed to load upcoming events:", err);
+        console.error("Failed to fetch upcoming awards:", err);
       } finally {
         setUpcomingLoading(false);
       }
-    };
+    }
     loadUpcoming();
   }, []);
 
@@ -204,6 +201,19 @@ export default function Home() {
     },
   ];
 
+  const keyDates = [
+    {
+      title: 'Mumbai Edition',
+      date: '12 July 2026',
+      icon: '🇮🇳'
+    },
+    {
+      title: 'Washington DC Edition',
+      date: '12 October 2026',
+      icon: '🇺🇸'
+    },
+  ];
+
   return (
     <div className={`w-full text-[#f5f3f0]  `}>
       {/* SEO H1 - Hidden */}
@@ -289,30 +299,66 @@ export default function Home() {
           <div className="w-full max-w-[1600px] mx-auto relative z-30">
             <div className="w-full relative z-15 px-3">
               {(() => {
-                const displayEvents = upcomingEvents.length > 0 && upcomingEvents.length < 6
-                  ? [...upcomingEvents, ...upcomingEvents]
-                  : upcomingEvents;
+                const EventCard = ({ event }) => (
+                  <article className="group relative w-full max-w-[95%] sm:max-w-[520px] mx-auto h-auto flex flex-col rounded-[1.5rem] overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] p-4 xs:p-5 sm:p-6 md:p-8 bg-slate-900/40 bg-black/20 backdrop-blur-md border border-white/20 shadow-2xl shadow-black/60">
 
-                // Show loading state if loading
-                if (upcomingLoading) {
+                    {/* 4 Corner Brackets */}
+                    <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#FB7185] rounded-tl-lg" />
+                    <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#FB7185] rounded-tr-lg" />
+                    <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#60A5FA] rounded-bl-lg" />
+                    <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#60A5FA] rounded-br-lg" />
+
+                    {/* Banner Image */}
+                    <img src={event.images?.[0] || event.banner} alt="banner" className="w-full h-full object-cover rounded-2xl" />
+
+                    {/* Dual Equal-Width Buttons */}
+                    <div className="grid grid-cols-2 gap-2.5 mt-4 sm:mt-6">
+                      <button onClick={() => navigate("/nominate")}
+                        className="bg-gradient-to-r cursor-pointer from-[#000080] via-[#B8860B] to-[#C41E3A] py-2.5 rounded-lg font-black text-white shadow-[0_0_20px_rgba(251,113,133,0.4)] hover:shadow-[0_0_30px_rgba(251,113,133,0.6)] transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
+                        NOMINATE <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                      </button>
+                      <button onClick={(e) => {
+                        e.stopPropagation();
+                        const formattedTitle = event.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                        const year = event.year || event.date?.match(/\d{4}/)?.[0] || "2026";
+                        navigate(`/upcoming-editions/${year}/${formattedTitle}`);
+                      }}
+                        className="bg-white/10 border border-[#818CF8]/50 py-2.5 rounded-lg font-black text-[#D4A96A] shadow-[0_0_20px_rgba(129,140,248,0.2)] hover:bg-white/20 hover:text-white transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
+                        MORE INFO <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      </button>
+                    </div>
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+                  </article>
+                );
+
+                const validAwards = upcomingAwards.filter(award => (award.images && award.images.length > 0) || (award.banner && award.banner.trim() !== ""));
+
+                if (validAwards.length === 0) return null;
+
+                if (validAwards.length === 1) {
                   return (
-                    <div className="flex justify-center items-center h-[450px]">
-                      <div className="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+                    <div className="flex justify-center w-full pb-5 pt-3">
+                      <EventCard event={validAwards[0]} />
                     </div>
                   );
                 }
+
+                const displayEvents = validAwards.length > 0 && validAwards.length < 6
+                  ? [...validAwards, ...validAwards]
+                  : validAwards;
 
                 return (
                   <Swiper
                     modules={[Autoplay, Pagination]}
                     spaceBetween={24}
                     slidesPerView={1}
-                    loop={displayEvents.length > 2}
+                    loop={displayEvents.length > 1}
                     autoplay={{ delay: 3500, disableOnInteraction: false }}
                     speed={1200}
                     pagination={{ clickable: true, dynamicBullets: true }}
                     breakpoints={{
-                      640: { slidesPerView: 1, spaceBetween: 6 },
+                      640: { slidesPerView: 1, spaceBetween: 7 },
                       768: { slidesPerView: 2, spaceBetween: 7 },
                       1024: { slidesPerView: 2, spaceBetween: 7 },
                     }}
@@ -320,73 +366,7 @@ export default function Home() {
                   >
                     {displayEvents.map((event, index) => (
                       <SwiperSlide key={index} className="h-auto flex justify-center py-2 px-2">
-                        <div className="group relative w-full max-w-[95%] sm:max-w-[520px] mx-auto h-full min-h-[450px] flex flex-col rounded-[1.5rem] overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] p-4 xs:p-5 sm:p-6 md:p-8 bg-slate-900/40 bg-black/20 backdrop-blur-md border border-white/20 shadow-2xl shadow-black/60">
-
-                          {/* 4 Corner Brackets */}
-                          <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-emerald-500/40 rounded-tl-lg" />
-                          <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-emerald-500/40 rounded-tr-lg" />
-                          <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-emerald-500/40 rounded-bl-lg" />
-                          <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-emerald-500/40 rounded-br-lg" />
-
-                          {/* Decorative Header (Absolute Top) */}
-                          <div className="relative flex items-center gap-2.5 mb-2">
-                            <div className="w-9 h-9 bg-emerald-500/20  rounded-xl border border-emerald-500/30 flex items-center justify-center shadow-xl">
-                              <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                                <path d="M12 2l2.39 7.24h7.61l-6.19 4.5L16.92 22 12 17.27 7.08 22l1.11-8.26-6.19-4.5h7.61L12 2z" />
-                              </svg>
-                            </div>
-                            <div className="h-[1px] flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent" />
-                          </div>
-
-                          {/* Title (Centered) */}
-                          <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white leading-tight drop-shadow-2xl text-center relative z-10 mb-2">
-                            {event.title}
-                          </h3>
-
-                          {/* Left-Aligned Description & Data */}
-                          <div className="flex-1 flex flex-col justify-start text-left space-y-2.5 relative z-10">
-                            <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed">
-                              {event.hero || "Join us in celebrating excellence..."}
-                            </p>
-
-                            {/* Side-by-Side Data Boxes */}
-                            <div className="grid grid-cols-2 gap-2.5 mt-10">
-                              <div className="bg-white/5  p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
-                                <div className="flex items-center gap-1.5 mb-0.5 w-full justify-center">
-                                  <svg className="w-3 h-3 text-emerald-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" /></svg>
-                                  <span className="text-[7px] font-black text-emerald-400 uppercase tracking-widest">DATE</span>
-                                </div>
-                                <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{event.date || "To Be Announced"}</span>
-                              </div>
-                              <div className="bg-white/5  p-2 rounded-2xl border border-white/10 flex flex-col items-center justify-center min-h-[3.4rem]">
-                                <div className="flex items-center gap-1.5 mb-0.5 w-full justify-center">
-                                  <svg className="w-3 h-3 text-cyan-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                                  <span className="text-[7px] font-black text-cyan-400 uppercase tracking-widest">VENUE</span>
-                                </div>
-                                <span className="font-bold text-white text-[10px] sm:text-[12px] text-center leading-tight whitespace-normal">{Array.isArray(event.locations) ? event.locations.join(", ") : (event.locations || "Location TBA")}</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Dual Equal-Width Buttons */}
-                          <div className="grid grid-cols-2 gap-2.5 mt-4 sm:mt-6 mb-4">
-                            <button onClick={() => navigate("/nominate")}
-                              className="bg-gradient-to-r from-emerald-500 to-emerald-700 py-2.5 rounded-lg font-black text-white shadow-lg hover:shadow-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
-                              NOMINATE <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                            </button>
-                            <button onClick={() => {
-                              const formattedTitle = event.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-                              const year = event.year || event.date?.match(/\d{4}/)?.[0] || "2026";
-                              navigate(`/upcoming-editions/${year}/${formattedTitle}`);
-                            }}
-                              className="bg-white/10  border border-white/20 py-2.5 rounded-lg font-black text-emerald-400 shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-1.5 text-[9px] sm:text-[11px] uppercase tracking-wider">
-                              MORE INFO <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            </button>
-                          </div>
-
-                          {/* Shine Effect */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-                        </div>
+                        <EventCard event={event} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -499,38 +479,21 @@ export default function Home() {
                 </div>
                 {/* Timeline Style Cards */}
                 <div className="space-y-6">
-                  {[
-                    {
-                      title: 'Mumbai Edition',
-                      date: '12 July 2026',
-                      icon: (
-                        <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-300 flex items-center justify-center shadow-lg">
-                          <span className="text-xl">🇮🇳</span>
-                        </span>
-                      ),
-                      border: 'from-emerald-500 to-emerald-300',
-                    },
-                    {
-                      title: 'Washington DC Edition',
-                      date: '12 October 2026',
-                      icon: (
-                        <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg">
-                          <span className="text-xl">🇺🇸</span>
-                        </span>
-                      ),
-                      border: 'from-emerald-600 to-teal-400',
-                    },
-                  ].map((item, idx) => (
+                  {keyDates.map((item, idx) => (
                     <div key={idx} className="relative group"
                       style={{ animation: `fade-up 0.8s ease-out ${(idx + 1) * 120}ms both` }}>
-                      <div className={`absolute -inset-1 bg-gradient-to-r ${item.border} opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl`} />
+                      <div className={`absolute -inset-1 bg-gradient-to-r from-emerald-500 to-emerald-300 opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl`} />
                       <div className="relative border border-white/20 shadow-xl overflow-hidden hover:bg-white/10 hover:border-white/40 hover:shadow-2xl transform hover:-translate-x-1 hover:scale-[1.02] transition-all duration-500 rounded-2xl bg-white/5 backdrop-blur-md ">
                         {/* Animated RGB Strip */}
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-gradient-x" style={{ backgroundSize: "200% 100%" }} />
-                        <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${item.border}`} />
+                        <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-emerald-500 to-emerald-300`} />
                         <div className="p-6 flex items-center gap-5 text-left">
                           {/* Icon */}
-                          <div>{item.icon}</div>
+                          <div>
+                            <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-300 flex items-center justify-center shadow-lg">
+                              <span className="text-xl">{item.icon}</span>
+                            </span>
+                          </div>
                           {/* Content */}
                           <div className="flex-1 pt-1 text-left">
                             <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-emerald-50 mb-1 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-50 group-hover:to-white group-hover:bg-clip-text transition-all duration-500 text-left">{item.title}</h3>
