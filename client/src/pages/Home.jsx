@@ -79,7 +79,6 @@ export default function Home() {
 
   //Event Data
 
-  // Upcoming events are now fetched dynamically from the backend
 
   // Previous Media Partners
   const mediaPartners = [
@@ -513,7 +512,7 @@ export default function Home() {
                     },
                     {
                       title: 'Washington DC Edition',
-                      date: '31 October 2026',
+                      date: '12 October 2026',
                       icon: (
                         <span className="block w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg">
                           <span className="text-xl">🇺🇸</span>
