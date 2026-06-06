@@ -45,7 +45,51 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-
+  <!-- SEO Structured Data for Contact, Address, and Social Media -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TIME Cyber Media Pvt Ltd.",
+      "url": "https://www.internationalhealthcareaward.com/",
+      "logo": "https://www.internationalhealthcareaward.com/images/logo_full.png",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-98210-20995",
+          "contactType": "customer service"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-98730-04416",
+          "contactType": "customer service"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/TimeCyberMedia",
+        "https://www.instagram.com/TimeCyberMedia/",
+        "https://www.youtube.com/@timecybermedia",
+        "https://www.linkedin.com/company/timecybermedia"
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C-31, 3rd Floor, Nawada Housing Complex, Opp. Metro Pillar No 792, Shivaji Marg",
+          "addressLocality": "New Delhi",
+          "postalCode": "110059",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "A/201 202, Vinayak Shopping Centre, Pravati Cross, Vasai Station Rd, opp. Union Bank, Vasai West",
+          "addressLocality": "Mumbai",
+          "addressRegion": "Maharashtra",
+          "postalCode": "401202",
+          "addressCountry": "IN"
+        }
+      ]
+    }
+  </script>
   <!-- ✅ Meta Pixel Code (Correct Placement in HEAD) -->
   <script>
     // Only initialize Facebook Pixel on the production domain to prevent 422 errors in development and staging
@@ -66,6 +110,7 @@
     } else {
       console.log("🛠️ Meta Pixel disabled on localhost to prevent 422 errors.");
     }
+
   </script>
   <!-- ✅ End Meta Pixel Code -->
 </head>
