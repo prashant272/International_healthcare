@@ -191,8 +191,8 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <nav className="bg-transparent h-12">
-            <div className="max-w-7xl mx-auto px-6 h-full flex justify-center items-center gap-4 lg:gap-5 xl:gap-6 text-[13px] lg:text-sm xl:text-[15px]">
+          <nav className="bg-transparent h-12 w-full">
+            <div className="w-full max-w-[100%] xl:max-w-7xl mx-auto px-1 xl:px-4 h-full flex justify-center items-center gap-1 xl:gap-2.5 font-semibold tracking-tight text-[9px] lg:text-[9.5px] xl:text-[12px]">
               {menuLinks("white", undefined, headerRef, isUser, false, editions, upcomingEditions)}
             </div>
           </nav>
@@ -207,7 +207,7 @@ export default function Navbar() {
                bg-slate-950/85 backdrop-blur-lg text-white 
                rounded-full shadow-[0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(16,185,129,0.25)] 
                border border-emerald-500/30 
-               px-6 lg:px-6 xl:px-8 py-2.5 flex items-center gap-4 lg:gap-6 xl:gap-10 text-[13px] lg:text-sm xl:text-[15px]
+               px-2 xl:px-5 py-2 flex items-center gap-1 xl:gap-2.5 font-semibold tracking-tight text-[9px] lg:text-[9.5px] xl:text-[12px]
                group
              "
             style={{
@@ -315,12 +315,13 @@ const menuLinks = (color, onClick, headerRef, isUser, showDashboard = true, edit
       <NavItem to="/" icon={<FaHome />} label="Home" color={color} onClick={createNavHandler(onClick)} />
       <NavItem to="/categories" icon={<FaListAlt />} label="Category" color={color} onClick={createNavHandler(onClick)} />
       <NavItem to="/jury" icon={<FaUsers />} label="Guest" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/guidelines" icon={<FaBook />} label={<><span className="hidden xl:inline">Entry </span>Guidelines</>} color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/judging" icon={<FaGavel />} label={<><span className="hidden xl:inline">Selection </span>Process</>} color={color} onClick={createNavHandler(onClick)} />
+      <NavItem to="/guidelines" icon={<FaBook />} label={<span className="whitespace-nowrap">Entry Guidelines</span>} color={color} onClick={createNavHandler(onClick)} />
+      <NavItem to="/judging" icon={<FaGavel />} label={<span className="whitespace-nowrap">Selection Process</span>} color={color} onClick={createNavHandler(onClick)} />
       <NavItem to="/terms" icon={<FaFileContract />} label="T&C" color={color} onClick={createNavHandler(onClick)} />
-      <NavItem to="/contact" icon={<FaEnvelope />} label={<><span className="">Contact </span>Us</>} color={color} onClick={createNavHandler(onClick)} />
-      <UpcomingNavDropdown icon={<FaHistory />} label={<><span className="">Upcoming </span>Awards</>} color={color} options={upcomingEditions} onClick={createNavHandler(onClick)} />
-      <NavDropdown icon={<FaHistory />} label={<><span className="">Previous </span>Editions</>} color={color} options={editions} onClick={createNavHandler(onClick)} />
+      <NavItem to="/contact" icon={<FaEnvelope />} label={<span className="whitespace-nowrap">Contact Us</span>} color={color} onClick={createNavHandler(onClick)} />
+      <UpcomingNavDropdown icon={<FaHistory />} label={<span className="whitespace-nowrap">Upcoming Awards</span>} color={color} options={upcomingEditions} onClick={createNavHandler(onClick)} />
+      <NavDropdown icon={<FaHistory />} label={<span className="whitespace-nowrap">Previous Editions</span>} color={color} options={editions} onClick={createNavHandler(onClick)} />
+      <NavItem to="/blogs" icon={<FaBook />} label="Blogs" color={color} onClick={createNavHandler(onClick)} />
       <NavItem to="/faq" icon={<FaQuestionCircle />} label="FAQ" color={color} onClick={createNavHandler(onClick)} />
       <NavItem to="/nominate" icon={<FaRegEdit />} label={<>Nominate<span className="hidden xl:inline"> Now</span></>} color={color} onClick={createNavHandler(onClick)} isSpecial={true} />
       {isUser && showDashboard && (
@@ -628,7 +629,7 @@ function UpcomingNavDropdown({ icon, label, color, options, onClick }) {
                 onClick={() => { setOpen(false); if (onClick) onClick(); }}
                 className={`px-5 py-2.5 text-sm transition-colors ${isAct ? 'bg-emerald-600/20 font-bold border-l-4 border-emerald-400 text-white' : 'text-emerald-100 hover:bg-white/10 hover:text-white border-l-4 border-transparent'}`}
               >
-                {opt.title} ({opt.year})
+                {opt.title}
               </NavLink>
             );
           })}

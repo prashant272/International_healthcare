@@ -73,7 +73,7 @@ export const getEditionByYear = async (req, res) => {
                     return formattedTitle === slug.toLowerCase();
                 });
             }
-            
+
             // Fallback: if no slug or slug didn't match, just get the first one for that year
             if (!edition) {
                 edition = await PreviousEdition.findOne({ year: parsedYear });

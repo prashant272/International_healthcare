@@ -42,8 +42,8 @@ export const uploadAndCompress = (fieldName, maxCount = 30) => {
 
                     // Compress using Sharp
                     const compressedBuffer = await sharp(file.buffer)
-                        .resize({ width: 1000, withoutEnlargement: true }) // Reduced from 1200px for better performance
-                        .webp({ quality: 70 }) // Reduced from 80 for more aggressive compression
+                        .resize({ width: 1920, withoutEnlargement: true }) // Increased width for high quality banners
+                        .webp({ quality: 85 }) // Increased quality for better visuals
                         .toBuffer();
 
                     // Upload to S3

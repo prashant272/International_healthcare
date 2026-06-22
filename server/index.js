@@ -15,6 +15,7 @@ import previousEditionRoutes from "./routes/previousEditionRoutes.js";
 import upcomingEditionRoutes from "./routes/upcomingEditionRoutes.js";
 import inquiryRoutes from "./routes/inquiryRoutes.js";
 import developerRoutes from "./routes/developerRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import passport from "passport";
 import session from "express-session";
@@ -158,6 +159,7 @@ app.use("/api/previous-editions", previousEditionRoutes);
 app.use("/api/upcoming-editions", upcomingEditionRoutes);
 app.use("/api/inquiries", inquiryRoutes);
 app.use("/api/developer", developerRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // Global Error Handler
 app.use(errorHandler);
