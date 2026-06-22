@@ -61,7 +61,7 @@ export default function Home() {
     {
       title: "International Healthcare Awards 2026 – Mumbai Edition ",
       desc: "Honoring groundbreaking achievements and revolutionary leaders who are shaping the future of international medicine and healthcare excellence across the UAE.",
-      date: "12 July 2026",
+      date: "8th August 2026",
       place: "Mumbai",
       highlight: "International Excellence",
     },
