@@ -901,7 +901,7 @@ export default function NominationForm() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-              {["Dubai", "USA", "London", "New Delhi", "Mumbai"].map((loc) => (
+              {["USA", , "Mumbai"].map((loc) => (
                 <label
                   key={loc}
                   className={`flex items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 cursor-pointer text-center
