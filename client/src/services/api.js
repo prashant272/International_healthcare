@@ -259,3 +259,29 @@ export function updateBlog(id, payload, token) {
 export function deleteBlog(id, token) {
   return request(`/api/blogs/${id}`, { method: "DELETE", token });
 }
+
+// --- MEDIA API ---
+export function fetchAdminMedia() {
+  return request("/api/media");
+}
+
+export function createMedia(payload, token) {
+  return request("/api/media", {
+    method: "POST",
+    body: payload, // Can be FormData (for photos) or JSON (for urls)
+    token,
+  });
+}
+
+export function updateBulkMedia(payload, token) {
+  return request("/api/media/bulk", {
+    method: "PUT",
+    body: payload,
+    token,
+  });
+}
+
+export function deleteMedia(id, token) {
+  return request(`/api/media/${id}`, { method: "DELETE", token });
+}
+

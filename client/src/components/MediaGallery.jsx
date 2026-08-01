@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import { PageHero, FadeUp } from "./Motion";
+import { fetchAdminMedia } from '../services/api.js';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -25,9 +26,16 @@ const ReelCard = memo(({ reel, isPlaying, isVisible, onPlay }) => {
   const videoId = useMemo(() => getYouTubeVideoId(reel.url), [reel.url]);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const iframeRef = useRef(null);
+
+  // Reset states when no longer playing to ensure clean unmounting
+  useEffect(() => {
+    if (!isPlaying) {
+      setIframeLoaded(false);
+      setIsVideoReady(false);
+    }
+  }, [isPlaying]);
 
   // Fallback to reveal video if YouTube API fails to fire the PLAYING event
   useEffect(() => {
@@ -39,21 +47,13 @@ const ReelCard = memo(({ reel, isPlaying, isVisible, onPlay }) => {
   }, [isPlaying, isVideoReady, iframeLoaded]);
 
   useEffect(() => {
-    if (isVisible) setHasBeenVisible(true);
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (iframeRef.current && iframeLoaded) {
-      if (isPlaying) {
-        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-      } else {
-        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-      }
+    if (iframeRef.current && iframeLoaded && isPlaying) {
+      iframeRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
     }
   }, [isPlaying, iframeLoaded]);
 
   useEffect(() => {
-    if (!hasBeenVisible || !videoId || !iframeLoaded) return;
+    if (!isPlaying || !videoId || !iframeLoaded) return;
 
     const initPlayer = () => {
       if (!iframeRef.current) return;
@@ -89,7 +89,7 @@ const ReelCard = memo(({ reel, isPlaying, isVisible, onPlay }) => {
     }, 100);
 
     return () => clearInterval(checkYT);
-  }, [hasBeenVisible, videoId, iframeLoaded]);
+  }, [isPlaying, videoId, iframeLoaded]);
 
   return (
     <div
@@ -97,8 +97,8 @@ const ReelCard = memo(({ reel, isPlaying, isVisible, onPlay }) => {
       onClick={() => !isPlaying && onPlay()}
     >
       <div className="w-full h-full bg-black relative">
-        {/* Iframe Layer (Loads in background) */}
-        {hasBeenVisible && videoId && (
+        {/* Iframe Layer (Only exists when actively playing to save memory) */}
+        {isPlaying && videoId && (
           <iframe
             id={`yt-player-${videoId}`}
             ref={iframeRef}
@@ -155,67 +155,37 @@ export default function MediaGallery() {
   const [activeTab, setActiveTab] = useState('reels');
   const [playingVideoId, setPlayingVideoId] = useState(null);
 
+  // Dynamic Data State
+  const [dbMedia, setDbMedia] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const domains = ['https://www.youtube.com', 'https://img.youtube.com', 'https://www.google.com'];
-    const links = domains.map(domain => {
-      const link = document.createElement('link');
-      link.rel = 'preconnect';
-      link.href = domain;
-      document.head.appendChild(link);
-      return link;
-    });
-    return () => links.forEach(link => document.head.removeChild(link));
+    const fetchMedia = async () => {
+      try {
+        const response = await fetchAdminMedia();
+        if (response && response.media) {
+          setDbMedia(response.media);
+        }
+      } catch (error) {
+        console.error("Failed to fetch media gallery", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMedia();
   }, []);
 
-  const reels = useMemo(() => [
-    { url: "https://www.youtube.com/shorts/ktV63TXavqI" },
-    { url: "https://www.youtube.com/shorts/vbrjxvVX0aA" },
-    { url: "https://www.youtube.com/shorts/YmdVEK_WKvk" },
-    { url: "https://www.youtube.com/shorts/5Y4Jqlj9qvU" },
-    { url: "https://www.youtube.com/shorts/HZZMAR__Jfk" },
-    { url: "https://www.youtube.com/shorts/rZAd9O7s3h4" },
-    { url: "https://www.youtube.com/shorts/VsPtnlmR3z0" },
-    { url: "https://www.youtube.com/shorts/wCD_Wpw45C4" },
-    { url: "https://www.youtube.com/shorts/rZAd9O7s3h4" },
-    { url: "https://www.youtube.com/shorts/qnSBCey_s74" },
+  const reels = useMemo(() => {
+    return dbMedia.filter(m => m.type === 'reel');
+  }, [dbMedia]);
 
-  ], []);
+  const photos = useMemo(() => {
+    return dbMedia.filter(m => m.type === 'photo').map(m => m.url);
+  }, [dbMedia]);
 
-  const photos = useMemo(() => [
-    '/2023/1.jpg', '/2023/2.jpg', '/2023/3.jpg', '/2023/4.jpg', '/2023/5.jpg',
-    '/2023/6.jpg', '/2023/7.jpg', '/2023/8.jpg', '/2023/9.jpg', '/2023/10.jpg', '/2023/11.jpg',
-  ], []);
-
-  const videos = useMemo(() => [
-
-    { url: "https://www.youtube.com/watch?v=yaFT7MPXbrM" },
-    { url: "" },
-
-
-    { url: "https://www.youtube.com/watch?v=MBoNTrPLeZI&t=5s" },
-    { url: "https://www.youtube.com/watch?v=LuCukRXeE_s&t=1s" },
-    { url: "https://www.youtube.com/watch?v=aY_mh32teqk&t=1s" },
-    { url: "https://www.youtube.com/watch?v=dEYs847mt_w" },
-    { url: "https://www.youtube.com/watch?v=f9qlJN2KXZ0&t=1158s" },
-    { url: "https://www.youtube.com/watch?v=TUYUmSe5jI8" },
-    { url: "https://www.youtube.com/watch?v=QC-9EHL0k6M" },
-    { url: "" },
-
-    { url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
-    { url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
-    { url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
-    { url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
-    { url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
-    { url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
-    { url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
-    { url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
-    { url: "https://www.youtube.com/watch?v=FO9KwVu_GyA&t=2s" },
-    { url: "https://www.youtube.com/watch?v=wh7zwl0SUF4" },
-
-
-
-
-  ], []);
+  const videos = useMemo(() => {
+    return dbMedia.filter(m => m.type === 'video');
+  }, [dbMedia]);
 
   const displayPhotos = useMemo(() =>
     photos.length > 0 && photos.length < 10 ? [...photos, ...photos] : photos
@@ -324,6 +294,7 @@ export default function MediaGallery() {
                 pauseOnMouseEnter: true
               }}
               watchSlidesProgress={true}
+              onSlideChange={() => setPlayingVideoId(null)}
               pagination={{ clickable: true, dynamicBullets: true }}
               navigation={true}
               breakpoints={{
