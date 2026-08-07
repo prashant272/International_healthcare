@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import { PageHero, FadeUp } from "./Motion";
+import { fetchAdminMedia } from '../services/api.js';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -21,10 +22,74 @@ const getYouTubeVideoId = (url) => {
 };
 
 // Optimized ReelCard Component with Memoization
-const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
+const ReelCard = memo(({ reel, isPlaying, isVisible, onPlay }) => {
   const videoId = useMemo(() => getYouTubeVideoId(reel.url), [reel.url]);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const iframeRef = useRef(null);
+
+  // Reset states when no longer playing to ensure clean unmounting
+  useEffect(() => {
+    if (!isPlaying) {
+      setIframeLoaded(false);
+      setIsVideoReady(false);
+    }
+  }, [isPlaying]);
+
+  // Fallback to reveal video if YouTube API fails to fire the PLAYING event
+  useEffect(() => {
+    let fallback;
+    if (isPlaying && !isVideoReady && iframeLoaded) {
+      fallback = setTimeout(() => setIsVideoReady(true), 1500);
+    }
+    return () => clearTimeout(fallback);
+  }, [isPlaying, isVideoReady, iframeLoaded]);
+
+  useEffect(() => {
+    if (iframeRef.current && iframeLoaded && isPlaying) {
+      iframeRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    }
+  }, [isPlaying, iframeLoaded]);
+
+  useEffect(() => {
+    if (!isPlaying || !videoId || !iframeLoaded) return;
+
+    const initPlayer = () => {
+      if (!iframeRef.current) return;
+      new window.YT.Player(iframeRef.current, {
+        events: {
+          'onStateChange': (event) => {
+            // PLAYING state is 1
+            if (event.data === 1) {
+              setIsVideoReady(true);
+            }
+          }
+        }
+      });
+    };
+
+    if (!window.YT) {
+      window.YT = { loading: true };
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      if (firstScriptTag && firstScriptTag.parentNode) {
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      } else {
+        document.head.appendChild(tag);
+      }
+    }
+
+    const checkYT = setInterval(() => {
+      if (window.YT && window.YT.Player) {
+        clearInterval(checkYT);
+        initPlayer();
+      }
+    }, 100);
+
+    return () => clearInterval(checkYT);
+  }, [isPlaying, videoId, iframeLoaded]);
 
   return (
     <div
@@ -32,10 +97,12 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
       onClick={() => !isPlaying && onPlay()}
     >
       <div className="w-full h-full bg-black relative">
-        {/* Iframe Layer (Loads in background) */}
+        {/* Iframe Layer (Only exists when actively playing to save memory) */}
         {isPlaying && videoId && (
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&modestbranding=1&rel=0&enablejsapi=1`}
+            id={`yt-player-${videoId}`}
+            ref={iframeRef}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&rel=0&enablejsapi=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
             title={reel.title || "Video Reel"}
             className="absolute inset-0 w-full h-full z-0"
             frameBorder="0"
@@ -45,9 +112,9 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
           ></iframe>
         )}
 
-        {/* Thumbnail & Loading Overlay Layer (Hides when iframe is ready) */}
-        {(!isPlaying || !iframeLoaded) && (
-          <div className="absolute inset-0 z-20 transition-opacity duration-1000 ease-out">
+        {/* Thumbnail & Loading Overlay Layer (Hides only when video is actually PLAYING) */}
+        {(!isPlaying || !isVideoReady) && (
+          <div className={`absolute inset-0 z-20 transition-opacity duration-700 ease-out ${isPlaying && isVideoReady ? 'opacity-0' : 'opacity-100'}`}>
             {!imgLoaded && (
               <div className="absolute inset-0 bg-slate-800 animate-pulse">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 translate-x-[-100%] animate-[shimmer_2s_infinite]"></div>
@@ -76,13 +143,6 @@ const ReelCard = memo(({ reel, isPlaying, onPlay }) => {
             )}
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-100 z-10 pointer-events-none"></div>
-
-            {/* Show smooth spinner over thumbnail if playing but waiting on YouTube */}
-            {isPlaying && !iframeLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-slate-900/20 z-30 backdrop-blur-[2px] transition-opacity duration-500">
-                <div className="w-10 h-10 border-4 border-pink-500/30 border-t-pink-500 rounded-full animate-spin" />
-              </div>
-            )}
           </div>
         )}
       </div>
@@ -95,64 +155,37 @@ export default function MediaGallery() {
   const [activeTab, setActiveTab] = useState('reels');
   const [playingVideoId, setPlayingVideoId] = useState(null);
 
+  // Dynamic Data State
+  const [dbMedia, setDbMedia] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const domains = ['https://www.youtube.com', 'https://img.youtube.com', 'https://www.google.com'];
-    const links = domains.map(domain => {
-      const link = document.createElement('link');
-      link.rel = 'preconnect';
-      link.href = domain;
-      document.head.appendChild(link);
-      return link;
-    });
-    return () => links.forEach(link => document.head.removeChild(link));
+    const fetchMedia = async () => {
+      try {
+        const response = await fetchAdminMedia();
+        if (response && response.media) {
+          setDbMedia(response.media);
+        }
+      } catch (error) {
+        console.error("Failed to fetch media gallery", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMedia();
   }, []);
 
-  const reels = useMemo(() => [
-    { url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
-    { url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
-    { url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
-    { url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
-    { url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
-    { url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
-    { url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
-    { url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
-  ], []);
+  const reels = useMemo(() => {
+    return dbMedia.filter(m => m.type === 'reel');
+  }, [dbMedia]);
 
-  const photos = useMemo(() => [
-    '/2023/1.jpg', '/2023/2.jpg', '/2023/3.jpg', '/2023/4.jpg', '/2023/5.jpg',
-    '/2023/6.jpg', '/2023/7.jpg', '/2023/8.jpg', '/2023/9.jpg', '/2023/10.jpg', '/2023/11.jpg',
-  ], []);
+  const photos = useMemo(() => {
+    return dbMedia.filter(m => m.type === 'photo').map(m => m.url);
+  }, [dbMedia]);
 
-  const videos = useMemo(() => [
-
-    { url: "https://www.youtube.com/watch?v=yaFT7MPXbrM" },
-    { url: "" },
-
-
-    { url: "https://www.youtube.com/watch?v=MBoNTrPLeZI&t=5s" },
-    { url: "https://www.youtube.com/watch?v=LuCukRXeE_s&t=1s" },
-    { url: "https://www.youtube.com/watch?v=aY_mh32teqk&t=1s" },
-    { url: "https://www.youtube.com/watch?v=dEYs847mt_w" },
-    { url: "https://www.youtube.com/watch?v=f9qlJN2KXZ0&t=1158s" },
-    { url: "https://www.youtube.com/watch?v=TUYUmSe5jI8" },
-    { url: "https://www.youtube.com/watch?v=QC-9EHL0k6M" },
-    { url: "" },
-
-    { url: "https://www.youtube.com/shorts/bmOVd-epEuc" },
-    { url: "https://www.youtube.com/shorts/FobO7TDWHuE" },
-    { url: "https://www.youtube.com/shorts/A4TkdJNLXlw" },
-    { url: "https://www.youtube.com/shorts/w8C6XVpK2ng" },
-    { url: "https://www.youtube.com/shorts/Y_RsDMCDiCE" },
-    { url: "https://www.youtube.com/shorts/mLN3FHUu1wQ" },
-    { url: "https://www.youtube.com/shorts/1eNiG9tZLm4" },
-    { url: "https://www.youtube.com/shorts/lpM40ShaQB0" },
-    { url: "https://www.youtube.com/watch?v=FO9KwVu_GyA&t=2s" },
-    { url: "https://www.youtube.com/watch?v=wh7zwl0SUF4" },
-
-
-
-
-  ], []);
+  const videos = useMemo(() => {
+    return dbMedia.filter(m => m.type === 'video');
+  }, [dbMedia]);
 
   const displayPhotos = useMemo(() =>
     photos.length > 0 && photos.length < 10 ? [...photos, ...photos] : photos
@@ -180,7 +213,7 @@ export default function MediaGallery() {
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 relative z-10">
         <FadeUp className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl xs:text-4xl md:text-5xl font-heading font-black mb-4 bg-gradient-to-r from-white via-emerald-400 to-white bg-clip-text text-transparent drop-shadow-2xl">
             Media <span className="text-emerald-400">Gallery</span>
@@ -260,26 +293,30 @@ export default function MediaGallery() {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true
               }}
+              watchSlidesProgress={true}
+              onSlideChange={() => setPlayingVideoId(null)}
               pagination={{ clickable: true, dynamicBullets: true }}
               navigation={true}
               breakpoints={{
-                320: { slidesPerView: 1.5, spaceBetween: 20 },
-                640: { slidesPerView: 2.5, spaceBetween: 30 },
-                1024: { slidesPerView: 3.5, spaceBetween: 40 },
-                1280: { slidesPerView: 4.5, spaceBetween: 50 }
+                320: { slidesPerView: 1, spaceBetween: 20 },
+                768: { slidesPerView: 3, spaceBetween: 30 },
+                1280: { slidesPerView: 5, spaceBetween: 50 }
               }}
               modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
               className="reels-swiper w-full pt-5 pb-16"
             >
               {displayReels.map((reel, idx) => (
                 <SwiperSlide key={`${reel.url}-${idx}`} className="pb-4">
-                  <div className="max-w-[320px] mx-auto">
-                    <ReelCard
-                      reel={reel}
-                      isPlaying={true}
-                      onPlay={() => handleReelPlay(idx)}
-                    />
-                  </div>
+                  {({ isActive, isVisible }) => (
+                    <div className="max-w-[320px] mx-auto">
+                      <ReelCard
+                        reel={reel}
+                        isPlaying={isVisible}
+                        isVisible={isVisible}
+                        onPlay={() => handleReelPlay(idx)}
+                      />
+                    </div>
+                  )}
                 </SwiperSlide>
               ))}
             </Swiper>
